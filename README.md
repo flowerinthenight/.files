@@ -1,4 +1,4 @@
-# Setup
+# Vim
 
 ### Install dependencies
 
