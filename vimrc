@@ -164,7 +164,7 @@ if has('win32')
 else
     " let g:airline_theme = 'light'
     let g:lightline = {
-                \ 'colorscheme': 'wombat',
+                \ 'colorscheme': 'PaperColor',
                 \ }
 endif
 
