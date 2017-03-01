@@ -49,6 +49,7 @@ else
     " ** airline is a bit problematic with ctrlp **
     " Plugin 'vim-airline/vim-airline'
     " Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'vim-scripts/grep.vim' " grep integration
     Plugin 'itchyny/lightline.vim' " simpler airline
     Plugin 'bling/vim-bufferline' " integrates nicely with vim-airline
 endif
@@ -316,12 +317,14 @@ if has('win32')
     nnoremap <leader>f0 :Rfindpattern /ip <c-r><c-w> *
     nnoremap <leader>r0 :arg **/* <bar> argdo %s/<c-r><c-w>/?/gc <bar> update
 else
-    " search using external grep
-    nnoremap <leader>gf :grep -F -i --binary-files=without-match '<c-r><c-w>' *<cr>:cw<cr>
-    " search using external grep (recursive)
-    nnoremap <leader>gr :grep -F -i -r --binary-files=without-match '<c-r><c-w>' *<cr>:cw<cr>
-    " prepare pattern search via grep (recursive)
-    nnoremap <leader>gp :grep -P -i -r --binary-files=without-match '<c-r><c-w>' *
+    " prepare pattern search via grep recursive (c/c++)
+    nnoremap <leader>g1 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.h *.c *.cpp *.conf
+    " prepare pattern search via grep recursive (golang)
+    nnoremap <leader>g2 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.go *.md *.html *.js *.conf
+    " prepare pattern search via grep recursive (rust)
+    nnoremap <leader>g3 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.rs *.md *.conf
+    " prepare pattern search via grep recursive (generic)
+    nnoremap <leader>g0 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *
 endif
 
 " hightlight the 81st and 161st column
