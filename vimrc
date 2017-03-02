@@ -226,6 +226,8 @@ endif
 
 " nerdtree
 map <c-n> :NERDTreeToggle<cr>
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
 
 " normal mode maps
 if has('win32')
