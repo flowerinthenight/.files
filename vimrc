@@ -235,6 +235,14 @@ if has('win32')
     " source: ftp://xmlsoft.org/libxml2/win32/64bit/
     " part of libxml2, needs xml2/bin, iconv/bin, and zlib/bin
     nnoremap <leader>px :%!xmllint --format %<cr>
+
+    " copy/paste (clipboard) mappings
+    " paste only works in visual and insert mode so there will be no conflict for ctrl-v in normal mode
+    " just remember to go insert mode when pasting from system clipboard
+    vmap <c-c> "+yi
+    vmap <c-x> "+c
+    vmap <c-v> c<esc>"+p
+    imap <c-v> <c-r><c-o>+
 else
     nnoremap <F8> :TagbarToggle<cr>
 endif
