@@ -370,6 +370,12 @@ augroup emmetfiletypeenable
     autocmd FileType html,css EmmetInstall
 augroup END
 
+augroup rememberfolds
+    autocmd!
+    autocmd BufWinLeave *.* mkview
+    autocmd BufWinEnter *.* silent! loadview
+augroup END
+
 " ColorStepper Keys
 " nmap <F6> <Plug>ColorstepPrev
 " nmap <F7> <Plug>ColorstepNext
