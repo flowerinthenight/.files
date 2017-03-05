@@ -230,6 +230,10 @@ let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeQuitOnOpen = 1
 
+" insert mode maps
+imap <c-f> <esc>
+imap <c-j> <esc>
+
 " normal mode maps
 if has('win32')
     " source: ftp://xmlsoft.org/libxml2/win32/64bit/
