@@ -112,6 +112,8 @@ if has('win32')
     set guioptions-=L
     set guioptions-=r
     set guioptions-=m
+    " for mkview and loadview
+    set viewdir=$HOME/vimfiles/view/
 endif
 
 " setttings for ycm
