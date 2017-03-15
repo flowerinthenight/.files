@@ -75,7 +75,7 @@ set viminfo='100,f1 " save marks to up to 100 files, save global marks as well (
 
 " folding options
 set foldmethod=indent
-set foldnestmax=20
+set foldnestmax=40
 set nofoldenable
 set foldlevel=0
 
