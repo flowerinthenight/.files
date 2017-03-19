@@ -334,6 +334,11 @@ if has('win32')
     nnoremap <leader>f0 :Rfindpattern /ip <c-r><c-w> *
     nnoremap <leader>r0 :arg **/* <bar> argdo %s/<c-r><c-w>/?/gc <bar> update
 else
+    " search using vimgrep (!recursive)
+    nnoremap <leader>vg :vimgrep /<c-r><c-w>/j * <bar> :cw<cr>
+    " search using vimgrep (recursive)
+    nnoremap <leader>ms :vimgrep /<c-r><c-w>/j ** <bar> :cw<cr>
+
     " prepare pattern search via grep recursive (c/c++)
     nnoremap <leader>g1 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.h *.c *.cpp *.conf
     " prepare pattern search via grep recursive (golang)
