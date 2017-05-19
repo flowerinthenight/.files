@@ -86,7 +86,7 @@ set softtabstop=4
 set expandtab
 set wrap
 set autoindent
-set smartindent
+" set smartindent
 set number
 set encoding=utf-8
 " set fileencodings=utf-8
