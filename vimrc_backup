@@ -28,8 +28,7 @@ endif
 Plugin 'VundleVim/Vundle.vim' " plugin manager
 Plugin 'scrooloose/nerdtree' " file explorer
 Plugin 'flazz/vim-colorschemes' " vim themes
-" Plugin 'Valloric/YouCompleteMe' " clang, gocode, racer, omnisharp
-Plugin 'Shougo/neocomplete.vim' " alternate for ycm for vim
+Plugin 'Valloric/YouCompleteMe' " clang, gocode, racer, omnisharp
 Plugin 'rust-lang/rust.vim' " rustfmt, syntax
 Plugin 'fatih/vim-go' " gofmt, syntax
 Plugin 'majutsushi/tagbar' " tagbar
@@ -125,7 +124,7 @@ if has('win32')
     let g:ycm_csharp_server_port = 0
 else
     " temporary enable/disable ycm: active = disable, commented = enable
-    let g:loaded_youcompleteme = 1
+    " let g:loaded_youcompleteme = 1
     let g:ycm_global_ycm_extra_conf = $HOME . '/.ycm_extra_conf.py'
     " let g:ycm_server_use_vim_stdout = 0
     " let g:ycm_server_keep_logfiles = 1
@@ -174,7 +173,7 @@ else
                 \ }
 endif
 
-" settings for vim-go and neocomplete
+" settings for vim-go
 " 1 :PluginInstall
 " 2 :GoInstallBinaries (gotags, vim-go)
 " 3 Install 'ctags'
@@ -217,11 +216,6 @@ if executable('go')
     let g:go_highlight_fields = 1
     let g:go_highlight_types = 1
     let g:go_highlight_build_constraints = 1
-    let g:go_fmt_command = "goimports" " could be slow on very large code bases
-
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
 endif
 
 " rust-related options
