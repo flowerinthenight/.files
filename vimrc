@@ -217,7 +217,9 @@ if executable('go')
     let g:go_highlight_fields = 1
     let g:go_highlight_types = 1
     let g:go_highlight_build_constraints = 1
+    let g:go_highlight_operators = 1
     let g:go_fmt_command = "goimports" " could be slow on very large code bases
+    let g:go_fmt_fail_silently = 1
 
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
