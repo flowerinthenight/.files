@@ -28,10 +28,10 @@ endif
 Plugin 'VundleVim/Vundle.vim' " plugin manager
 Plugin 'scrooloose/nerdtree' " file explorer
 Plugin 'flazz/vim-colorschemes' " vim themes
-" Plugin 'Valloric/YouCompleteMe' " clang, gocode, racer, omnisharp
-Plugin 'Shougo/neocomplete.vim' " alternate for ycm for vim
-Plugin 'rust-lang/rust.vim' " rustfmt, syntax
+Plugin 'Valloric/YouCompleteMe' " clang, racer, omnisharp
+Plugin 'Shougo/neocomplete.vim' " for golang (+ vim-go)
 Plugin 'fatih/vim-go' " gofmt, syntax
+Plugin 'rust-lang/rust.vim' " rustfmt, syntax
 Plugin 'majutsushi/tagbar' " tagbar
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
 Plugin 'tpope/vim-surround' " quoting/parenthesizing
@@ -119,6 +119,7 @@ endif
 
 " setttings for ycm
 if has('win32')
+    let g:loaded_youcompleteme = 1
     let extra_conf_path = $HOME . '\_ycm_extra_conf.py'
     let g:ycm_global_ycm_extra_conf = extra_conf_path
     let g:ycm_auto_start_csharp_server = 1
