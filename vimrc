@@ -141,7 +141,6 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|hg|svn))$'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
@@ -155,11 +154,7 @@ if has('win32')
                 \ }
 else
     let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-    let g:ctrlp_custom_ignore = {
-                \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-                \ 'file': '\v\.(exe|so|dll)$',
-                \ 'link': 'some_bad_symbolic_links',
-                \ }
+    let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|hg|svn))$'
 endif
 
 " settings for emmet-vim, see augroup + autocmd
