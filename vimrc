@@ -117,6 +117,10 @@ if has('win32')
     set viewdir=$HOME/vimfiles/view/
 endif
 
+if has('gui_macvim')
+    set guioptions=
+endif
+
 " setttings for ycm
 if has('win32')
     let g:loaded_youcompleteme = 1
