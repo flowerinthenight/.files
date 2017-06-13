@@ -45,6 +45,10 @@ if has('win32')
     Plugin 'vim-airline/vim-airline' " status bar
     Plugin 'vim-airline/vim-airline-themes' " color themes for airline
     Plugin 'bling/vim-bufferline' " integrates nicely with vim-airline
+elseif has('__macunix__')
+    Plugin 'vim-airline/vim-airline' " status bar
+    Plugin 'vim-airline/vim-airline-themes' " color themes for airline
+    Plugin 'bling/vim-bufferline' " integrates nicely with vim-airline
 else
     " Plugin 'qualiabyte/vim-colorstepper'
     " ** airline is a bit problematic with ctrlp **
@@ -167,6 +171,31 @@ let g:user_emmet_install_global = 0
 " settings for airline/lightline
 if has('win32')
     let g:airline_theme = 'light'
+elseif has('__macunix__') " disable
+    " let g:airline_theme = 'bubblegum'
+    " let g:airline_powerline_fonts = 1
+    " if !exists('g:airline_symbols')
+    "     let g:airline_symbols = {}
+    " endif
+
+    " unicode symbols
+    " let g:airline_left_sep = '»'
+    " let g:airline_left_sep = '▶'
+    " let g:airline_right_sep = '«'
+    " let g:airline_right_sep = '◀'
+    " let g:airline_symbols.crypt = '🔒'
+    " let g:airline_symbols.linenr = '␊'
+    " let g:airline_symbols.linenr = '␤'
+    " let g:airline_symbols.linenr = '¶'
+    " let g:airline_symbols.maxlinenr = '☰'
+    " let g:airline_symbols.maxlinenr = ''
+    " let g:airline_symbols.branch = '⎇'
+    " let g:airline_symbols.paste = 'ρ'
+    " let g:airline_symbols.paste = 'Þ'
+    " let g:airline_symbols.paste = '∥'
+    " let g:airline_symbols.spell = 'Ꞩ'
+    " let g:airline_symbols.notexists = '∄'
+    " let g:airline_symbols.whitespace = 'Ξ'
 else
     " let g:airline_theme = 'light'
     let g:lightline = {
