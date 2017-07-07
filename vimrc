@@ -372,6 +372,18 @@ if has('win32')
     " #0 = prepare search/replace (generic)
     nnoremap <leader>f0 :Rfindpattern /ip <c-r><c-w> *
     nnoremap <leader>r0 :arg **/* <bar> argdo %s/<c-r><c-w>/?/gc <bar> update
+elseif has('unix')
+    let s:uname = system("uname -s")
+    if s:uname == "Darwin\n"
+        " prepare pattern search via grep recursive (c/c++)
+        nnoremap <leader>g1 :Rgrep -I -i -r <c-r><c-w> *.h *.c *.cpp *.conf
+        " prepare pattern search via grep recursive (golang)
+        nnoremap <leader>g2 :Rgrep -I -i -r <c-r><c-w> *.go *.md *.html *.js *.conf
+        " prepare pattern search via grep recursive (rust)
+        nnoremap <leader>g3 :Rgrep -I -i -r <c-r><c-w> *.rs *.md *.conf
+        " prepare pattern search via grep recursive (generic)
+        nnoremap <leader>g0 :Rgrep -I -i -r <c-r><c-w> *
+    endif
 else
     " search using vimgrep (!recursive)
     nnoremap <leader>vg :vimgrep /<c-r><c-w>/j * <bar> :cw<cr>
