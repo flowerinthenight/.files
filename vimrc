@@ -37,6 +37,8 @@ Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
 Plugin 'tpope/vim-surround' " quoting/parenthesizing
 Plugin 'pangloss/vim-javascript' " javascript
 Plugin 'mattn/emmet-vim' " html/css
+Plugin 'SirVer/ultisnips' " track the engine
+Plugin 'honza/vim-snippets' " snippets are separate from engine
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
@@ -152,6 +154,12 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
+
+" settings for vim-snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 
 if has('win32')
     let g:ctrlp_cache_dir = $HOME . '\.cache\ctrlp'
