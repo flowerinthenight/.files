@@ -387,6 +387,9 @@ elseif has('unix')
         nnoremap <leader>g1 :Rgrep -I -i -r <c-r><c-w> *.h *.c *.cpp *.conf
         " prepare pattern search via grep recursive (golang)
         nnoremap <leader>g2 :Rgrep -I -i -r <c-r><c-w> *.go *.md *.html *.js *.conf
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left>
         " prepare pattern search via grep recursive (rust)
         nnoremap <leader>g3 :Rgrep -I -i -r <c-r><c-w> *.rs *.md *.conf
         " prepare pattern search via grep recursive (generic)
