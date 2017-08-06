@@ -394,21 +394,24 @@ elseif has('unix')
         nnoremap <leader>g3 :Rgrep -I -i -r <c-r><c-w> *.rs *.md *.conf
         " prepare pattern search via grep recursive (generic)
         nnoremap <leader>g0 :Rgrep -I -i -r <c-r><c-w> *
-    endif
-else
-    " search using vimgrep (!recursive)
-    nnoremap <leader>vg :vimgrep /<c-r><c-w>/j * <bar> :cw<cr>
-    " search using vimgrep (recursive)
-    nnoremap <leader>ms :vimgrep /<c-r><c-w>/j ** <bar> :cw<cr>
+    else
+        " search using vimgrep (!recursive)
+        nnoremap <leader>vg :vimgrep /<c-r><c-w>/j * <bar> :cw<cr>
+        " search using vimgrep (recursive)
+        nnoremap <leader>ms :vimgrep /<c-r><c-w>/j ** <bar> :cw<cr>
 
-    " prepare pattern search via grep recursive (c/c++)
-    nnoremap <leader>g1 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.h *.c *.cpp *.conf
-    " prepare pattern search via grep recursive (golang)
-    nnoremap <leader>g2 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.go *.md *.html *.js *.conf
-    " prepare pattern search via grep recursive (rust)
-    nnoremap <leader>g3 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.rs *.md *.conf
-    " prepare pattern search via grep recursive (generic)
-    nnoremap <leader>g0 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *
+        " prepare pattern search via grep recursive (c/c++)
+        nnoremap <leader>g1 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.h *.c *.cpp *.conf
+        " prepare pattern search via grep recursive (golang)
+        nnoremap <leader>g2 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.go *.md *.html *.js *.conf
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left>
+        " prepare pattern search via grep recursive (rust)
+        nnoremap <leader>g3 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.rs *.md *.conf
+        " prepare pattern search via grep recursive (generic)
+        nnoremap <leader>g0 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *
+    endif
 endif
 
 " hightlight the 81st and 161st column
