@@ -318,6 +318,7 @@ nnoremap <leader>pj :%!python -m json.tool<cr>
 nnoremap <leader>dt :windo diffthis<cr>
 nnoremap <leader>do :windo diffoff!<cr>
 nnoremap <leader>cw :cw<cr>
+nnoremap <leader>H <c-w>H
 nnoremap <leader>hl :set hlsearch! hlsearch?<cr>
 
 " prepare search: move cursor to //, then get word under cursor using ctrl-r + ctrl-w
@@ -450,6 +451,12 @@ augroup rememberfolds
     autocmd!
     autocmd BufWinLeave *.* mkview
     autocmd BufWinEnter *.* silent! loadview
+augroup END
+
+" <leader>Enter to open quickfix to vertical split
+augroup splitqfix
+    autocmd!
+    autocmd FileType qf nnoremap <buffer> <leader><enter> <c-w><enter><c-w>L
 augroup END
 
 " ColorStepper Keys
