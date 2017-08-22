@@ -320,6 +320,7 @@ nnoremap <leader>do :windo diffoff!<cr>
 nnoremap <leader>cw :cw<cr>
 nnoremap <leader>H <c-w>H
 nnoremap <leader>hl :set hlsearch! hlsearch?<cr>
+nnoremap <leader>t gt
 
 " prepare search: move cursor to //, then get word under cursor using ctrl-r + ctrl-w
 nnoremap <leader>vg :vimgrep //j *<left><left><left><left><c-r><c-w><end><bar>:cw<cr>
