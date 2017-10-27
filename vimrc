@@ -267,9 +267,13 @@ endif
 " read $HOME/.rustup/settings.toml and extract the default-toolchain setting
 " need to install both stable and nightly for this to work
 if executable('rustup')
-    let rust_settings_toml = readfile($HOME . '/.rustup/settings.toml')[1] " read 2nd line
-    let rust_current_toolchain = split(rust_settings_toml, '"')[1] " split with double quotes, get [1]
-    let g:ycm_rust_src_path = $HOME . '/.rustup/toolchains/' . rust_current_toolchain . '/lib/rustlib/src/rust/src'
+    " get stable
+    let rust_deftoolchain = readfile($HOME . '/.rustup/settings.toml')[1] " read 2nd line
+    let rust_toolchain = split(rust_deftoolchain, '"')[1] " split with double quotes, get [1]
+    " get host
+    let rust_defhost = readfile($HOME . '/.rustup/settings.toml')[0] " read 1st line
+    let rust_host = split(rust_defhost, '"')[1] " split with double quotes, get [1]
+    let g:ycm_rust_src_path = $HOME . '/.rustup/toolchains/' . rust_toolchain . '-' . rust_host . '/lib/rustlib/src/rust/src'
     let g:rustfmt_autosave = 1
 endif
 
