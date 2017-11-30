@@ -5,6 +5,7 @@ let mapleader = "\<space>"
 " -----------------------------------------------------------------------------
 set nocompatible
 filetype off
+syntax on
 
 if has('win32')
     " 1. vim should be 64-bit (link in ycm site)
