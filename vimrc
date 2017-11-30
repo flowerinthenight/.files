@@ -1,16 +1,11 @@
 let mapleader = "\<space>"
 
+" -----------------------------------------------------------------------------
+" PLUGIN MANAGER
+" -----------------------------------------------------------------------------
 set nocompatible
 filetype off
-syntax on
 
-if has('win32')
-    colorscheme darkblue
-else
-    colorscheme elflord
-endif
-
-" VUNDLE PLUGIN MANAGER
 if has('win32')
     " 1. vim should be 64-bit (link in ycm site)
     " 2. python should be 64-bit
@@ -25,42 +20,49 @@ else
     call vundle#begin()
 endif
 
-Plugin 'VundleVim/Vundle.vim' " plugin manager
-Plugin 'scrooloose/nerdtree' " file explorer
-Plugin 'flazz/vim-colorschemes' " vim themes
-Plugin 'Valloric/YouCompleteMe' " clang, racer, omnisharp
-Plugin 'Shougo/neocomplete.vim' " for golang (+ vim-go)
-Plugin 'fatih/vim-go' " gofmt, syntax
-Plugin 'rust-lang/rust.vim' " rustfmt, syntax
-Plugin 'majutsushi/tagbar' " tagbar
-Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
-Plugin 'tpope/vim-surround' " quoting/parenthesizing
-Plugin 'pangloss/vim-javascript' " javascript
-Plugin 'mattn/emmet-vim' " html/css
-Plugin 'SirVer/ultisnips' " track the engine
-Plugin 'honza/vim-snippets' " snippets are separate from engine
+Plugin 'VundleVim/Vundle.vim'       " plugin manager
+Plugin 'scrooloose/nerdtree'        " file explorer
+Plugin 'flazz/vim-colorschemes'     " vim themes
+Plugin 'Valloric/YouCompleteMe'     " clang, racer, omnisharp
+Plugin 'Shougo/neocomplete.vim'     " for golang (+ vim-go)
+Plugin 'fatih/vim-go'               " gofmt, syntax
+Plugin 'rust-lang/rust.vim'         " rustfmt, syntax
+Plugin 'majutsushi/tagbar'          " tagbar
+Plugin 'ctrlpvim/ctrlp.vim'         " fuzzy finder
+Plugin 'tpope/vim-surround'         " quoting/parenthesizing
+Plugin 'pangloss/vim-javascript'    " javascript
+Plugin 'mattn/emmet-vim'            " html/css
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
-    Plugin 'PProvost/vim-ps1' " powershell syntax
-    Plugin 'vim-scripts/findstr.vim' " findstr windows
-    Plugin 'vim-airline/vim-airline' " status bar
-    Plugin 'vim-airline/vim-airline-themes' " color themes for airline
-    Plugin 'bling/vim-bufferline' " integrates nicely with vim-airline
+    Plugin 'PProvost/vim-ps1'                   " powershell syntax
+    Plugin 'vim-scripts/findstr.vim'            " findstr windows
+    Plugin 'vim-airline/vim-airline'            " status bar
+    Plugin 'vim-airline/vim-airline-themes'     " color themes for airline
+    Plugin 'bling/vim-bufferline'               " integrates nicely with vim-airline
 elseif has('__macunix__')
-    Plugin 'vim-airline/vim-airline' " status bar
-    Plugin 'vim-airline/vim-airline-themes' " color themes for airline
-    Plugin 'bling/vim-bufferline' " integrates nicely with vim-airline
+    Plugin 'vim-airline/vim-airline'            " status bar
+    Plugin 'vim-airline/vim-airline-themes'     " color themes for airline
+    Plugin 'bling/vim-bufferline'               " integrates nicely with vim-airline
 else
     " Plugin 'qualiabyte/vim-colorstepper'
     " ** airline is a bit problematic with ctrlp **
     " Plugin 'vim-airline/vim-airline'
     " Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'vim-scripts/grep.vim' " grep integration
-    Plugin 'itchyny/lightline.vim' " simpler airline
-    Plugin 'bling/vim-bufferline' " integrates nicely with vim-airline
+    Plugin 'vim-scripts/grep.vim'               " grep integration
+    Plugin 'itchyny/lightline.vim'              " simpler airline
+    Plugin 'bling/vim-bufferline'               " integrates nicely with vim-airline
 endif
 call vundle#end()
+
+" -----------------------------------------------------------------------------
+" GENERAL SETTINGS
+" -----------------------------------------------------------------------------
+if has('win32')
+    colorscheme darkblue
+else
+    colorscheme elflord
+endif
 
 if has('win32')
     " https://blog.golang.org/go-fonts; or
@@ -93,50 +95,48 @@ set softtabstop=4
 set expandtab
 set wrap
 set autoindent
-" set smartindent
 set number
 set encoding=utf-8
-" set fileencodings=utf-8
-" set fencs=ucs-bom,utf-16le,utf-8,default,latin1
 set noswapfile
 set shortmess+=I
-set backspace=indent,eol,start " make backspace work like most other apps
+set backspace=indent,eol,start  " make backspace work like most other apps
 set nocompatible
 set ignorecase
 set splitright
 set splitbelow
 set ruler
 set relativenumber
-set history=200 " keep 200 lines of command line history
-set showcmd " display incomplete commands
-set laststatus=2 " always show vim-airline status
+set history=200                         " keep 200 lines of command line history
+set showcmd                             " display incomplete commands
+set laststatus=2                        " always show vim-airline status
 
 if has('win32')
-    set display=truncate " show @@@ in the last line if it is truncated
+    set display=truncate                " show @@@ in the last line if it is truncated
     set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
     " clean ui
     set guioptions-=T
     set guioptions-=L
     set guioptions-=r
     set guioptions-=m
-    " for mkview and loadview
-    set viewdir=$HOME/vimfiles/view/
+    set viewdir=$HOME/vimfiles/view/    " for mkview and loadview
 endif
 
 if has('gui_macvim')
     set guioptions=
 endif
 
-" setttings for ycm
+" -----------------------------------------------------------------------------
+" YCM/RUST SETTINGS
+" -----------------------------------------------------------------------------
 if has('win32')
-    let g:loaded_youcompleteme = 1
+    " let g:loaded_youcompleteme = 1
     let extra_conf_path = $HOME . '\_ycm_extra_conf.py'
     let g:ycm_global_ycm_extra_conf = extra_conf_path
     let g:ycm_auto_start_csharp_server = 1
     let g:ycm_csharp_server_port = 0
 else
     " temporary enable/disable ycm: active = disable, commented = enable
-    let g:loaded_youcompleteme = 1
+    " let g:loaded_youcompleteme = 1
     let g:ycm_global_ycm_extra_conf = $HOME . '/.ycm_extra_conf.py'
     " let g:ycm_server_use_vim_stdout = 0
     " let g:ycm_server_keep_logfiles = 1
@@ -146,8 +146,19 @@ endif
 
 let g:ycm_disable_for_files_larger_than_kb = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
+    
+" makes ctrl-t not work in golang so just use ctrl-t
+" nnoremap <leader>] :YcmCompleter GoTo<cr>
 
-" settings for ctrlp
+if executable('rustup')
+    " export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
+    let g:ycm_rust_src_path = $RUST_SRC_PATH
+    let g:rustfmt_autosave = 1
+endif
+
+" -----------------------------------------------------------------------------
+" CTRLP
+" -----------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -155,31 +166,37 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
 
-" settings for vim-snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-
 if has('win32')
     let g:ctrlp_cache_dir = $HOME . '\.cache\ctrlp'
     let g:ctrlp_custom_ignore = {
-                \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-                \ 'file': '\v\.(exe|so|dll)$',
-                \ 'link': 'some_bad_symbolic_links',
-                \ }
+        \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+        \ 'file': '\v\.(exe|so|dll)$',
+        \ 'link': 'some_bad_symbolic_links',
+        \ }
 else
     let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
     let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|hg|svn))$'
 endif
 
-" settings for emmet-vim, see augroup + autocmd
+" -----------------------------------------------------------------------------
+" VIM SNIPPETS
+" -----------------------------------------------------------------------------
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
+
+" -----------------------------------------------------------------------------
+" EMMET-VIM (see augroup + autocmd)
+" -----------------------------------------------------------------------------
 let g:user_emmet_install_global = 0
 
-" settings for airline/lightline
+" -----------------------------------------------------------------------------
+" AIRLINE/LIGHTLINE
+" -----------------------------------------------------------------------------
 if has('win32')
     let g:airline_theme = 'light'
-elseif has('__macunix__') " disable
+elseif has('macunix')
     " let g:airline_theme = 'bubblegum'
     " let g:airline_powerline_fonts = 1
     " if !exists('g:airline_symbols')
@@ -207,87 +224,79 @@ elseif has('__macunix__') " disable
 else
     " let g:airline_theme = 'light'
     let g:lightline = {
-                \ 'colorscheme': 'PaperColor',
-                \ }
+        \ 'colorscheme': 'PaperColor',
+        \ }
 endif
 
-" settings for vim-go and neocomplete
+" -----------------------------------------------------------------------------
+" VIM-GO + NEOCOMPLETE
 " 1 :PluginInstall
 " 2 :GoInstallBinaries (gotags, vim-go)
 " 3 Install 'ctags'
-if executable('go')
-    if has('win32')
-        " nothing, nil
-    else
-        " 4 go get -u github.com/jstemmer/gotags
-        let g:tagbar_type_go = {
-                    \ 'ctagstype' : 'go',
-                    \ 'kinds'     : [
-                    \ 'p:package',
-                    \ 'i:imports:1',
-                    \ 'c:constants',
-                    \ 'v:variables',
-                    \ 't:types',
-                    \ 'n:interfaces',
-                    \ 'w:fields',
-                    \ 'e:embedded',
-                    \ 'm:methods',
-                    \ 'r:constructor',
-                    \ 'f:functions'
-                    \ ],
-                    \ 'sro' : '.',
-                    \ 'kind2scope' : {
-                    \ 't' : 'ctype',
-                    \ 'n' : 'ntype'
-                    \ },
-                    \ 'scope2kind' : {
-                    \ 'ctype' : 't',
-                    \ 'ntype' : 'n'
-                    \ },
-                    \ 'ctagsbin'  : 'gotags',
-                    \ 'ctagsargs' : '-sort -silent'
-                    \ }
-    endif
-
-    let g:go_highlight_functions = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_fields = 1
-    let g:go_highlight_types = 1
-    let g:go_highlight_build_constraints = 1
-    let g:go_highlight_operators = 1
-    let g:go_fmt_command = 'goimports' " could be slow on very large code bases
-    let g:go_fmt_fail_silently = 1
-
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
+" 4 go get -u github.com/jstemmer/gotags
+" -----------------------------------------------------------------------------
+if (has('unix') || has('macunix'))
+    let g:tagbar_type_go = {
+        \ 'ctagstype' : 'go',
+        \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+        \ ],
+        \ 'sro' : '.',
+        \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+        \ },
+        \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+        \ },
+        \ 'ctagsbin'  : 'gotags',
+        \ 'ctagsargs' : '-sort -silent'
+        \ }
 endif
 
-" rust-related options
-" read $HOME/.rustup/settings.toml and extract the default-toolchain setting
-" need to install both stable and nightly for this to work
-if executable('rustup')
-    " get stable
-    let rust_deftoolchain = readfile($HOME . '/.rustup/settings.toml')[1] " read 2nd line
-    let rust_toolchain = split(rust_deftoolchain, '"')[1] " split with double quotes, get [1]
-    " get host
-    let rust_defhost = readfile($HOME . '/.rustup/settings.toml')[0] " read 1st line
-    let rust_host = split(rust_defhost, '"')[1] " split with double quotes, get [1]
-    let g:ycm_rust_src_path = $HOME . '/.rustup/toolchains/' . rust_toolchain . '-' . rust_host . '/lib/rustlib/src/rust/src'
-    let g:rustfmt_autosave = 1
-endif
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_operators = 1
+let g:go_fmt_command = 'goimports' " could be slow on very large code bases
+let g:go_fmt_fail_silently = 1
 
-" nerdtree
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" -----------------------------------------------------------------------------
+" NERDTREE
+" -----------------------------------------------------------------------------
 map <c-n> :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeQuitOnOpen = 1
 
+" -----------------------------------------------------------------------------
+" MODE MAPPINGS
 " insert mode maps
+" -----------------------------------------------------------------------------
 imap <c-f> <esc>
 imap <c-j> <esc>
 
+" -----------------------------------------------------------------------------
+" MODE MAPPINGS
 " normal mode maps
+" -----------------------------------------------------------------------------
 if has('win32')
     " source: ftp://xmlsoft.org/libxml2/win32/64bit/
     " part of libxml2, needs xml2/bin, iconv/bin, and zlib/bin
@@ -325,44 +334,26 @@ nnoremap <leader>cw :cw<cr>
 nnoremap <leader>H <c-w>H
 nnoremap <leader>hl :set hlsearch! hlsearch?<cr>
 nnoremap <leader>t gt
-
-" prepare search: move cursor to //, then get word under cursor using ctrl-r + ctrl-w
-nnoremap <leader>vg :vimgrep //j *<left><left><left><left><c-r><c-w><end><bar>:cw<cr>
-" search for the word under cursor in the current dir (recursively): csm = cursor search multiple
-" command CSM execute ":vimgrep /" . expand("<cword>") . "/j ** <bar> :cw"
-" nnoremap <leader>ms :CSM<cr>
-
-" prepare replace: move cursor to //, then get word under cursor using ctrl-r + ctrl-w
-nnoremap <leader>rt :%s/<c-r><c-w>//gc<left><left><left>
-" nnoremap <leader>fs :sp<cr>:CtrlPMixed<cr>
-" nnoremap <leader>fv :vsp<cr>:CtrlPMixed<cr>
-
 nnoremap <leader>x :qall<cr>
 nnoremap <leader>xx :qall!<cr>
 nnoremap <leader>bs :new<cr>:setlocal buftype=nofile nobuflisted<cr>
 nnoremap <leader>bv :vnew<cr>:setlocal buftype=nofile nobuflisted<cr>
 nnoremap <leader>bd :bd<cr>
-nnoremap <leader>1 :b1<cr>
-nnoremap <leader>2 :b2<cr>
-nnoremap <leader>3 :b3<cr>
-nnoremap <leader>4 :b4<cr>
-nnoremap <leader>5 :b5<cr>
-nnoremap <leader>6 :b6<cr>
-nnoremap <leader>7 :b7<cr>
-nnoremap <leader>8 :b8<cr>
-nnoremap <leader>9 :b9<cr>
 nnoremap <leader>rn :exec &nu==&rnu? "set nornu" : "set rnu"<cr>
 nnoremap <leader>cd :lcd %:h<cr>
 
-" makes ctrl-t not work in golang so just use ctrl-t
-" nnoremap <leader>] :YcmCompleter GoTo<cr>
+" -----------------------------------------------------------------------------
+" SEARCH/REPLACE SPECIFIC MAPPINGS
+" -----------------------------------------------------------------------------
+
+" prepare replace: move cursor to //, then get word under cursor using ctrl-r + ctrl-w
+nnoremap <leader>rt :%s/<c-r><c-w>//gc<left><left><left>
 
 if has('win32')
     " search using vimgrep (!recursive)
     nnoremap <leader>vg :vimgrep /<c-r><c-w>/j * <bar> :cw<cr>
     " search using vimgrep (recursive)
     nnoremap <leader>ms :vimgrep /<c-r><c-w>/j ** <bar> :cw<cr>
-
     " search for word under cursor (ignore case, exclude non-printables)
     nnoremap <leader>fs :Findstring /ip <c-r><c-w> *<cr>
     nnoremap <leader>rs :Rfindstring /ip <c-r><c-w> *<cr>
@@ -379,10 +370,6 @@ if has('win32')
     nnoremap <leader>f2 :Rfindpattern /ip <c-r><c-w> *.go *.md *.html *.js *.conf<cr>
     nnoremap <leader>p2 :Rfindpattern /ip <c-r><c-w> *.go *.md *.html *.js *.conf
     nnoremap <leader>r2 :arg **/*.go <bar> argdo %s/<c-r><c-w>/?/gc <bar> update
-    " #3 = search/replace current word (rust)
-    nnoremap <leader>f3 :Rfindpattern /ip <c-r><c-w> *.rs *.md *.conf<cr>
-    nnoremap <leader>p3 :Rfindpattern /ip <c-r><c-w> *.rs *.md *.conf
-    nnoremap <leader>r3 :arg **/*.rs <bar> argdo %s/<c-r><c-w>/?/gc <bar> update
     " #0 = prepare search/replace (generic)
     nnoremap <leader>f0 :Rfindpattern /ip <c-r><c-w> *
     nnoremap <leader>r0 :arg **/* <bar> argdo %s/<c-r><c-w>/?/gc <bar> update
@@ -390,38 +377,70 @@ elseif has('unix')
     let s:uname = system("uname -s")
     if s:uname == "Darwin\n"
         " prepare pattern search via grep recursive (c/c++)
-        nnoremap <leader>g1 :Rgrep -I -i -r <c-r><c-w> *.h *.c *.cpp *.conf
-        " prepare pattern search via grep recursive (golang)
-        nnoremap <leader>g2 :Rgrep -I -i -r <c-r><c-w> *.go *.md *.html *.js *.conf
-            \<left><left><left><left><left><left><left><left><left><left>
-            \<left><left><left><left><left><left><left><left><left><left>
-            \<left><left><left><left><left><left><left><left><left>
-        " prepare pattern search via grep recursive (rust)
-        nnoremap <leader>g3 :Rgrep -I -i -r <c-r><c-w> *.rs *.md *.conf
+        nnoremap <leader>rg :Rgrep -I -i -r <c-r><c-w> *.h *.c *.cpp *.conf
         " prepare pattern search via grep recursive (generic)
-        nnoremap <leader>g0 :Rgrep -I -i -r <c-r><c-w> *
+        nnoremap <leader>rg :Rgrep -I -i -r <c-r><c-w> *
     else
-        " search using vimgrep (!recursive)
-        nnoremap <leader>vg :vimgrep /<c-r><c-w>/j * <bar> :cw<cr>
-        " search using vimgrep (recursive)
-        nnoremap <leader>ms :vimgrep /<c-r><c-w>/j ** <bar> :cw<cr>
-
-        " prepare pattern search via grep recursive (c/c++)
-        nnoremap <leader>g1 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.h *.c *.cpp *.conf
-        " prepare pattern search via grep recursive (golang)
-        nnoremap <leader>g2 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.go *.md *.html *.js *.conf
-            \<left><left><left><left><left><left><left><left><left><left>
-            \<left><left><left><left><left><left><left><left><left><left>
-            \<left><left><left><left><left><left><left><left><left>
-        " prepare pattern search via grep recursive (rust)
-        nnoremap <leader>g3 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.rs *.md *.conf
-        " prepare pattern search via grep recursive (generic)
-        nnoremap <leader>g0 :Rgrep -P -i --binary-files=without-match <c-r><c-w> *
+        nnoremap <leader>rg :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.h *.c *.cpp *.conf
+        nnoremap <leader>rg :Rgrep -P -i --binary-files=without-match <c-r><c-w> *
     endif
 endif
 
-" hightlight the 81st and 161st column
+" -----------------------------------------------------------------------------
+" AUGROUP
+" -----------------------------------------------------------------------------
+augroup searchreplaceonfiletype
+    autocmd!
+    autocmd FileType go call MapGoSearchReplace()
+    autocmd FileType rust call MapRustSearchReplace()
+augroup END
+
+function MapGoSearchReplace()
+    " recursive search and replace, global, confirm, no error if none found
+    nnoremap <leader>sr :arg **/*.go <bar> argdo %s/<c-r><c-w>/?/gce <bar> update
+        \<left><left><left><left><left><left><left><left><left><left>
+        \<left><left><left>
+
+    " recursive search
+    if has('macunix')
+        nnoremap <leader>rg :Rgrep -I -i -r <c-r><c-w> *.go *.md *.conf *.yaml *.yml *.json
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left>
+    else
+        nnoremap <leader>rg :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.go *.md *.conf *.yaml *.yml *.json
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left>
+    endif
+endfunction
+
+function MapRustSearchReplace()
+    " recursive search and replace, global, confirm, no error if none found
+    nnoremap <leader>sr :arg **/*.rs <bar> argdo %s/<c-r><c-w>/?/gce <bar> update
+        \<left><left><left><left><left><left><left><left><left><left>
+        \<left><left><left>
+
+    " recursive search
+    if has('macunix')
+        nnoremap <leader>rg :Rgrep -I -i -r <c-r><c-w> *.rs *.md *.conf *.yaml *.yml *.json
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left>
+    else
+        nnoremap <leader>rg :Rgrep -P -i --binary-files=without-match <c-r><c-w> *.rs *.md *.conf *.yaml *.yml *.json
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left><left><left><left>
+            \<left><left><left><left><left><left><left>
+    endif
+endfunction
+
 augroup highlight81and161
+    " hightlight the 81st and 161st column
     autocmd!
     autocmd BufEnter * highlight OverLength ctermbg=magenta ctermfg=white guibg=magenta guifg=white
     autocmd BufEnter * match OverLength /\%81v/
@@ -433,8 +452,8 @@ augroup enablerustfiletype
     autocmd BufRead,BufNewFile *.rs set filetype=rust
 augroup END
 
-" from 'defaults.vim'
 augroup jmplastcurpos
+    " from 'defaults.vim'
     " put these in an autocmd group, so that you can revert them with:
     " ":augroup vimStartup | au! | augroup END"
     autocmd!
@@ -446,20 +465,21 @@ augroup jmplastcurpos
         \ endif
 augroup END
 
-" limit emmet-vim to html, css only
 augroup emmetfiletypeenable
+    " limit emmet-vim to html, css only
     autocmd!
     autocmd FileType html,css EmmetInstall
 augroup END
 
-augroup rememberfolds
-    autocmd!
-    autocmd BufWinLeave *.* mkview
-    autocmd BufWinEnter *.* silent! loadview
-augroup END
+" ** this group doesn't play well with ycm+rust
+" augroup rememberfolds
+"     autocmd!
+"     autocmd BufWinLeave *.* mkview
+"     autocmd BufWinEnter *.* silent! loadview
+" augroup END
 
-" <leader>Enter to open quickfix to vertical split
 augroup splitqfix
+    " <leader>Enter to open quickfix to vertical split
     autocmd!
     autocmd FileType qf nnoremap <buffer> <leader><enter> <c-w><enter><c-w>L
 augroup END
