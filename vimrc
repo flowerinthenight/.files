@@ -196,7 +196,7 @@ let g:user_emmet_install_global = 0
 " -----------------------------------------------------------------------------
 if has('win32')
     let g:airline_theme = 'light'
-elseif has('macunix')
+elseif has('__macunix__')
     " let g:airline_theme = 'bubblegum'
     " let g:airline_powerline_fonts = 1
     " if !exists('g:airline_symbols')
