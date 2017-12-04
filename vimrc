@@ -397,6 +397,8 @@ augroup searchreplaceonfiletype
 augroup END
 
 function MapGoSearchReplace()
+    let g:Grep_Skip_Dirs = 'vendor .git bin'
+
     " recursive search and replace, global, confirm, no error if none found
     nnoremap <leader>sr :arg **/*.go <bar> argdo %s/<c-r><c-w>/?/gce <bar> update
         \<left><left><left><left><left><left><left><left><left><left>
