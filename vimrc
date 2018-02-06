@@ -33,6 +33,8 @@ Plugin 'ctrlpvim/ctrlp.vim'         " fuzzy finder
 Plugin 'tpope/vim-surround'         " quoting/parenthesizing
 Plugin 'pangloss/vim-javascript'    " javascript
 Plugin 'mattn/emmet-vim'            " html/css
+Plugin 'godlygeek/tabular'          " should be before markdown
+Plugin 'plasticboy/vim-markdown'    " markdown
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
