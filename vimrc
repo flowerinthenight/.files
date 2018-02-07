@@ -21,20 +21,21 @@ else
     call vundle#begin()
 endif
 
-Plugin 'VundleVim/Vundle.vim'       " plugin manager
-Plugin 'scrooloose/nerdtree'        " file explorer
-Plugin 'flazz/vim-colorschemes'     " vim themes
-Plugin 'Valloric/YouCompleteMe'     " clang, racer, omnisharp
-Plugin 'Shougo/neocomplete.vim'     " for golang (+ vim-go)
-Plugin 'fatih/vim-go'               " gofmt, syntax
-Plugin 'rust-lang/rust.vim'         " rustfmt, syntax
-Plugin 'majutsushi/tagbar'          " tagbar
-Plugin 'ctrlpvim/ctrlp.vim'         " fuzzy finder
-Plugin 'tpope/vim-surround'         " quoting/parenthesizing
-Plugin 'pangloss/vim-javascript'    " javascript
-Plugin 'mattn/emmet-vim'            " html/css
-Plugin 'godlygeek/tabular'          " should be before markdown
-Plugin 'plasticboy/vim-markdown'    " markdown
+Plugin 'VundleVim/Vundle.vim'          " plugin manager
+Plugin 'scrooloose/nerdtree'           " file explorer
+Plugin 'flazz/vim-colorschemes'        " vim themes
+Plugin 'Valloric/YouCompleteMe'        " clang, racer, omnisharp
+Plugin 'Shougo/neocomplete.vim'        " for golang (+ vim-go)
+Plugin 'fatih/vim-go'                  " gofmt, syntax
+Plugin 'rust-lang/rust.vim'            " rustfmt, syntax
+Plugin 'majutsushi/tagbar'             " tagbar
+Plugin 'ctrlpvim/ctrlp.vim'            " fuzzy finder
+Plugin 'jasoncodes/ctrlp-modified.vim' " modified files [on branch] (git)
+Plugin 'tpope/vim-surround'            " quoting/parenthesizing
+Plugin 'pangloss/vim-javascript'       " javascript
+Plugin 'mattn/emmet-vim'               " html/css
+Plugin 'godlygeek/tabular'             " should be before markdown
+Plugin 'plasticboy/vim-markdown'       " markdown
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
@@ -181,7 +182,6 @@ else
     let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|hg|svn))$'
 endif
 
-" -----------------------------------------------------------------------------
 " VIM SNIPPETS
 " -----------------------------------------------------------------------------
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -344,6 +344,8 @@ nnoremap <leader>bv :vnew<cr>:setlocal buftype=nofile nobuflisted<cr>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader>rn :exec &nu==&rnu? "set nornu" : "set rnu"<cr>
 nnoremap <leader>cd :lcd %:h<cr>
+nnoremap <leader>ma :CtrlPModified<cr>
+nnoremap <leader>mb :CtrlPBranch<cr>
 
 " -----------------------------------------------------------------------------
 " SEARCH/REPLACE SPECIFIC MAPPINGS
@@ -492,4 +494,3 @@ augroup END
 " ColorStepper Keys
 " nmap <F6> <Plug>ColorstepPrev
 " nmap <F7> <Plug>ColorstepNext
-" nmap <S-F7> <Plug>ColorstepReload
