@@ -36,6 +36,7 @@ Plugin 'pangloss/vim-javascript'       " javascript
 Plugin 'mattn/emmet-vim'               " html/css
 Plugin 'godlygeek/tabular'             " should be before markdown
 Plugin 'plasticboy/vim-markdown'       " markdown
+Plugin 'simnalamburt/vim-mundo'        " markdown
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
@@ -85,6 +86,18 @@ endif
 filetype plugin indent on
 
 set viminfo='100,f1 " save marks to up to 100 files, save global marks as well (f1); to disable, f0
+
+" undo settings
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "", 0700)
+endif
+
+set undofile
+set undodir=~/.vim/undo
 
 " folding options
 set foldmethod=indent
@@ -346,6 +359,7 @@ nnoremap <leader>rn :exec &nu==&rnu? "set nornu" : "set rnu"<cr>
 nnoremap <leader>cd :lcd %:h<cr>
 nnoremap <leader>ma :CtrlPModified<cr>
 nnoremap <leader>mb :CtrlPBranch<cr>
+nnoremap <leader>mt :MundoToggle<cr>
 
 " -----------------------------------------------------------------------------
 " SEARCH/REPLACE SPECIFIC MAPPINGS
