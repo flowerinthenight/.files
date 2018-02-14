@@ -333,6 +333,11 @@ nnoremap <leader>wq <c-w>q
 nnoremap <leader>ws <c-w>s
 nnoremap <leader>wv <c-w>v
 nnoremap <leader>wo <c-w>o
+nnoremap <leader>wr <c-w>R
+nnoremap <leader>wh <c-w>H
+nnoremap <leader>wj <c-w>J
+nnoremap <leader>wk <c-w>K
+nnoremap <leader>wl <c-w>L
 nnoremap <leader><left> <c-w><left>
 nnoremap <leader>h <c-w><left>
 nnoremap <leader><right> <c-w><right>
