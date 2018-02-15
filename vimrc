@@ -36,7 +36,7 @@ Plugin 'pangloss/vim-javascript'       " javascript
 Plugin 'mattn/emmet-vim'               " html/css
 Plugin 'godlygeek/tabular'             " should be before markdown
 Plugin 'plasticboy/vim-markdown'       " markdown
-Plugin 'simnalamburt/vim-mundo'        " markdown
+Plugin 'simnalamburt/vim-mundo'        " undo history visualizer
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
