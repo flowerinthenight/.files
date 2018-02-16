@@ -339,13 +339,9 @@ nnoremap <leader>wj <c-w>J
 nnoremap <leader>wk <c-w>K
 nnoremap <leader>wl <c-w>L
 nnoremap <leader><left> <c-w><left>
-nnoremap <leader>h <c-w><left>
 nnoremap <leader><right> <c-w><right>
-nnoremap <leader>l <c-w><right>
 nnoremap <leader><up> <c-w><up>
-nnoremap <leader>k <c-w><up>
 nnoremap <leader><down> <c-w><down>
-nnoremap <leader>j <c-w><down>
 nnoremap <leader>s :w<cr>
 nnoremap <leader>e :e.<cr>
 nnoremap <leader>pj :%!python -m json.tool<cr>
@@ -364,7 +360,7 @@ nnoremap <leader>rn :exec &nu==&rnu? "set nornu" : "set rnu"<cr>
 nnoremap <leader>cd :lcd %:h<cr>
 nnoremap <leader>ma :CtrlPModified<cr>
 nnoremap <leader>mb :CtrlPBranch<cr>
-nnoremap <leader>mt :MundoToggle<cr>
+nnoremap <leader>h :MundoToggle<cr>
 
 " -----------------------------------------------------------------------------
 " SEARCH/REPLACE SPECIFIC MAPPINGS
