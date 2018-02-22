@@ -8,6 +8,6 @@ if [ $ACTION = "start" ]; then
 fi
 
 if [ $ACTION = "stop" ]; then
-    echo "start rabbitmq docker..."
+    echo "stop rabbitmq docker..."
     docker stop rabbitmq && docker rm rabbitmq && docker system prune -f
 fi
