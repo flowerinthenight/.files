@@ -35,3 +35,10 @@ export LS_COLORS
 # zsh-bd
 # https://github.com/Tarrasch/zsh-bd
 . $HOME/.zsh/plugins/bd/bd.zsh
+
+# kops/kubectl completion for zsh
+source <(kubectl completion zsh)
+source <(kops completion zsh)
+
+# gcloud completion for zsh
+source /usr/share/google-cloud-sdk/completion.zsh.inc
