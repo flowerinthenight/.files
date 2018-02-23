@@ -37,6 +37,8 @@ Plugin 'mattn/emmet-vim'               " html/css
 Plugin 'godlygeek/tabular'             " should be before markdown
 Plugin 'plasticboy/vim-markdown'       " markdown
 Plugin 'simnalamburt/vim-mundo'        " undo history visualizer
+Plugin 'mtth/scratch.vim'              " scratch buffer
+Plugin 'kien/rainbow_parentheses.vim'  " parenthesis (and others) color
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
@@ -303,11 +305,17 @@ let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeQuitOnOpen = 1
 
 " -----------------------------------------------------------------------------
+" SCRATCH MAPPINGS
+" -----------------------------------------------------------------------------
+let g:scratch_autohide = 1
+
+" -----------------------------------------------------------------------------
 " MODE MAPPINGS
 " insert mode maps
 " -----------------------------------------------------------------------------
 imap <c-f> <esc>
 imap <c-j> <esc>
+imap jj <esc>
 
 " -----------------------------------------------------------------------------
 " MODE MAPPINGS
@@ -353,8 +361,9 @@ nnoremap <leader>hl :set hlsearch! hlsearch?<cr>
 nnoremap <leader>t gt
 nnoremap <leader>x :qall<cr>
 nnoremap <leader>xx :qall!<cr>
-nnoremap <leader>bs :new<cr>:setlocal buftype=nofile nobuflisted<cr>
-nnoremap <leader>bv :vnew<cr>:setlocal buftype=nofile nobuflisted<cr>
+nnoremap <leader>bs :Scratch<cr>
+" nnoremap <leader>bs :new<cr>:setlocal buftype=nofile nobuflisted<cr>
+" nnoremap <leader>bv :vnew<cr>:setlocal buftype=nofile nobuflisted<cr>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader>rn :exec &nu==&rnu? "set nornu" : "set rnu"<cr>
 nnoremap <leader>cd :lcd %:h<cr>
@@ -509,3 +518,9 @@ augroup END
 " ColorStepper Keys
 " nmap <F6> <Plug>ColorstepPrev
 " nmap <F7> <Plug>ColorstepNext
+
+" Always on RainbowParentheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
