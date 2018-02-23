@@ -42,3 +42,15 @@ source <(kops completion zsh)
 
 # gcloud completion for zsh
 source /usr/share/google-cloud-sdk/completion.zsh.inc
+
+# kubectl shortcuts
+alias kc='kubectl config get-contexts'
+alias kp='kubectl get pod -o wide'
+alias kd='kubectl get deployment -o wide'
+alias ks='kubectl get svc -o wide'
+alias ki='kubectl get ingress'
+alias kn='kubectl get node -o wide'
+alias kt='kubectl top'
+alias k='kubectl'
+alias kget='kubectl get'
+alias kdes='kubectl describe'
