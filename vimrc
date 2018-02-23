@@ -39,6 +39,7 @@ Plugin 'plasticboy/vim-markdown'       " markdown
 Plugin 'simnalamburt/vim-mundo'        " undo history visualizer
 Plugin 'mtth/scratch.vim'              " scratch buffer
 Plugin 'kien/rainbow_parentheses.vim'  " parenthesis (and others) color
+Plugin 'tpope/vim-fugitive'            " git wrapper
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
