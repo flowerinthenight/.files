@@ -11,6 +11,12 @@ NORM="%{"$'\033[00m'"%}"
 # Doesn't work that well for now.
 # mount | grep "${HOME}/gdrive" || { which google-drive-ocamlfuse &> /dev/null && google-drive-ocamlfuse "${HOME}/gdrive"; }
 
+# Setup 'https://github.com/odeke-em/drive' first:
+# $ mkdir gdrive
+# $ cd gdrive
+# $ drive init
+# $ drive pull develop/
+
 source ./zsh-git-prompt/zshrc.sh
 PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
 
