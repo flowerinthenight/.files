@@ -8,7 +8,8 @@ BLUE="%{"$'\033[01;34m'"%}"
 BOLD="%{"$'\033[01;39m'"%}"
 NORM="%{"$'\033[00m'"%}"
 
-mount | grep "${HOME}/gdrive" || { which google-drive-ocamlfuse &> /dev/null && google-drive-ocamlfuse "${HOME}/gdrive"; }
+# Doesn't work that well for now.
+# mount | grep "${HOME}/gdrive" || { which google-drive-ocamlfuse &> /dev/null && google-drive-ocamlfuse "${HOME}/gdrive"; }
 
 source ./zsh-git-prompt/zshrc.sh
 PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
