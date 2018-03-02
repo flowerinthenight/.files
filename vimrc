@@ -371,6 +371,9 @@ nnoremap <leader>cd :lcd %:h<cr>
 nnoremap <leader>ma :CtrlPModified<cr>
 nnoremap <leader>mb :CtrlPBranch<cr>
 nnoremap <leader>h :MundoToggle<cr>
+" specific to vim-go
+nnoremap <leader>i :GoDoc<cr>
+nnoremap <leader>ii :GoDescribe<cr>
 
 " -----------------------------------------------------------------------------
 " SEARCH/REPLACE SPECIFIC MAPPINGS
