@@ -338,6 +338,8 @@ else
     nnoremap <F8> :TagbarToggle<cr>
 endif
 
+" disable Ex mode
+nnoremap Q <nop>
 nnoremap <leader>wq <c-w>q
 nnoremap <leader>ws <c-w>s
 nnoremap <leader>wv <c-w>v
