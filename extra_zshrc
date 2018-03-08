@@ -58,3 +58,6 @@ alias kt='kubectl top'
 alias k='kubectl'
 alias kget='kubectl get'
 alias kdes='kubectl describe'
+
+alias sl='ssh lisbeth'
+alias sy='ssh yavanna'
