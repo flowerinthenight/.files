@@ -142,6 +142,7 @@ endif
 
 if has('gui_macvim')
     set guioptions=
+    set guifont=Go\ Mono:h11
 endif
 
 " -----------------------------------------------------------------------------
