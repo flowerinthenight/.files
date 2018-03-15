@@ -141,6 +141,7 @@ if has('win32')
 endif
 
 if has('gui_macvim')
+    colorscheme solarized
     set guioptions=
     set guifont=Go\ Mono:h11
 endif
