@@ -61,3 +61,8 @@ alias kdes='kubectl describe'
 
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
+
+alias p='pwd'
+
+# osx specific
+alias bu='brew'
