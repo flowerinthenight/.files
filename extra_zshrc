@@ -23,17 +23,17 @@ PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
 alias l='ls -lF'
 alias ll='ls -laF'
 # alias up='sudo apt-get -o Acquire::ForceIPv4=true update && sudo apt-get -o Acquire::ForceIPv4=true upgrade -y'
-alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y'
 alias x='exit'
 alias p='pwd'
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     export EDITOR=vim
+    alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y'
 fi
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
     export EDITOR=mvim
-    alias bu='brew update --verbose && brew upgrade --verbose'
+    alias up='brew update --verbose && brew upgrade --verbose'
     alias meld='/Applications/Meld.app/Contents/MacOS/Meld'
 fi
 
