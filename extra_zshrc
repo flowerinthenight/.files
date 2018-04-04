@@ -25,6 +25,7 @@ alias ll='ls -laF'
 # alias up='sudo apt-get -o Acquire::ForceIPv4=true update && sudo apt-get -o Acquire::ForceIPv4=true upgrade -y'
 alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y'
 alias x='exit'
+alias p='pwd'
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     export EDITOR=vim
@@ -32,6 +33,7 @@ fi
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
     export EDITOR=mvim
+    alias bu='brew update --verbose && brew upgrade --verbose'
 fi
 
 export GOPATH=$HOME/gopath
@@ -68,8 +70,3 @@ alias kdes='kubectl describe'
 
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
-
-alias p='pwd'
-
-# osx specific
-alias bu='brew'
