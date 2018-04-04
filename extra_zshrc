@@ -26,7 +26,14 @@ alias ll='ls -laF'
 alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y'
 alias x='exit'
 
-export EDITOR=vim
+if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+    export EDITOR=vim
+fi
+
+if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+    export EDITOR=mvim
+fi
+
 export GOPATH=$HOME/gopath
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.local/bin
 export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
