@@ -24,7 +24,6 @@ alias l='ls -lF'
 alias ll='ls -laF'
 # alias up='sudo apt-get -o Acquire::ForceIPv4=true update && sudo apt-get -o Acquire::ForceIPv4=true upgrade -y'
 alias x='exit'
-alias p='pwd'
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     export EDITOR=vim
