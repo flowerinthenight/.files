@@ -20,6 +20,10 @@ NORM="%{"$'\033[00m'"%}"
 source ./zsh-git-prompt/zshrc.sh
 PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
 
+alias do='cd ~/gopath/src/github.com/mobingilabs/ouchan/'
+alias dg='cd ~/gopath/src/github.com/mobingilabs/mochi/services/gcpd/'
+alias dm='cd ~/gopath/src/github.com/mobingilabs/mochi/'
+
 alias l='ls -lF'
 alias ll='ls -laF'
 # alias up='sudo apt-get -o Acquire::ForceIPv4=true update && sudo apt-get -o Acquire::ForceIPv4=true upgrade -y'
