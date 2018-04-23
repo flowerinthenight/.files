@@ -19,7 +19,12 @@ NORM="%{"$'\033[00m'"%}"
 
 GIT_PROMPT_EXECUTABLE="haskell"
 source ./zsh-git-prompt/zshrc.sh
-PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
+
+if [ -z "${CUSTOM_HOST}" ]; then
+    PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
+else
+    PROMPT='${GREEN}%n@${CUSTOM_HOST}${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
+fi
 
 alias cdo='cd ~/gopath/src/github.com/mobingilabs/ouchan/'
 alias cdg='cd ~/gopath/src/github.com/mobingilabs/ouchan/services/gcpd/'
