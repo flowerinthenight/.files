@@ -30,7 +30,6 @@ Plugin 'fatih/vim-go'                  " gofmt, syntax
 Plugin 'rust-lang/rust.vim'            " rustfmt, syntax
 Plugin 'majutsushi/tagbar'             " tagbar
 Plugin 'ctrlpvim/ctrlp.vim'            " fuzzy finder
-Plugin 'jasoncodes/ctrlp-modified.vim' " modified files [on branch] (git)
 Plugin 'tpope/vim-surround'            " quoting/parenthesizing
 Plugin 'pangloss/vim-javascript'       " javascript
 Plugin 'mattn/emmet-vim'               " html/css
