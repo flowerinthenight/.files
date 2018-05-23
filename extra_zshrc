@@ -66,6 +66,8 @@ export LS_COLORS
 source <(kubectl completion zsh)
 source <(kops completion zsh)
 
+alias v="${EDITOR}"
+
 # kubectl shortcuts
 alias kc='kubectl config get-contexts'
 alias kp='kubectl get pod -o wide'
