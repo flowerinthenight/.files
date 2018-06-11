@@ -82,3 +82,6 @@ alias kdes='kubectl describe'
 
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
+
+alias gd='gcloud config configurations activate default'
+alias gp='gcloud config configurations activate mochi-prod'
