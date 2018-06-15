@@ -38,6 +38,7 @@ Plugin 'plasticboy/vim-markdown'       " markdown
 Plugin 'simnalamburt/vim-mundo'        " undo history visualizer
 Plugin 'mtth/scratch.vim'              " scratch buffer
 Plugin 'luochen1990/rainbow'           " parenthesis (and others) color
+Plugin 'cskeeters/vim-smooth-scroll'   " smooth scrolling
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
@@ -305,6 +306,11 @@ map <c-n> :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeQuitOnOpen = 1
+
+" -----------------------------------------------------------------------------
+" SMOOTH SCROLL
+" -----------------------------------------------------------------------------
+let g:ms_per_line = 5
 
 " -----------------------------------------------------------------------------
 " SCRATCH MAPPINGS
