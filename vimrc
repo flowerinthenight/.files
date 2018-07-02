@@ -157,7 +157,7 @@ if has('win32')
     let g:ycm_csharp_server_port = 0
 else
     " temporary enable/disable ycm: active = disable, commented = enable
-    " let g:loaded_youcompleteme = 1
+    let g:loaded_youcompleteme = 1
     let g:ycm_global_ycm_extra_conf = $HOME . '/.ycm_extra_conf.py'
     " let g:ycm_server_use_vim_stdout = 0
     " let g:ycm_server_keep_logfiles = 1
