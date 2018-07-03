@@ -98,6 +98,7 @@ if !isdirectory($HOME."/.vim/undo")
     call mkdir($HOME."/.vim/undo", "", 0700)
 endif
 
+set incsearch " incremental search
 set undofile
 set undodir=~/.vim/undo
 
