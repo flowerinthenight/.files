@@ -385,6 +385,7 @@ nnoremap <leader>h :MundoToggle<cr>
 " specific to vim-go
 nnoremap <leader>i :GoDoc<cr>
 nnoremap <leader>ii :GoDescribe<cr>
+nnoremap <leader>er :GoIfErr<cr>
 
 " -----------------------------------------------------------------------------
 " SEARCH/REPLACE SPECIFIC MAPPINGS
