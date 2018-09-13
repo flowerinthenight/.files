@@ -51,6 +51,9 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.npm-global/bin:$HOME/.car
 export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
 eval "$(rbenv init -)"
 
+# For Go1.11
+export GO111MODULE=on
+
 # Change 'ls' color for directory (I don't like the default blue).
 # Reference: http://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
 # Change to 'underlined orange', but looks like muted yellow, really.
