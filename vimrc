@@ -39,7 +39,7 @@ Plugin 'simnalamburt/vim-mundo'           " undo history visualizer
 Plugin 'mtth/scratch.vim'                 " scratch buffer
 Plugin 'luochen1990/rainbow'              " parenthesis (and others) color
 Plugin 'cskeeters/vim-smooth-scroll'      " smooth scrolling
-Plugin 'mdempsky/gocode', {'rtp': 'vim/'} " smooth scrolling
+Plugin 'mdempsky/gocode', {'rtp': 'vim/'} " go autocompletion daemon
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
