@@ -26,10 +26,6 @@ else
     PROMPT='${GREEN}%n@${CUSTOM_HOST}${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
 fi
 
-alias cdo='cd ~/gopath/src/github.com/mobingilabs/ouchan/'
-alias cdg='cd ~/gopath/src/github.com/mobingilabs/ouchan/services/gcpd/'
-alias cdm='cd ~/gopath/src/github.com/mobingilabs/mochi/'
-
 alias l='ls -lF'
 alias ll='ls -laF'
 # alias up='sudo apt-get -o Acquire::ForceIPv4=true update && sudo apt-get -o Acquire::ForceIPv4=true upgrade -y'
@@ -65,10 +61,6 @@ export LS_COLORS
 # https://github.com/Tarrasch/zsh-bd
 . $HOME/.zsh/plugins/bd/bd.zsh
 
-# kops/kubectl completion for zsh
-source <(kubectl completion zsh)
-source <(kops completion zsh)
-
 alias v="${EDITOR}"
 
 # kubectl shortcuts
@@ -88,3 +80,9 @@ alias kprod='gcloud config configurations activate mochi-prod && gcloud containe
 
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
+
+# kops/kubectl completion for zsh
+source <(kops completion zsh)
+
+# https://thorsten-hans.com/autocompletion-for-kubectl-and-aliases-using-oh-my-zsh-6b5295dc6dfb
+plugins=(git git-flow brew history node npm kubectl)
