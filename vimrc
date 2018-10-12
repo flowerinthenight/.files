@@ -41,6 +41,7 @@ Plugin 'luochen1990/rainbow'              " parenthesis (and others) color
 Plugin 'cskeeters/vim-smooth-scroll'      " smooth scrolling
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'} " go autocompletion daemon
 Plugin 'gcmt/wildfire.vim'                " extra objects selection
+Plugin 'mhinz/vim-startify'
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
