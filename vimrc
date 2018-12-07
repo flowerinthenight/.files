@@ -38,7 +38,7 @@ Plugin 'plasticboy/vim-markdown'          " markdown
 Plugin 'simnalamburt/vim-mundo'           " undo history visualizer
 Plugin 'mtth/scratch.vim'                 " scratch buffer
 Plugin 'luochen1990/rainbow'              " parenthesis (and others) color
-Plugin 'cskeeters/vim-smooth-scroll'      " smooth scrolling
+Plugin 'terryma/vim-smooth-scroll'        " smooth scrolling
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'} " go autocompletion daemon
 Plugin 'gcmt/wildfire.vim'                " extra objects selection
 " Plugin 'mhinz/vim-startify'
@@ -389,6 +389,11 @@ nnoremap <leader>h :MundoToggle<cr>
 nnoremap <leader>i :GoDoc<cr>
 nnoremap <leader>ii :GoDescribe<cr>
 nnoremap <leader>er :GoIfErr<cr>
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 6)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 6)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 12)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 12)<CR>
 
 " -----------------------------------------------------------------------------
 " SEARCH/REPLACE SPECIFIC MAPPINGS
