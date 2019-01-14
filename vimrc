@@ -21,26 +21,26 @@ else
     call vundle#begin()
 endif
 
-Plugin 'VundleVim/Vundle.vim'             " plugin manager
-Plugin 'scrooloose/nerdtree'              " file explorer
-Plugin 'flazz/vim-colorschemes'           " vim themes
-Plugin 'Valloric/YouCompleteMe'           " clang, racer, omnisharp
-Plugin 'Shougo/neocomplete.vim'           " for golang (+ vim-go)
-Plugin 'fatih/vim-go'                     " gofmt, syntax
-Plugin 'rust-lang/rust.vim'               " rustfmt, syntax
-Plugin 'majutsushi/tagbar'                " tagbar
-Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy finder
-Plugin 'wellle/targets.vim'               " additional target objects
-Plugin 'pangloss/vim-javascript'          " javascript
-Plugin 'mattn/emmet-vim'                  " html/css
-Plugin 'godlygeek/tabular'                " should be before markdown
-Plugin 'plasticboy/vim-markdown'          " markdown
-Plugin 'simnalamburt/vim-mundo'           " undo history visualizer
-Plugin 'mtth/scratch.vim'                 " scratch buffer
-Plugin 'luochen1990/rainbow'              " parenthesis (and others) color
-Plugin 'terryma/vim-smooth-scroll'        " smooth scrolling
-Plugin 'mdempsky/gocode', {'rtp': 'vim/'} " go autocompletion daemon
-Plugin 'gcmt/wildfire.vim'                " extra objects selection
+Plugin 'VundleVim/Vundle.vim'               " plugin manager
+Plugin 'scrooloose/nerdtree'                " file explorer
+Plugin 'flazz/vim-colorschemes'             " vim themes
+Plugin 'Valloric/YouCompleteMe'             " clang, racer, omnisharp
+Plugin 'Shougo/neocomplete.vim'             " for golang (+ vim-go)
+Plugin 'fatih/vim-go'                       " gofmt, syntax
+Plugin 'rust-lang/rust.vim'                 " rustfmt, syntax
+Plugin 'majutsushi/tagbar'                  " tagbar
+Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy finder
+Plugin 'wellle/targets.vim'                 " additional target objects
+Plugin 'pangloss/vim-javascript'            " javascript
+Plugin 'mattn/emmet-vim'                    " html/css
+Plugin 'godlygeek/tabular'                  " should be before markdown
+Plugin 'plasticboy/vim-markdown'            " markdown
+Plugin 'simnalamburt/vim-mundo'             " undo history visualizer
+Plugin 'mtth/scratch.vim'                   " scratch buffer
+Plugin 'luochen1990/rainbow'                " parenthesis (and others) color
+Plugin 'terryma/vim-smooth-scroll'          " smooth scrolling
+Plugin 'stamblerre/gocode', {'rtp': 'vim/'} " go autocompletion daemon
+Plugin 'gcmt/wildfire.vim'                  " extra objects selection
 " Plugin 'mhinz/vim-startify'
 
 if has('win32')
