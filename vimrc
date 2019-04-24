@@ -290,6 +290,9 @@ if (has('unix') || has('macunix'))
         \ }
 endif
 
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
@@ -349,6 +352,20 @@ if has('win32')
 else
     nnoremap <F8> :TagbarToggle<cr>
 endif
+
+function! ScrollQuarter(move)
+    let height=winheight(0)
+    if a:move == 'up'
+        let key="\<c-y>"
+    else
+        let key="\<c-e>"
+    endif
+    execute 'normal! ' . height/4 . key
+endfunction
+
+" reverse the movement cause the cursor movement confuses me
+nnoremap <leader>uu :call ScrollQuarter('down')<cr>
+nnoremap <leader>dd :call ScrollQuarter('up')<cr>
 
 " disable Ex mode
 nnoremap Q <nop>
