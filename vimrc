@@ -397,7 +397,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 12)<cr>
 " fzf settings
 nnoremap <leader>pp :FZF<cr>
 nnoremap <leader>hh :History<cr>
-nnoremap <leader>bb :Lines<cr>
+nnoremap <leader>ll :Lines<cr>
 nnoremap <leader>\ :Ag<space><c-r><c-w>
 nnoremap <leader>/ :Rg<space><c-r><c-w>
 
