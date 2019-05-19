@@ -1,8 +1,6 @@
 let mapleader = "\<space>"
 
-" -----------------------------------------------------------------------------
-" PLUGIN MANAGER
-" -----------------------------------------------------------------------------
+" --- PLUGIN MANAGER ---
 set nocompatible
 filetype off
 syntax on
@@ -65,9 +63,7 @@ else
 endif
 call vundle#end()
 
-" -----------------------------------------------------------------------------
-" GENERAL SETTINGS
-" -----------------------------------------------------------------------------
+" --- GENERAL SETTINGS ---
 if has('win32')
     colorscheme darkblue
 else
@@ -150,9 +146,7 @@ if has('gui_macvim')
     set guifont=Go\ Mono:h11
 endif
 
-" -----------------------------------------------------------------------------
-" YCM/RUST SETTINGS
-" -----------------------------------------------------------------------------
+" --- YCM/RUST SETTINGS ---
 if has('win32')
     " let g:loaded_youcompleteme = 1
     let extra_conf_path = $HOME . '\_ycm_extra_conf.py'
@@ -181,9 +175,7 @@ if executable('rustup')
     let g:rustfmt_autosave = 1
 endif
 
-" -----------------------------------------------------------------------------
-" CTRLP
-" -----------------------------------------------------------------------------
+" --- CTRLP ---
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -204,21 +196,17 @@ else
     let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|hg|svn))$'
 endif
 
-" VIM SNIPPETS
-" -----------------------------------------------------------------------------
+" --- VIM SNIPPETS ---
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
-" -----------------------------------------------------------------------------
-" EMMET-VIM (see augroup + autocmd)
-" -----------------------------------------------------------------------------
+" --- EMMET-VIM ---
+" (see augroup + autocmd)
 let g:user_emmet_install_global = 0
 
-" -----------------------------------------------------------------------------
-" AIRLINE/LIGHTLINE
-" -----------------------------------------------------------------------------
+" --- AIRLINE/LIGHTLINE ---
 if has('win32')
     let g:airline_theme = 'light'
 elseif has('__macunix__')
@@ -253,13 +241,11 @@ else
         \ }
 endif
 
-" -----------------------------------------------------------------------------
-" VIM-GO + NEOCOMPLETE
+" --- VIM-GO + NEOCOMPLETE ---
 " 1 :PluginInstall
 " 2 :GoInstallBinaries (gotags, vim-go)
 " 3 Install 'ctags'
 " 4 go get -u github.com/jstemmer/gotags
-" -----------------------------------------------------------------------------
 if (has('unix') || has('macunix'))
     let g:tagbar_type_go = {
         \ 'ctagstype' : 'go',
@@ -307,36 +293,26 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-" -----------------------------------------------------------------------------
-" NERDTREE
-" -----------------------------------------------------------------------------
+" --- NERDTREE ---
 map <c-n> :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeQuitOnOpen = 1
 
-" -----------------------------------------------------------------------------
-" SMOOTH SCROLL
-" -----------------------------------------------------------------------------
+" --- SMOOTH SCROLL ---
 let g:ms_per_line = 5
 
-" -----------------------------------------------------------------------------
-" SCRATCH MAPPINGS
-" -----------------------------------------------------------------------------
+" --- SCRATCH MAPPINGS ---
 let g:scratch_autohide = 1
 
-" -----------------------------------------------------------------------------
-" MODE MAPPINGS
+" --- MODE MAPPINGS ---
 " insert mode maps
-" -----------------------------------------------------------------------------
 imap <c-f> <esc>
 imap <c-j> <esc>
 imap jj <esc>
 
-" -----------------------------------------------------------------------------
-" MODE MAPPINGS
+" --- MODE MAPPINGS ---
 " normal mode maps
-" -----------------------------------------------------------------------------
 if has('win32')
     " source: ftp://xmlsoft.org/libxml2/win32/64bit/
     " part of libxml2, needs xml2/bin, iconv/bin, and zlib/bin
@@ -412,10 +388,7 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 6)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 12)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 12)<CR>
 
-" -----------------------------------------------------------------------------
-" SEARCH/REPLACE SPECIFIC MAPPINGS
-" -----------------------------------------------------------------------------
-
+" --- SEARCH/REPLACE SPECIFIC MAPPINGS ---
 " prepare replace: move cursor to //, then get word under cursor using ctrl-r + ctrl-w
 nnoremap <leader>rt :%s/<c-r><c-w>//gc<left><left><left>
 
@@ -456,9 +429,7 @@ elseif has('unix')
     endif
 endif
 
-" -----------------------------------------------------------------------------
-" AUGROUP
-" -----------------------------------------------------------------------------
+" --- AUGROUP ---
 augroup searchreplaceonfiletype
     autocmd!
     autocmd FileType go call MapGoSearchReplace()
@@ -566,9 +537,7 @@ augroup END
 " nmap <F6> <Plug>ColorstepPrev
 " nmap <F7> <Plug>ColorstepNext
 
-" -----------------------------------------------------------------------------
-" RAINBOW PARENTHESIS
-" -----------------------------------------------------------------------------
+" --- RAINBOW PARENTHESIS ---
 let g:rainbow_active = 1
 let g:rainbow_conf = {
     \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
