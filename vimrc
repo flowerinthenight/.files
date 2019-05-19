@@ -1,4 +1,5 @@
 let mapleader = "\<space>"
+let s:uname = system("uname -s")
 
 " --- PLUGIN MANAGER ---
 set nocompatible
@@ -12,11 +13,18 @@ if has('win32')
     set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
     set rtp^=$HOME/vimfiles/bundle/ctrlp.vim/
     let vpath = $HOME . '/vimfiles/bundle'
-    call vundle#begin(vpath)
+    call vundle#begin(vpath) " call vundle#end
 else
     set rtp+=~/.vim/bundle/Vundle.vim/
     set rtp^=~/.vim/bundle/ctrlp.vim/
-    call vundle#begin()
+    " Reference: https://aonemd.github.io/blog/finding-things-in-vim
+    if s:uname == "Darwin\n"
+        " MacOS-specific stuff
+    else
+        " using Homebrew for Linux, https://docs.brew.sh/Homebrew-on-Linux
+        set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf/
+    endif
+    call vundle#begin() " call vundle#end
 endif
 
 Plugin 'VundleVim/Vundle.vim'               " plugin manager
@@ -28,6 +36,7 @@ Plugin 'fatih/vim-go'                       " gofmt, syntax
 Plugin 'rust-lang/rust.vim'                 " rustfmt, syntax
 Plugin 'majutsushi/tagbar'                  " tagbar
 Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy finder
+Plugin 'junegunn/fzf.vim'                   " fzf fuzzy finder (find, ag, rg)
 Plugin 'wellle/targets.vim'                 " additional target objects
 Plugin 'pangloss/vim-javascript'            " javascript
 Plugin 'mattn/emmet-vim'                    " html/css
@@ -66,11 +75,7 @@ call vundle#end()
 " --- GENERAL SETTINGS ---
 if has('win32')
     colorscheme darkblue
-else
-    colorscheme elflord
-endif
 
-if has('win32')
     " https://blog.golang.org/go-fonts; or
     " git clone https://go.googlesource.com/image
     " copy .\image\font\gofont\ttfs\*
@@ -81,6 +86,8 @@ if has('win32')
         set lines=70
         set columns=250
     endif
+else
+    colorscheme elflord
 endif
 
 " to ignore plugin indent changes, instead use filetype plugin on
@@ -278,7 +285,6 @@ endif
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
@@ -288,7 +294,6 @@ let g:go_highlight_operators = 1
 let g:go_fmt_command = 'goimports' " could be slow on very large code bases
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_experimental = 1
-
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -383,12 +388,18 @@ nnoremap <leader>i :GoDoc<cr>
 nnoremap <leader>ii :GoDescribe<cr>
 nnoremap <leader>er :GoIfErr<cr>
 
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 6)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 6)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 12)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 12)<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 6)<cr>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 6)<cr>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 12)<cr>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 12)<cr>
 
 " --- SEARCH/REPLACE SPECIFIC MAPPINGS ---
+" fzf settings
+nnoremap <leader>pp :FZF<cr>
+nnoremap <leader>ph :History<cr>
+nnoremap <leader>\ :Ag<space>
+nnoremap <leader>/ :Rg<space>
+
 " prepare replace: move cursor to //, then get word under cursor using ctrl-r + ctrl-w
 nnoremap <leader>rt :%s/<c-r><c-w>//gc<left><left><left>
 
@@ -417,7 +428,6 @@ if has('win32')
     nnoremap <leader>f0 :Rfindpattern /ip <c-r><c-w> *
     nnoremap <leader>r0 :arg **/* <bar> argdo %s/<c-r><c-w>/?/gc <bar> update
 elseif has('unix')
-    let s:uname = system("uname -s")
     if s:uname == "Darwin\n"
         " prepare pattern search via grep recursive (c/c++)
         nnoremap <leader>rg :Rgrep -I -i -r <c-r><c-w> *.h *.c *.cpp *.conf
