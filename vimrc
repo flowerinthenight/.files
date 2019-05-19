@@ -397,8 +397,8 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 12)<cr>
 " fzf settings
 nnoremap <leader>pp :FZF<cr>
 nnoremap <leader>ph :History<cr>
-nnoremap <leader>\ :Ag<space>
-nnoremap <leader>/ :Rg<space>
+nnoremap <leader>\ :Ag<space><c-r><c-w>
+nnoremap <leader>/ :Rg<space><c-r><c-w>
 
 " prepare replace: move cursor to //, then get word under cursor using ctrl-r + ctrl-w
 nnoremap <leader>rt :%s/<c-r><c-w>//gc<left><left><left>
