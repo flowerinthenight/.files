@@ -20,7 +20,7 @@ else
 
     " Ref: https://aonemd.github.io/blog/finding-things-in-vim
     if s:uname == "Darwin\n"
-        " MacOS-specific stuff
+        set rtp+=/usr/local/opt/fzf/
     else
         " using Homebrew for Linux, https://docs.brew.sh/Homebrew-on-Linux
         set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf/
@@ -398,8 +398,10 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 12)<cr>
 nnoremap <leader>pp :FZF<cr>
 nnoremap <leader>hh :History<cr>
 nnoremap <leader>ll :Lines<cr>
-nnoremap <leader>\ :Ag<space><c-r><c-w>
-nnoremap <leader>/ :Rg<space><c-r><c-w>
+nnoremap <leader>\ :Ag<space>
+nnoremap <leader>/ :Rg<space>
+nnoremap <leader>\\ :Ag<space><c-r><c-w>
+nnoremap <leader>// :Rg<space><c-r><c-w>
 
 " prepare replace: move cursor to //, then get word under cursor using ctrl-r + ctrl-w
 nnoremap <leader>rt :%s/<c-r><c-w>//gc<left><left><left>
