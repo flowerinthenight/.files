@@ -43,6 +43,7 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
 fi
 
 export GOPATH=$HOME/gopath
+export GOPROXY=https://proxy.golang.org
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.local/bin:/snap/bin:$HOME/istio-1.1.6/bin:/home/linuxbrew/.linuxbrew/bin
 export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
 eval "$(rbenv init -)"
