@@ -31,7 +31,7 @@ endif
 Plugin 'VundleVim/Vundle.vim'               " plugin manager
 Plugin 'scrooloose/nerdtree'                " file explorer
 Plugin 'flazz/vim-colorschemes'             " vim themes
-Plugin 'Valloric/YouCompleteMe'             " clang, racer, omnisharp
+" Plugin 'Valloric/YouCompleteMe'             " clang, racer, omnisharp
 Plugin 'Shougo/neocomplete.vim'             " for golang (+ vim-go)
 Plugin 'fatih/vim-go'                       " gofmt, syntax
 Plugin 'rust-lang/rust.vim'                 " rustfmt, syntax
