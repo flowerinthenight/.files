@@ -85,5 +85,8 @@ alias sy='ssh yavanna'
 # kops/kubectl completion for zsh
 source <(kops completion zsh)
 
+# stern completion for zsh
+source <(stern --completion=zsh)
+
 # https://thorsten-hans.com/autocompletion-for-kubectl-and-aliases-using-oh-my-zsh-6b5295dc6dfb
 plugins=(git git-flow brew history node npm kubectl)
