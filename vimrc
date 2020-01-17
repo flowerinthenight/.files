@@ -86,8 +86,6 @@ if has('win32')
         set lines=70
         set columns=250
     endif
-else
-    colorscheme elflord
 endif
 
 " to ignore plugin indent changes, instead use filetype plugin on
@@ -151,6 +149,8 @@ if has('gui_macvim')
     colorscheme solarized
     set guioptions=
     set guifont=Go\ Mono:h11
+else
+    colorscheme oceanlight
 endif
 
 " --- YCM/RUST SETTINGS ---
