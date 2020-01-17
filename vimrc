@@ -45,7 +45,9 @@ Plugin 'godlygeek/tabular'                  " should be before markdown
 Plugin 'plasticboy/vim-markdown'            " markdown
 Plugin 'simnalamburt/vim-mundo'             " undo history visualizer
 Plugin 'mtth/scratch.vim'                   " scratch buffer
-Plugin 'luochen1990/rainbow'                " parenthesis (and others) color
+if has('gui_macvim')
+    Plugin 'luochen1990/rainbow'            " parenthesis (and others) color
+endif
 Plugin 'terryma/vim-smooth-scroll'          " smooth scrolling
 Plugin 'stamblerre/gocode', {'rtp': 'vim/'} " go autocompletion daemon
 Plugin 'gcmt/wildfire.vim'                  " extra objects selection
