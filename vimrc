@@ -135,6 +135,7 @@ set relativenumber
 set history=200                         " keep 200 lines of command line history
 set showcmd                             " display incomplete commands
 set laststatus=2                        " always show vim-airline status
+set statusline+=%F
 
 if has('win32')
     set display=truncate                " show @@@ in the last line if it is truncated
