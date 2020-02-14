@@ -18,7 +18,7 @@ NORM="%{"$'\033[00m'"%}"
 # $ drive pull develop/
 
 GIT_PROMPT_EXECUTABLE="haskell"
-source ./zsh-git-prompt/zshrc.sh
+source ~/zsh-git-prompt/zshrc.sh
 
 if [ -z "${CUSTOM_HOST}" ]; then
     PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
