@@ -44,6 +44,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      ;; git
      helm
+     ;; ivy
      (lsp :variables
           lsp-enable-file-watchers nil
           lsp-ui-doc-enable	nil)
@@ -56,7 +57,6 @@ This function should only modify configuration layer settings."
      syntax-checking
      ;; treemacs
      ;; version-control
-
      (go :variables
          gofmt-command "goimports"
          go-format-before-save t
@@ -64,7 +64,6 @@ This function should only modify configuration layer settings."
          godoc-at-point-function 'godoc-gogetdoc
          go-backend 'lsp
          go-tab-width 4)
-
      org
      latex
      theming
@@ -499,6 +498,7 @@ before packages are loaded."
   (global-set-key (kbd "<home>") 'beginning-of-line)
   (global-set-key (kbd "<end>") 'end-of-line)
   (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
+  (setq vc-follow-symlinks nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
