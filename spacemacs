@@ -43,8 +43,8 @@ This function should only modify configuration layer settings."
      ;; better-defaults
      emacs-lisp
      ;; git
-     helm
-     ;; ivy
+     ;; helm
+     ivy
      (lsp :variables
           lsp-enable-file-watchers nil
           lsp-ui-doc-enable	nil)
