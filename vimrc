@@ -507,13 +507,13 @@ function MapRustSearchReplace()
     endif
 endfunction
 
-augroup highlight81and161
-    " hightlight the 81st and 161st column
-    autocmd!
-    autocmd BufEnter * highlight OverLength ctermbg=magenta ctermfg=white guibg=magenta guifg=white
-    autocmd BufEnter * match OverLength /\%81v/
-    autocmd BufEnter * 2match OverLength /\%161v/
-augroup END
+" augroup highlight81and161
+"     " hightlight the 81st and 161st column
+"     autocmd!
+"     autocmd BufEnter * highlight OverLength ctermbg=magenta ctermfg=white guibg=magenta guifg=white
+"     autocmd BufEnter * match OverLength /\%81v/
+"     autocmd BufEnter * 2match OverLength /\%161v/
+" augroup END
 
 augroup enablerustfiletype
     autocmd!
