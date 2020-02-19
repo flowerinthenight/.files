@@ -39,7 +39,7 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      yaml
-     auto-completion
+     ;; auto-completion
      ;; better-defaults
      emacs-lisp
      ;; git
@@ -54,7 +54,7 @@ This function should only modify configuration layer settings."
              shell-default-height 30
              shell-default-position 'bottom)
      ;; spell-checking
-     syntax-checking
+     ;; syntax-checking
      ;; treemacs
      ;; version-control
      (go :variables
@@ -84,7 +84,10 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages
+   '(
+     evil-search-highlight-persist
+     )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.

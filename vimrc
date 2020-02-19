@@ -150,6 +150,7 @@ endif
 
 if has('gui_macvim')
     colorscheme solarized
+    set background=light
     set guioptions=
     set guifont=Go\ Mono:h11
 else
