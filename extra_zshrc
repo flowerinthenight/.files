@@ -93,7 +93,7 @@ alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
 
 # kops/kubectl completion for zsh
-source <(kops completion zsh)
+# source <(kops completion zsh)
 
 # stern completion for zsh
 source <(stern --completion=zsh)
