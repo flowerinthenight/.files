@@ -48,7 +48,7 @@ This function should only modify configuration layer settings."
      (lsp :variables
           lsp-enable-file-watchers nil
           lsp-ui-doc-enable	nil)
-     ;; markdown
+     markdown
      ;; multiple-cursors
      (shell :variables
              shell-default-height 30
@@ -227,8 +227,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts.
-   dotspacemacs-default-font '(("Go Mono"
-                               :size 11.0
+   dotspacemacs-default-font '(("Fira Mono"
+                               :size 9.0
                                :weight normal
                                :width normal)
                                ("JetBrains Mono"
