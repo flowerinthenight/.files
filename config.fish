@@ -2,9 +2,10 @@ set fish_color_command yellow
 set fish_color_user green
 set fish_color_host green
 
-for line in (cat ~/drive/develop/envvars)
-    set vals (string split "=" -- $line)
-    set vals[1] vals[2]
+if test -e ~/drive/develop/envvars
+    for line in (cat ~/drive/develop/envvars)
+        set -x (string split '=' $line)[1] (string split '=' $line)[2]
+    end
 end
 
 # Set if vim colorscheme is solarized-light or flattened-light
@@ -17,7 +18,7 @@ alias x='exit'
 
 set -x GOPATH $HOME/gopath
 set -x GOPROXY https://proxy.golang.org
-set -x PATH (string replace ':' ' ' $PATH) /usr/local/go/bin $GOPATH/bin $HOME/.npm-global/bin $HOME/.cargo/bin $HOME/.rbenv/bin $HOME/.rbenv/plugins/ruby-build/bin $HOME/.local/bin /snap/bin $HOME/istio-1.1.6/bin /home/linuxbrew/.linuxbrew/bin
+set -x PATH (string replace ':' ' ' $PATH) /usr/local/go/bin $GOPATH/bin $HOME/google-cloud-sdk/bin $HOME/.npm-global/bin $HOME/.cargo/bin $HOME/.rbenv/bin $HOME/.rbenv/plugins/ruby-build/bin $HOME/.local/bin /snap/bin $HOME/istio-1.1.6/bin /home/linuxbrew/.linuxbrew/bin
 
 # for Go1.11
 set -x GO111MODULE on
@@ -26,7 +27,8 @@ set -x GO111MODULE on
 # Reference: http://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
 # Change to 'underlined orange', but looks like muted yellow, really.
 # When using Putty though, this is not needed as blue is somewhat okay.
-set LS_COLORS $LS_COLORS:'di=04;33'
+# set LS_COLORS $LS_COLORS:'di=04;33'
+set LS_COLORS 'di=04;33'
 set -x LS_COLORS $LS_COLORS
 set -x LSCOLORS $LS_COLORS
 
