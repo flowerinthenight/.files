@@ -92,6 +92,10 @@ alias kprod='gcloud config configurations activate mochi-prod && gcloud containe
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
 
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    alias open='xdg-open'
+fi
+
 # kops/kubectl completion for zsh
 # source <(kops completion zsh)
 
