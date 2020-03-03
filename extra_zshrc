@@ -91,15 +91,21 @@ alias sy='ssh yavanna'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Set if vim colorscheme is solarized-light or flattened-light
-    export FZF_DEFAULT_OPTS='--color=light'
+    # export FZF_DEFAULT_OPTS='--color=light'
     alias open='xdg-open'
 fi
 
 # kops/kubectl completion for zsh
 # source <(kops completion zsh)
 
+# kubectl completion for zsh
+source <(kubectl completion zsh)
+
 # stern completion for zsh
 source <(stern --completion=zsh)
+
+# helm completion for zsh
+source <(helm completion zsh)
 
 # https://thorsten-hans.com/autocompletion-for-kubectl-and-aliases-using-oh-my-zsh-6b5295dc6dfb
 plugins=(git git-flow brew history node npm kubectl)
