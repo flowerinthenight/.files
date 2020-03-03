@@ -56,6 +56,8 @@ This function should only modify configuration layer settings."
      ;; spell-checking
      ;; syntax-checking
      ;; treemacs
+     (neotree :variables
+              neo-theme 'nerd)
      ;; version-control
      (go :variables
          gofmt-command "goimports"

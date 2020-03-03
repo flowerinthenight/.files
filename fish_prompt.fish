@@ -22,7 +22,7 @@ set __fish_git_prompt_color_upstream_behind red
 # Icons
 set __fish_git_prompt_char_cleanstate '✔'
 set __fish_git_prompt_char_conflictedstate 'conflict️'
-set __fish_git_prompt_char_dirtystate 'dirty:'
+set __fish_git_prompt_char_dirtystate '✚'
 set __fish_git_prompt_char_invalidstate 'invalid'
 set __fish_git_prompt_char_stagedstate 'staged:'
 set __fish_git_prompt_char_stashstate 'stash'

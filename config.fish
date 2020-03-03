@@ -11,6 +11,7 @@ end
 # Set if vim colorscheme is solarized-light or flattened-light
 set -x FZF_DEFAULT_OPTS '--color=light'
 
+alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y'
 alias v='vim'
 alias l='ls -lF'
 alias ll='ls -laF'
