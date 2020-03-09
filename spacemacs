@@ -481,11 +481,11 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq theming-modifications
         '((solarized-light
-           (org-level-1 :family "Cascadia Code")
-           (org-level-2 :family "Cascadia Code")
-           (org-level-3 :family "Cascadia Code")
-           (org-level-4 :family "Cascadia Code")
-           (org-level-5 :family "Cascadia Code"))))
+           (org-level-1 :family "Fira Mono")
+           (org-level-2 :family "Fira Mono")
+           (org-level-3 :family "Fira Mono")
+           (org-level-4 :family "Fira Mono")
+           (org-level-5 :family "Fira Mono"))))
   )
 
 (defun dotspacemacs/user-load ()
@@ -505,6 +505,10 @@ before packages are loaded."
   (global-set-key (kbd "<end>") 'end-of-line)
   (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
   (setq vc-follow-symlinks nil)
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -529,9 +533,9 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#657b83" :background "#fdf6e3"))))
- '(org-level-1 ((t (:family "Cascadia Code"))))
- '(org-level-2 ((t (:family "Cascadia Code"))))
- '(org-level-3 ((t (:family "Cascadia Code"))))
- '(org-level-4 ((t (:family "Cascadia Code"))))
- '(org-level-5 ((t (:family "Cascadia Code")))))
+ '(org-level-1 ((t (:family "Fira Mono"))))
+ '(org-level-2 ((t (:family "Fira Mono"))))
+ '(org-level-3 ((t (:family "Fira Mono"))))
+ '(org-level-4 ((t (:family "Fira Mono"))))
+ '(org-level-5 ((t (:family "Fira Mono")))))
 )
