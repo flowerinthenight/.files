@@ -156,7 +156,8 @@ if has('gui_macvim')
     set guioptions=
     set guifont=Go\ Mono:h11
 else
-    colorscheme oceandeep
+    " colorscheme oceandeep
+    colorscheme flattened_light
 endif
 
 " --- YCM/RUST SETTINGS ---

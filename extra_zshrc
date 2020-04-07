@@ -91,7 +91,7 @@ alias sy='ssh yavanna'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Set if vim colorscheme is solarized-light or flattened-light
-    # export FZF_DEFAULT_OPTS='--color=light'
+    export FZF_DEFAULT_OPTS='--color=light'
     alias open='xdg-open'
 fi
 

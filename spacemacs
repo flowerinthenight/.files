@@ -335,7 +335,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
@@ -486,6 +486,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
            (org-level-3 :family "Fira Mono")
            (org-level-4 :family "Fira Mono")
            (org-level-5 :family "Fira Mono"))))
+  (setq initial-frame-alist '((top . 1) (left . 200) (width . 200) (height . 80)))
   )
 
 (defun dotspacemacs/user-load ()
