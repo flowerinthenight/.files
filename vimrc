@@ -116,6 +116,11 @@ set nofoldenable
 set foldlevel=0
 
 " generic
+" Ref: https://askubuntu.com/questions/42663/how-to-make-cursor-change-from-thin-line-to-block-based-on-normal-or-insert-mode
+let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
+let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
+let &t_EI = "\<esc>[ q"   " default cursor (usually blinking block) otherwise
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
