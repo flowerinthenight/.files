@@ -34,7 +34,7 @@ Plugin 'flazz/vim-colorschemes'             " vim themes
 " Plugin 'Valloric/YouCompleteMe'             " clang, racer, omnisharp
 Plugin 'Shougo/neocomplete.vim'             " for golang (+ vim-go)
 Plugin 'fatih/vim-go'                       " gofmt, syntax
-Plugin 'rust-lang/rust.vim'                 " rustfmt, syntax
+" Plugin 'rust-lang/rust.vim'                 " rustfmt, syntax
 Plugin 'majutsushi/tagbar'                  " tagbar
 " Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy finder
 Plugin 'junegunn/fzf.vim'                   " fzf fuzzy finder (find, ag, rg)
@@ -119,7 +119,16 @@ set foldlevel=0
 " Ref: https://askubuntu.com/questions/42663/how-to-make-cursor-change-from-thin-line-to-block-based-on-normal-or-insert-mode
 let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
 let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
-let &t_EI = "\<esc>[ q"   " default cursor (usually blinking block) otherwise
+let &t_EI = "\<esc>[1 q"  " default cursor, blinking block
+
+" Notes: the following settings will shorten the delay from edit to normal
+" cursor using ESC. It works, sort of, but can be alleviated using 'jj'. So,
+" practice using 'jj' instead of ESC.
+" Ref: https://stackoverflow.com/questions/4777950/vim-change-block-cursor-when-in-insert-mode
+" set ttimeout
+" set ttimeoutlen=1
+" set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
+" set ttyfast
 
 set tabstop=4
 set shiftwidth=4
@@ -407,6 +416,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 12)<cr>
 
 " --- SEARCH/REPLACE SPECIFIC MAPPINGS ---
 " fzf settings
+let g:fzf_preview_window = ''
 nnoremap <leader>pp :FZF<cr>
 nnoremap <leader>hh :History<cr>
 nnoremap <leader>ll :Lines<cr>
