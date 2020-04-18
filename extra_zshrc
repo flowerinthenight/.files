@@ -38,7 +38,7 @@ alias x='exit'
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     export EDITOR=vim
-    alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y'
+    alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y && brew update -v && brew upgrade -v && sudo snap refresh && flatpak update'
 fi
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
