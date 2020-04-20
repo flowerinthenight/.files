@@ -50,7 +50,7 @@ fi
 
 export GOPATH=$HOME/gopath
 export GOPROXY=https://proxy.golang.org
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.local/bin:/snap/bin:$HOME/istio-1.1.6/bin:/home/linuxbrew/.linuxbrew/bin
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.local/bin:/snap/bin:/home/linuxbrew/.linuxbrew/bin:$HOME/tools/katoolin3
 export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
 eval "$(rbenv init -)"
 
@@ -85,6 +85,12 @@ alias kdev='gcloud config configurations activate default && gcloud container cl
 alias kqa='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i qa | cut -f 1 -d " ") && kubectl config current-context'
 alias knext='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i next | cut -f 1 -d " ") && kubectl config current-context'
 alias kprod='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | cut -f 1 -d " ") && kubectl config current-context'
+
+# getting tokens
+alias rtokenrootdev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME --password $MOBINGI_RIPPLE_ROOT_PASSWORD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
+alias rtokenrootprod='ccf token --login-url login.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME_PROD --password $MOBINGI_RIPPLE_ROOT_PASSWORD_PROD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET_PROD'
+alias rtokendev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_USERNAME --password $MOBINGI_RIPPLE_PASSWORD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
+alias rtokenprod='ccf token --login-url login.mobingi.com/ripple --username $MOBINGI_RIPPLE_USERNAME_PROD --password $MOBINGI_RIPPLE_PASSWORD_PROD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET_PROD'
 
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
