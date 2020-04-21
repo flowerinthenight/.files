@@ -38,7 +38,7 @@ alias x='exit'
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     export EDITOR=vim
-    alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y && brew update -v && brew upgrade -v && sudo snap refresh && flatpak update'
+    alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y && brew update -v && brew upgrade -v && flatpak update'
 fi
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
@@ -91,6 +91,11 @@ alias rtokenrootdev='ccf token --login-url logindev.mobingi.com/ripple --usernam
 alias rtokenrootprod='ccf token --login-url login.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME_PROD --password $MOBINGI_RIPPLE_ROOT_PASSWORD_PROD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET_PROD'
 alias rtokendev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_USERNAME --password $MOBINGI_RIPPLE_PASSWORD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
 alias rtokenprod='ccf token --login-url login.mobingi.com/ripple --username $MOBINGI_RIPPLE_USERNAME_PROD --password $MOBINGI_RIPPLE_PASSWORD_PROD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET_PROD'
+
+alias tokenrootdev='ccf token --login-url logindev.mobingi.com --username $MOBINGI_ROOT_USERNAME --password $MOBINGI_ROOT_PASSWORD --web-id $MOBINGI_OPENID_WEB_CLIENT_ID --web-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET'
+alias tokenrootprod='ccf token --login-url login.mobingi.com --username $MOBINGI_ROOT_USERNAME_PROD --password $MOBINGI_ROOT_PASSWORD_PROD --web-id $MOBINGI_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET_PROD'
+alias tokendev='ccf token --login-url logindev.mobingi.com --username $MOBINGI_USERNAME --password $MOBINGI_PASSWORD --web-id $MOBINGI_OPENID_WEB_CLIENT_ID --web-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET'
+alias tokenprod='ccf token --login-url login.mobingi.com --username $MOBINGI_USERNAME_PROD --password $MOBINGI_PASSWORD_PROD --web-id $MOBINGI_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET_PROD'
 
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
