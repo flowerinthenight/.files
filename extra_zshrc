@@ -37,6 +37,8 @@ alias h='htop'
 # alias up='sudo apt-get -o Acquire::ForceIPv4=true update && sudo apt-get -o Acquire::ForceIPv4=true upgrade -y'
 alias x='exit'
 
+export MANPAGER="vim -c MANPAGER -"
+
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     export EDITOR=vim
     alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y && brew update -v && brew upgrade -v && flatpak update'
@@ -51,7 +53,7 @@ fi
 
 export GOPATH=$HOME/gopath
 export GOPROXY=https://proxy.golang.org
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.local/bin:/snap/bin:/home/linuxbrew/.linuxbrew/bin:$HOME/tools/katoolin3
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.local/bin:/snap/bin:/home/linuxbrew/.linuxbrew/bin:/usr/share/bcc/tools:$HOME/tools/katoolin3
 export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
 eval "$(rbenv init -)"
 

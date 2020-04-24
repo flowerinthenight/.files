@@ -45,13 +45,13 @@ Plugin 'godlygeek/tabular'                  " should be before markdown
 Plugin 'plasticboy/vim-markdown'            " markdown
 Plugin 'simnalamburt/vim-mundo'             " undo history visualizer
 Plugin 'mtth/scratch.vim'                   " scratch buffer
-" Plugin 'romainl/flattened'                  " solarized without the bs, already in default
 if has('gui_macvim')
     Plugin 'luochen1990/rainbow'            " parenthesis (and others) color
 endif
 Plugin 'terryma/vim-smooth-scroll'          " smooth scrolling
 " Plugin 'stamblerre/gocode', {'rtp': 'vim/'} " go autocompletion daemon
 Plugin 'gcmt/wildfire.vim'                  " extra objects selection
+Plugin 'lambdalisue/vim-manpager'           " man pager
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
