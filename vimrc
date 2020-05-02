@@ -31,7 +31,7 @@ endif
 Plugin 'VundleVim/Vundle.vim'               " plugin manager
 Plugin 'scrooloose/nerdtree'                " file explorer
 Plugin 'flazz/vim-colorschemes'             " vim themes
-" Plugin 'Valloric/YouCompleteMe'             " clang, racer, omnisharp
+Plugin 'ycm-core/YouCompleteMe'             " clangd-completer
 Plugin 'Shougo/neocomplete.vim'             " for golang (+ vim-go)
 Plugin 'fatih/vim-go'                       " gofmt, syntax
 " Plugin 'rust-lang/rust.vim'                 " rustfmt, syntax
@@ -51,7 +51,7 @@ endif
 Plugin 'terryma/vim-smooth-scroll'          " smooth scrolling
 " Plugin 'stamblerre/gocode', {'rtp': 'vim/'} " go autocompletion daemon
 Plugin 'gcmt/wildfire.vim'                  " extra objects selection
-Plugin 'lambdalisue/vim-manpager'           " man pager
+Plugin 'lambdalisue/vim-manpager'           " man pager, open man in vim
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
@@ -170,7 +170,6 @@ if has('gui_macvim')
     set guioptions=
     set guifont=Go\ Mono:h11
 else
-    " colorscheme oceandeep
     colorscheme flattened_light
 endif
 
@@ -184,11 +183,11 @@ if has('win32')
 else
     " temporary enable/disable ycm: active = disable, commented = enable
     let g:loaded_youcompleteme = 1
-    let g:ycm_global_ycm_extra_conf = $HOME . '/.ycm_extra_conf.py'
+    " let g:ycm_global_ycm_extra_conf = $HOME . '/.ycm_extra_conf.py'
     " let g:ycm_server_use_vim_stdout = 0
     " let g:ycm_server_keep_logfiles = 1
-    let g:OmniSharp_server_type = 'roslyn'
-    let g:OmniSharp_prefer_global_sln = 1
+    " let g:OmniSharp_server_type = 'roslyn'
+    " let g:OmniSharp_prefer_global_sln = 1
 endif
 
 let g:ycm_disable_for_files_larger_than_kb = 0

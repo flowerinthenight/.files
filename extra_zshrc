@@ -64,7 +64,7 @@ export GO111MODULE=on
 # Reference: http://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
 # Change to 'underlined orange', but looks like muted yellow, really.
 # When using Putty though, this is not needed as blue is somewhat okay.
-LS_COLORS=$LS_COLORS:'di=04;33'
+LS_COLORS=$LS_COLORS:'di=1;33'
 export LS_COLORS
 
 # zsh-bd
