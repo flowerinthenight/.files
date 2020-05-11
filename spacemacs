@@ -486,7 +486,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
            (org-level-3 :family "Fira Mono")
            (org-level-4 :family "Fira Mono")
            (org-level-5 :family "Fira Mono"))))
-  (setq initial-frame-alist '((top . 1) (left . 200) (width . 200) (height . 80)))
+  ;; (setq initial-frame-alist '((top . 1) (left . 200) (width . 200) (height . 80)))
   )
 
 (defun dotspacemacs/user-load ()
@@ -510,6 +510,8 @@ before packages are loaded."
         `((".*" . ,temporary-file-directory)))
   (setq auto-save-file-name-transforms
         `((".*" ,temporary-file-directory t)))
+  (setq-default evil-escape-delay 0.2)
+  (setq-default evil-escape-key-sequence "jj")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -540,3 +542,22 @@ This function is called at the very end of Spacemacs initialization."
  '(org-level-4 ((t (:family "Fira Mono"))))
  '(org-level-5 ((t (:family "Fira Mono")))))
 )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (org-pomodoro alert log4e yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-projectile org-category-capture org-present gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio go-guru go-eldoc go-mode gnuplot gh-md flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed auctex async aggressive-indent adaptive-wrap ace-window ace-link avy solarized-theme dash))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 89)) (:foreground "#657b83" :background "#fdf6e3"))))
+ '(org-level-1 ((t (:family "Fira Mono"))))
+ '(org-level-2 ((t (:family "Fira Mono"))))
+ '(org-level-3 ((t (:family "Fira Mono"))))
+ '(org-level-4 ((t (:family "Fira Mono"))))
+ '(org-level-5 ((t (:family "Fira Mono")))))
