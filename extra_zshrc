@@ -26,9 +26,9 @@ GIT_PROMPT_EXECUTABLE="haskell"
 source ~/zsh-git-prompt/zshrc.sh
 
 if [ -z "${CUSTOM_HOST}" ]; then
-    PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
+  PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
 else
-    PROMPT='${GREEN}%n@${CUSTOM_HOST}${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
+  PROMPT='${GREEN}%n@${CUSTOM_HOST}${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status) '
 fi
 
 alias l='ls -lF'
@@ -40,21 +40,25 @@ alias x='exit'
 export MANPAGER="vim -c MANPAGER -"
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
-    export EDITOR=vim
-    alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y && brew update -v && brew upgrade -v && flatpak update'
+  export EDITOR=vim
+  alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y && brew update -v && brew upgrade -v && flatpak update'
 fi
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
-    export EDITOR=mvim
-    alias up='brew update --verbose && brew upgrade --verbose'
-    alias meld='/Applications/Meld.app/Contents/MacOS/Meld'
-    export PATH=$PATH:~/Library/Python/3.7/bin
+  export EDITOR=mvim
+  alias up='brew update --verbose && brew upgrade --verbose'
+  alias meld='/Applications/Meld.app/Contents/MacOS/Meld'
+  export PATH=$PATH:~/Library/Python/3.7/bin
 fi
 
 export GOPATH=$HOME/gopath
 export GOPROXY=https://proxy.golang.org
 export PATH=$PATH:$GOPATH/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools
-export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
+
+if [ -x "$(command -v rustc)" ]; then
+  export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
+fi
+
 eval "$(rbenv init -)"
 
 # for Go1.11
@@ -112,31 +116,37 @@ alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    alias open='xdg-open'
-    # Set if vim colorscheme is solarized-light or flattened-light
-    export FZF_DEFAULT_OPTS='
-      --color fg:240,bg:230,hl:33,fg+:241,bg+:221,hl+:33
-      --color info:33,prompt:33,pointer:166,marker:166,spinner:33
-    '
+  alias open='xdg-open'
+  # Set if vim colorscheme is solarized-light or flattened-light
+  export FZF_DEFAULT_OPTS='
+    --color fg:240,bg:230,hl:33,fg+:241,bg+:221,hl+:33
+    --color info:33,prompt:33,pointer:166,marker:166,spinner:33
+  '
 fi
 
 if [ -x "$(command -v wine)" ]; then
-    alias word='wine "/home/f14t/.wine/drive_c/Program Files (x86)/Microsoft Office/Office12/WINWORD.EXE"'
-    alias excel='wine "/home/f14t/.wine/drive_c/Program Files (x86)/Microsoft Office/Office12/EXCEL.EXE"'
-    alias ppt='wine "/home/f14t/.wine/drive_c/Program Files (x86)/Microsoft Office/Office12/POWERPNT.EXE"'
+  alias word='wine "/home/f14t/.wine/drive_c/Program Files (x86)/Microsoft Office/Office12/WINWORD.EXE"'
+  alias excel='wine "/home/f14t/.wine/drive_c/Program Files (x86)/Microsoft Office/Office12/EXCEL.EXE"'
+  alias ppt='wine "/home/f14t/.wine/drive_c/Program Files (x86)/Microsoft Office/Office12/POWERPNT.EXE"'
 fi
 
 # kops/kubectl completion for zsh
 # source <(kops completion zsh)
 
 # kubectl completion for zsh
-source <(kubectl completion zsh)
+if [ -x "$(command -v kubectl)" ]; then
+  source <(kubectl completion zsh)
+fi
 
 # stern completion for zsh
-source <(stern --completion=zsh)
+if [ -x "$(command -v stern)" ]; then
+  source <(stern --completion=zsh)
+fi
 
 # helm completion for zsh
-source <(helm completion zsh)
+if [ -x "$(command -v helm)" ]; then
+  source <(helm completion zsh)
+fi
 
 # https://thorsten-hans.com/autocompletion-for-kubectl-and-aliases-using-oh-my-zsh-6b5295dc6dfb
 plugins=(git git-flow brew history node npm kubectl)
