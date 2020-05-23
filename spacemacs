@@ -486,7 +486,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
            (org-level-3 :family "Fira Mono")
            (org-level-4 :family "Fira Mono")
            (org-level-5 :family "Fira Mono"))))
-  ;; (setq initial-frame-alist '((top . 1) (left . 200) (width . 200) (height . 80)))
+   (setq initial-frame-alist '((top . 30) (left . 600) (width . 270) (height . 75)))
   )
 
 (defun dotspacemacs/user-load ()

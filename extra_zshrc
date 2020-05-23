@@ -83,6 +83,11 @@ alias kn='kubectl get node -o wide'
 alias kt='kubectl top'
 alias k='kubectl'
 
+alias awsdev='echo -n "--key $AWS_ACCESS_KEY_ID_ASSUME --secret $AWS_SECRET_ACCESS_KEY_ASSUME --rolearn $ROLE_ARN"'
+alias awsqa='echo -n "--key $AWS_ACCESS_KEY_ID_ASSUME_QA --secret $AWS_SECRET_ACCESS_KEY_ASSUME_QA --rolearn $ROLE_ARN_QA"'
+alias awsnext='echo -n "--key $AWS_ACCESS_KEY_ID_ASSUME_NEXT --secret $AWS_SECRET_ACCESS_KEY_ASSUME_NEXT --rolearn $ROLE_ARN_NEXT"'
+alias awsprod='echo -n "--key $AWS_ACCESS_KEY_ID_ASSUME_PROD --secret $AWS_SECRET_ACCESS_KEY_ASSUME_PROD --rolearn $ROLE_ARN_PROD"'
+
 # switching gke clusters
 alias kdev='gcloud config configurations activate default && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i dev | cut -f 1 -d " ") && kubectl config current-context'
 alias kqa='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i qa | cut -f 1 -d " ") && kubectl config current-context'
@@ -93,15 +98,15 @@ alias kprod='gcloud config configurations activate mochi-prod && gcloud containe
 alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}'"
 
 # getting tokens
-alias rtokenrootdev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME --password $MOBINGI_RIPPLE_ROOT_PASSWORD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
-alias rtokenrootprod='ccf token --login-url login.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME_PROD --password $MOBINGI_RIPPLE_ROOT_PASSWORD_PROD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET_PROD'
-alias rtokendev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_USERNAME --password $MOBINGI_RIPPLE_PASSWORD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
-alias rtokenprod='ccf token --login-url login.mobingi.com/ripple --username $MOBINGI_RIPPLE_USERNAME_PROD --password $MOBINGI_RIPPLE_PASSWORD_PROD --web-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET_PROD'
+alias rtokenrootdev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME --password $MOBINGI_RIPPLE_ROOT_PASSWORD --client-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --client-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
+alias rtokenrootprod='ccf token --login-url login.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME_PROD --password $MOBINGI_RIPPLE_ROOT_PASSWORD_PROD --client-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID_PROD --client-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET_PROD'
+alias rtokendev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_USERNAME --password $MOBINGI_RIPPLE_PASSWORD --client-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --client-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
+alias rtokenprod='ccf token --login-url login.mobingi.com/ripple --username $MOBINGI_RIPPLE_USERNAME_PROD --password $MOBINGI_RIPPLE_PASSWORD_PROD --client-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID_PROD --client-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET_PROD'
 
-alias tokenrootdev='ccf token --login-url logindev.mobingi.com --username $MOBINGI_ROOT_USERNAME --password $MOBINGI_ROOT_PASSWORD --web-id $MOBINGI_OPENID_WEB_CLIENT_ID --web-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET'
-alias tokenrootprod='ccf token --login-url login.mobingi.com --username $MOBINGI_ROOT_USERNAME_PROD --password $MOBINGI_ROOT_PASSWORD_PROD --web-id $MOBINGI_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET_PROD'
-alias tokendev='ccf token --login-url logindev.mobingi.com --username $MOBINGI_USERNAME --password $MOBINGI_PASSWORD --web-id $MOBINGI_OPENID_WEB_CLIENT_ID --web-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET'
-alias tokenprod='ccf token --login-url login.mobingi.com --username $MOBINGI_USERNAME_PROD --password $MOBINGI_PASSWORD_PROD --web-id $MOBINGI_OPENID_WEB_CLIENT_ID_PROD --web-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET_PROD'
+alias tokenrootdev='ccf token --login-url logindev.mobingi.com --username $MOBINGI_ROOT_USERNAME --password $MOBINGI_ROOT_PASSWORD --client-id $MOBINGI_OPENID_WEB_CLIENT_ID --client-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET'
+alias tokenrootprod='ccf token --login-url login.mobingi.com --username $MOBINGI_ROOT_USERNAME_PROD --password $MOBINGI_ROOT_PASSWORD_PROD --client-id $MOBINGI_OPENID_WEB_CLIENT_ID_PROD --client-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET_PROD'
+alias tokendev='ccf token --login-url logindev.mobingi.com --username $MOBINGI_USERNAME --password $MOBINGI_PASSWORD --client-id $MOBINGI_OPENID_WEB_CLIENT_ID --client-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET'
+alias tokenprod='ccf token --login-url login.mobingi.com --username $MOBINGI_USERNAME_PROD --password $MOBINGI_PASSWORD_PROD --client-id $MOBINGI_OPENID_WEB_CLIENT_ID_PROD --client-secret $MOBINGI_OPENID_WEB_CLIENT_SECRET_PROD'
 
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'
