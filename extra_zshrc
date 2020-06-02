@@ -41,7 +41,7 @@ export MANPAGER="vim -c MANPAGER -"
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export EDITOR=vim
-  alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y && brew update -v && brew upgrade -v && flatpak update'
+  alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
 fi
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
@@ -51,6 +51,7 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   export PATH=$PATH:~/Library/Python/3.7/bin
 fi
 
+export GOPRIVATE="github.com/mobingilabs/*"
 export GOPATH=$HOME/gopath
 export GOPROXY=https://proxy.golang.org
 export PATH=$PATH:$GOPATH/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools
@@ -87,10 +88,10 @@ alias kn='kubectl get node -o wide'
 alias kt='kubectl top'
 alias k='kubectl'
 
-alias awsdev='echo -n "--key $AWS_ACCESS_KEY_ID_ASSUME --secret $AWS_SECRET_ACCESS_KEY_ASSUME --rolearn $ROLE_ARN"'
-alias awsqa='echo -n "--key $AWS_ACCESS_KEY_ID_ASSUME_QA --secret $AWS_SECRET_ACCESS_KEY_ASSUME_QA --rolearn $ROLE_ARN_QA"'
-alias awsnext='echo -n "--key $AWS_ACCESS_KEY_ID_ASSUME_NEXT --secret $AWS_SECRET_ACCESS_KEY_ASSUME_NEXT --rolearn $ROLE_ARN_NEXT"'
-alias awsprod='echo -n "--key $AWS_ACCESS_KEY_ID_ASSUME_PROD --secret $AWS_SECRET_ACCESS_KEY_ASSUME_PROD --rolearn $ROLE_ARN_PROD"'
+alias awsdev='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME --secret $AWS_SECRET_ACCESS_KEY_ASSUME --rolearn $ROLE_ARN"'
+alias awsqa='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME_QA --secret $AWS_SECRET_ACCESS_KEY_ASSUME_QA --rolearn $ROLE_ARN_QA"'
+alias awsnext='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME_NEXT --secret $AWS_SECRET_ACCESS_KEY_ASSUME_NEXT --rolearn $ROLE_ARN_NEXT"'
+alias awsprod='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME_PROD --secret $AWS_SECRET_ACCESS_KEY_ASSUME_PROD --rolearn $ROLE_ARN_PROD"'
 
 # switching gke clusters
 alias kdev='gcloud config configurations activate default && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i dev | cut -f 1 -d " ") && kubectl config current-context'
