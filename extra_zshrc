@@ -42,7 +42,7 @@ export MANPAGER="vim -c MANPAGER -"
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export EDITOR=vim
   alias up='sudo apt update && apt list --upgradable && sudo apt upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
-  alias upve='$EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall && rm -rfv /tmp/vim-go* && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs'
+  alias upve='$EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall && ~/.files/gotools.sh && rm -rfv /tmp/vim-go* && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs'
   if [ -x "$(command -v cmus-remote)" ]; then
     alias cr='cmus-remote'
   fi

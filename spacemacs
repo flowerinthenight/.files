@@ -516,6 +516,8 @@ before packages are loaded."
   (setq-default evil-escape-key-sequence "jj")
   (spacemacs/toggle-transparency)
   (setq create-lockfiles nil)
+  "Prevent the visual selection overriding my system clipboard."
+  (fset 'evil-visual-update-x-selection 'ignore)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
