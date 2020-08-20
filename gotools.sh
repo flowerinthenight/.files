@@ -10,6 +10,6 @@ go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/godoctor/godoctor
 go get -u -v github.com/haya14busa/gopkgs/cmd/gopkgs
 go get -u -v github.com/josharian/impl
-go get -u -v github.com/stamblerre/gocode
+# go get -u -v github.com/stamblerre/gocode
 go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/zmb3/gogetdoc

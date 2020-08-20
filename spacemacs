@@ -67,7 +67,7 @@ This function should only modify configuration layer settings."
          godoc-at-point-function 'godoc-gogetdoc
          go-backend 'lsp
          go-tab-width 4)
-     org
+     ;; org
      latex
      theming
      ;; html
@@ -231,7 +231,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    ;; "Fira Mono"
-   dotspacemacs-default-font '(("Fira Mono"
+   dotspacemacs-default-font '(("JetBrains Mono"
                                :size 9.0
                                :weight normal
                                :width normal)
@@ -347,12 +347,12 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 85
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-inactive-transparency 90
+   dotspacemacs-inactive-transparency 85
 
    ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
@@ -516,7 +516,7 @@ before packages are loaded."
   (setq-default evil-escape-key-sequence "jj")
   (spacemacs/toggle-transparency)
   (setq create-lockfiles nil)
-  "Prevent the visual selection overriding my system clipboard."
+  ;; "Prevent the visual selection overriding my system clipboard."
   (fset 'evil-visual-update-x-selection 'ignore)
   )
 
