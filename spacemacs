@@ -38,7 +38,7 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     javascript
+     ;; javascript
      yaml
      ;; auto-completion
      ;; better-defaults
@@ -68,7 +68,7 @@ This function should only modify configuration layer settings."
          go-backend 'lsp
          go-tab-width 4)
      ;; org
-     latex
+     ;; latex
      theming
      ;; html
      ;; vimscript
