@@ -39,10 +39,10 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; javascript
-     yaml
-     ;; auto-completion
      ;; better-defaults
+     yaml
      emacs-lisp
+     protobuf
      ;; git
      ;; helm
      ivy
@@ -72,6 +72,10 @@ This function should only modify configuration layer settings."
      theming
      ;; html
      ;; vimscript
+     ;; (auto-completion :variables
+     ;;                  auto-completion-use-company-box t
+     ;;                  auto-completion-enable-snippets-in-popup t)
+     csv
      )
 
    ;; List of additional packages that will be installed without being
@@ -81,7 +85,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(yasnippet-snippets)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -533,9 +537,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
+ '(highlight-parentheses-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(package-selected-packages
    (quote
-    (web-beautify tide typescript-mode tern prettier-js nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode simple-httpd helm-gtags helm helm-core ggtags counsel-gtags add-node-modules-path org-pomodoro alert log4e yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-projectile org-category-capture org-present gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio go-guru go-eldoc go-mode gnuplot gh-md flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed auctex async aggressive-indent adaptive-wrap ace-window ace-link avy solarized-theme dash))))
+    (csv-mode org-pomodoro alert log4e yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-projectile org-category-capture org-present gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio go-guru go-eldoc go-mode gnuplot gh-md flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed auctex async aggressive-indent adaptive-wrap ace-window ace-link avy solarized-theme dash))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
