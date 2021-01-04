@@ -113,7 +113,7 @@ alias knext='gcloud config configurations activate mochi-prod && gcloud containe
 alias kprod='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | cut -f 1 -d " ") && kubectl config current-context'
 
 # log shortcuts
-alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed|requeue|spanner.*[0-9]s$|final.duration.*[0-9]s$|ccf|accts=.*runid=.*|sorry|monthrecords.*[0-9]s$|kettle.*|leader\]'"
+alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|requeue|spanner.*[0-9]s$|final.duration.*[0-9]s$|ccf|accts=.*runid=.*|sorry|monthrecords.*[0-9]s$|kettle.*|leader\].*notify=true'"
 alias tcur="stern curmxd -s 1s | grep -i -E '[0-9]ms$|[0-9]s$|process\ duration.*|utils\.go|not\ updated|failed'"
 
 # getting tokens

@@ -38,16 +38,21 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; javascript
-     ;; better-defaults
-     yaml
      emacs-lisp
+     javascript
+     ;; better-defaults
+     csv
+     yaml
      protobuf
      ;; git
      ;; helm
      ivy
+     ;; NOTE: lsp-ui is disabled via excluded-packages
      (lsp :variables
+          lsp-headerline-breadcrumb-enable nil ;; icons not showing up properly
+          lsp-headerline-breadcrumb-segments '(path-up-to-project)
           lsp-enable-file-watchers nil
+          lsp-log-io nil
           lsp-ui-doc-enable	nil)
      markdown
      ;; multiple-cursors
@@ -67,7 +72,7 @@ This function should only modify configuration layer settings."
          godoc-at-point-function 'godoc-gogetdoc
          go-backend 'lsp
          go-tab-width 4)
-     ;; org
+     org
      ;; latex
      theming
      ;; html
@@ -75,7 +80,6 @@ This function should only modify configuration layer settings."
      ;; (auto-completion :variables
      ;;                  auto-completion-use-company-box t
      ;;                  auto-completion-enable-snippets-in-popup t)
-     csv
      )
 
    ;; List of additional packages that will be installed without being
@@ -95,6 +99,7 @@ This function should only modify configuration layer settings."
    '(
      treemacs
      evil-search-highlight-persist
+     lsp-ui
      )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -238,11 +243,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-default-font '(("JetBrains Mono"
                                :size 9.0
                                :weight normal
-                               :width normal)
-                               ("JetBrains Mono"
-                                :size 11.0
-                                :weight normal
-                                :width normal))
+                               :width normal))
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -486,12 +487,7 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq theming-modifications
-        '((solarized-light
-           (org-level-1 :family "Fira Mono")
-           (org-level-2 :family "Fira Mono")
-           (org-level-3 :family "Fira Mono")
-           (org-level-4 :family "Fira Mono")
-           (org-level-5 :family "Fira Mono"))))
+        '((solarized-light)))
    (setq initial-frame-alist '((top . 30) (left . 600) (width . 270) (height . 75)))
   )
 
@@ -522,6 +518,10 @@ before packages are loaded."
   (setq create-lockfiles nil)
   ;; "Prevent the visual selection overriding my system clipboard."
   (fset 'evil-visual-update-x-selection 'ignore)
+  (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "google-chrome")
+  ;; My SPC o = "custom" maps:
+  (spacemacs/declare-prefix "o" "flowerinthenight") ;; optional, but for discovery
+  (spacemacs/set-leader-keys "oc" 'clipboard-kill-ring-save) ;; copy to clipboard
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -537,21 +537,31 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
+ '(eyebrowse-wrap-around t)
  '(highlight-parentheses-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(org-agenda-files (list org-directory))
+ '(org-directory "~/orgmode" t)
+ '(org-superstar-headline-bullets-list (quote (9673 9670 10040 10047)))
+ '(org-todo-keyword-faces (quote (("PROGRESS" . "red") ("DONE" . "#006400"))))
+ '(org-todo-keywords (quote ((sequence "TODO" "PROGRESS" "|" "DONE"))))
  '(package-selected-packages
    (quote
-    (csv-mode org-pomodoro alert log4e yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-projectile org-category-capture org-present gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio go-guru go-eldoc go-mode gnuplot gh-md flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed auctex async aggressive-indent adaptive-wrap ace-window ace-link avy solarized-theme dash))))
+    (org-alert web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode helm-css-scss helm helm-core haml-mode emmet-mode counsel-css company-web web-completion-data add-node-modules-path org-pomodoro alert log4e yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-projectile org-category-capture org-present gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio go-guru go-eldoc go-mode gnuplot gh-md flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed auctex async aggressive-indent adaptive-wrap ace-window ace-link avy solarized-theme dash)))
+ '(sp-highlight-wrap-overlay nil)
+ '(sp-highlight-wrap-tag-overlay nil)
+ '(word-wrap t)
+ '(yas-wrap-around-region t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#657b83" :background "#fdf6e3"))))
- '(org-level-1 ((t (:family "Fira Mono"))))
- '(org-level-2 ((t (:family "Fira Mono"))))
- '(org-level-3 ((t (:family "Fira Mono"))))
- '(org-level-4 ((t (:family "Fira Mono"))))
- '(org-level-5 ((t (:family "Fira Mono")))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.1 :family "JetBrains Mono"))))
+ '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :height 1.0 :family "JetBrains Mono"))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "#268bd2" :height 1.0 :family "JetBrains Mono"))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "#b58900" :height 1.0 :family "JetBrains Mono"))))
+ '(org-level-5 ((t (:inherit variable-pitch :foreground "#2aa198" :family "JetBrains Mono")))))
 )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -561,14 +571,3 @@ This function is called at the very end of Spacemacs initialization."
  '(package-selected-packages
    (quote
     (org-pomodoro alert log4e yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-projectile org-category-capture org-present gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio go-guru go-eldoc go-mode gnuplot gh-md flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed auctex async aggressive-indent adaptive-wrap ace-window ace-link avy solarized-theme dash))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 89)) (:foreground "#657b83" :background "#fdf6e3"))))
- '(org-level-1 ((t (:family "Fira Mono"))))
- '(org-level-2 ((t (:family "Fira Mono"))))
- '(org-level-3 ((t (:family "Fira Mono"))))
- '(org-level-4 ((t (:family "Fira Mono"))))
- '(org-level-5 ((t (:family "Fira Mono")))))
