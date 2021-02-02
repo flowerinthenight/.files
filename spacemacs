@@ -50,7 +50,8 @@ This function should only modify configuration layer settings."
      ;; NOTE: lsp-ui is disabled via excluded-packages
      (lsp :variables
           lsp-headerline-breadcrumb-enable nil ;; icons not showing up properly
-          lsp-headerline-breadcrumb-segments '(path-up-to-project)
+          ;; lsp-headerline-breadcrumb-segments '(path-up-to-project)
+          ;; lsp-headerline-arrow ">" ;; alternative if icons become garbage
           lsp-enable-file-watchers nil
           lsp-log-io nil
           lsp-ui-doc-enable	nil)
