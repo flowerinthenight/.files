@@ -37,10 +37,11 @@ alias h='htop'
 # alias up='sudo apt-get -o Acquire::ForceIPv4=true update && sudo apt-get -o Acquire::ForceIPv4=true upgrade -y'
 alias x='exit'
 
-export MANPAGER="vim -c MANPAGER -"
+# export MANPAGER="vim -c MANPAGER -"
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export EDITOR=vim
+  # export EDITOR="emacs -nw"
   alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
   alias upve='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall && ~/.files/gotools.sh && rm -rfv /tmp/vim-go* && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
   alias upv='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall; popd;'
@@ -86,6 +87,7 @@ export GITGET_ROOT=$HOME/develop
 . $HOME/.zsh/plugins/bd/bd.zsh
 
 alias v="${EDITOR}"
+alias e="emacs"
 
 # kubectl shortcuts
 alias kc='kubectl config get-contexts'
