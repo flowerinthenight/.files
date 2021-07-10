@@ -42,7 +42,8 @@ alias x='exit'
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export EDITOR=vim
   # export EDITOR="emacs -nw"
-  alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
+  # alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
+  alias up='sudo apt update && apt list --upgradable && brew update -v && brew upgrade -v && flatpak update -y'
   alias upve='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall && ~/.files/gotools.sh && rm -rfv /tmp/vim-go* && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
   alias upv='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall; popd;'
   alias upe='pushd ~/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
@@ -121,7 +122,7 @@ alias knext='gcloud config configurations activate mochi-prod && gcloud containe
 alias kprod='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | cut -f 1 -d " ") && kubectl config current-context'
 
 # log shortcuts
-alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|requeue|spanner.*[0-9]s$|ccf.*\.go|accts=.*runid=.*|sorry|monthrecords.*[0-9]s$|kettle.*|notify=true|active.*\(me|[0-9]m[0-9]*\.[0-9]*s$'"
+alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|spanner.*[0-9]s$|ccf.*\.go|accts=.*runid=.*|monthrecords.*[0-9]s$|notify=true|active.*\(me|[0-9]m[0-9]*\.[0-9]*s$'"
 alias tcur="stern curmxd -s 1s | grep -i -E '[0-9]ms$|[0-9]s$|process\ duration.*|utils\.go|not\ updated|failed'"
 
 # getting tokens
@@ -139,6 +140,17 @@ alias rkeydev='ccf token --login-url logindev.mobingi.com/ripple --client-id $OP
 alias rkeyqa='ccf token --login-url loginqa.mobingi.com/ripple --client-id $OPENAPI_ID_QA --client-secret $OPENAPI_SECRET_QA --grant-type client_credentials'
 alias rkeynext='ccf token --login-url loginnext.alphaus.cloud/ripple --client-id $OPENAPI_ID_NEXT --client-secret $OPENAPI_SECRET_NEXT --grant-type client_credentials'
 alias rkeyprod='ccf token --login-url login.alphaus.cloud/ripple --client-id $OPENAPI_ID_PROD --client-secret $OPENAPI_SECRET_PROD --grant-type client_credentials'
+
+alias rbluetokendev='ccf token --login-url logindev.alphaus.cloud/ripple --client-id $CCOE_ID_DEV --client-secret $CCOE_SECRET_DEV --grant-type client_credentials'
+alias rbluetokensubdev='ccf token --login-url logindev.alphaus.cloud/ripple --client-id $RIPPLE_TESTER_CLIENT_ID_DEV --client-secret $RIPPLE_TESTER_CLIENT_SECRET_DEV --grant-type client_credentials'
+alias rbluetokennext='bluectl access-token --client-id $CCOE_ID_NEXT --client-secret $CCOE_SECRET_NEXT --beta'
+alias rbluetokensubnext='bluectl access-token --client-id $RIPPLE_TESTER_CLIENT_ID_NEXT --client-secret $RIPPLE_TESTER_CLIENT_SECRET_NEXT --beta'
+alias rbluetoken='bluectl access-token --client-id $CCOE_ID_PROD --client-secret $CCOE_SECRET_PROD'
+alias rbluetokensub='bluectl access-token --client-id $RIPPLE_TESTER_CLIENT_ID_PROD --client-secret $RIPPLE_TESTER_CLIENT_SECRET_PROD'
+
+alias bluetokensubdev='ccf token --login-url logindev.alphaus.cloud --client-id $WAVE_TESTER_CLIENT_ID_DEV --client-secret $WAVE_TESTER_CLIENT_SECRET_DEV --grant-type client_credentials'
+
+alias orgs='lsdy WAVE_MSP $(awsprod) --maxlen 50 --attr msp_id,company_name,status --nosort'
 
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'

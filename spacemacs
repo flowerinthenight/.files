@@ -101,6 +101,7 @@ This function should only modify configuration layer settings."
      treemacs
      evil-search-highlight-persist
      lsp-ui
+     auto-highlight-symbol ;; don't like the auto-highlight-symbol-mode on by default
      )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -237,7 +238,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
-   dotspacemacs-colorize-cursor-according-to-state t
+   dotspacemacs-colorize-cursor-according-to-state nil
 
    ;; Default font or prioritized list of fonts.
    ;; "Fira Mono"
@@ -489,7 +490,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq theming-modifications
         '((solarized-light)))
-   (setq initial-frame-alist '((top . 30) (left . 600) (width . 270) (height . 75)))
+   (setq initial-frame-alist '((top . 80) (left . 500) (width . 270) (height . 75)))
   )
 
 (defun dotspacemacs/user-load ()
