@@ -41,7 +41,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      javascript
      ;; better-defaults
-     csv
+     ;; csv
      yaml
      protobuf
      ;; git
