@@ -46,7 +46,7 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export EDITOR=vim
   # export EDITOR="emacs -nw"
   # alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
-  alias up='sudo apt update && apt list --upgradable && brew update -v && brew upgrade -v && flatpak update -y'
+  alias up='sudo apt update && apt list --upgradable; brew update -v && brew upgrade -v; flatpak update -y'
   alias upve='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall && ~/.files/gotools.sh && rm -rfv /tmp/vim-go* && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
   alias upv='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall; popd;'
   alias upe='pushd ~/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
@@ -65,7 +65,8 @@ fi
 export GOPRIVATE="github.com/mobingilabs/*"
 export GOPATH=$HOME/gopath
 export GOPROXY=https://proxy.golang.org
-export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools
+export GOCACHE=$HOME/tmp/gocache
+export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools:$HOME/.krew/bin
 
 # Edit $PATH after Homebrew's eval (see ~/.profile) so I can use Go binaries from ~/.local/bin/ instead of brew.
 NOHBPATH=$(echo $PATH | awk '{gsub(/:.*linuxbrew.*brew\/sbin/,"");print}'); export PATH=$NOHBPATH
@@ -119,14 +120,14 @@ alias awsalmprod='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME_
 # alias knext="gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i next | awk '{print $1}') && kubectl config current-context"
 # alias kprod="gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | awk '{print $1}') && kubectl config current-context"
 alias kdev='gcloud config configurations activate default && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i dev | cut -f 1 -d " ") && kubectl config current-context'
-alias kcur='gcloud config configurations activate default && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list | grep -i curmx | cut -f 1 -d " ") && kubectl config current-context'
 alias kqa='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i qa | cut -f 1 -d " ") && kubectl config current-context'
 alias knext='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i next | cut -f 1 -d " ") && kubectl config current-context'
 alias kprod='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | cut -f 1 -d " ") && kubectl config current-context'
+alias kcur='gcloud config configurations activate mochi-prod && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list | grep -i curmx | cut -f 1 -d " ") && kubectl config current-context'
 
 # log shortcuts
-alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|spanner.*[0-9]s$|ccf.*\.go|accts=.*runid=.*|monthrecords.*[0-9]s$|notify=true|active.*\(me|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cmd\]|details\ only'"
-alias tcur="stern curmxd -s 1s | grep -i -E '[0-9]ms$|[0-9]s$|process\ duration.*|utils\.go|not\ updated|failed'"
+alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|spanner.*[0-9]s$|ccf.*\.go|accts=.*runid=.*|monthrecords.*[0-9]s$|notify=true|broadcast=|active.*\(me|heartbeat.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cmd\]|details\ only|dstore|cur\.go'"
+alias tcur="stern --context=gke_mobingi-main_asia-northeast1-b_curmx curmx -s 1s | grep -i -E '[a-z]*\.go|sqs|process\ duration.*|sent.*|not\ updated.*|failed|leader.active.*|heartbeat.*|diff=[0-9]*|hedge'"
 
 # getting tokens
 alias rtokenrootdev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME --password $MOBINGI_RIPPLE_ROOT_PASSWORD --client-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --client-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
@@ -153,7 +154,8 @@ alias rbluetokensub='bluectl access-token --client-id $RIPPLE_TESTER_CLIENT_ID_P
 
 alias bluetokensubdev='ccf token --login-url logindev.alphaus.cloud --client-id $WAVE_TESTER_CLIENT_ID_DEV --client-secret $WAVE_TESTER_CLIENT_SECRET_DEV --grant-type client_credentials'
 
-alias orgs='lsdy WAVE_MSP $(awsprod) --maxlen 50 --attr msp_id,company_name,status --nosort'
+alias orgs='lsdy WAVE_MSP $(awsprod) --maxlen 50 --attr msp_id,company_name,status,email --nosort'
+alias supers='lsdy OPENID_CLIENT $(awsprod) --attr client_id,client_secret,name,user_id --nosort'
 
 alias sl='ssh lisbeth'
 alias sy='ssh yavanna'

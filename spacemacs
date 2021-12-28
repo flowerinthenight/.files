@@ -39,7 +39,7 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      emacs-lisp
-     javascript
+     ;; javascript
      ;; better-defaults
      ;; csv
      yaml
@@ -64,7 +64,7 @@ This function should only modify configuration layer settings."
      ;; syntax-checking
      ;; treemacs
      (neotree :variables
-              neo-theme 'nerd)
+              neo-theme 'ascii)
      ;; version-control
      (go :variables
          gofmt-command "goimports"
@@ -73,7 +73,7 @@ This function should only modify configuration layer settings."
          godoc-at-point-function 'godoc-gogetdoc
          go-backend 'lsp
          go-tab-width 4)
-     org
+     ;; org
      ;; latex
      theming
      ;; html
@@ -81,6 +81,7 @@ This function should only modify configuration layer settings."
      ;; (auto-completion :variables
      ;;                  auto-completion-use-company-box t
      ;;                  auto-completion-enable-snippets-in-popup t)
+     ;; emoji
      )
 
    ;; List of additional packages that will be installed without being
@@ -90,7 +91,8 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(yasnippet-snippets)
+   ;; dotspacemacs-additional-packages '(yasnippet-snippets)
+   dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
