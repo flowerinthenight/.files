@@ -38,7 +38,7 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     emacs-lisp
+     ;; emacs-lisp
      ;; javascript
      ;; better-defaults
      ;; csv
@@ -55,7 +55,7 @@ This function should only modify configuration layer settings."
           lsp-enable-file-watchers nil
           lsp-log-io nil
           lsp-ui-doc-enable	nil)
-     markdown
+     ;; markdown
      ;; multiple-cursors
      (shell :variables
              shell-default-height 30
@@ -104,6 +104,7 @@ This function should only modify configuration layer settings."
      evil-search-highlight-persist
      lsp-ui
      auto-highlight-symbol ;; don't like the auto-highlight-symbol-mode on by default
+     all-the-icons ;; sometimes causes slow startup
      )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -224,8 +225,9 @@ It should only modify the values of Spacemacs settings."
    ;; pair of numbers, e.g. `(recents-by-project . (7 .  5))', where the first
    ;; number is the project limit and the second the limit on the recent files
    ;; within a project.
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+   ;; CHEW: See if this improves performance.
+   ;; dotspacemacs-startup-lists '((recents . 5) (projects . 7))
+   dotspacemacs-startup-lists nil
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -575,10 +577,9 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq theming-modifications
-        '((solarized-light)))
-   (setq initial-frame-alist '((top . 80) (left . 500) (width . 270) (height . 75)))
-  )
+  (setq theming-modifications '((solarized-light)))
+  (setq initial-frame-alist '((top . 80) (left . 500) (width . 270) (height . 75)))
+)
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -597,6 +598,7 @@ before packages are loaded."
   (global-set-key (kbd "<end>") 'end-of-line)
   (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
   (setq vc-follow-symlinks nil)
+  (setq undo-tree-auto-save-history nil)
   (setq backup-directory-alist
         `((".*" . ,temporary-file-directory)))
   (setq auto-save-file-name-transforms

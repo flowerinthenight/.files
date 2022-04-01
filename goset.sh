@@ -7,6 +7,6 @@ if [ $? -eq 0 ]; then
     exit 0
 fi
 
-go get golang.org/dl/$1 && $1 download
+go install golang.org/dl/$1@latest && $1 download
 ln -sf $GOPATH/bin/$1 $HOME/.local/bin/go
 go version

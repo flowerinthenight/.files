@@ -48,8 +48,8 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   # alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
   alias up='sudo apt update && apt list --upgradable; brew update -v && brew upgrade -v; flatpak update -y'
   alias upve='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall && ~/.files/gotools.sh && rm -rfv /tmp/vim-go* && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
-  alias upv='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall; popd;'
-  alias upe='pushd ~/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
+  alias upv='UPV_DIR=$PWD; cd $HOME/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall; cd $UPV_DIR'
+  alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
   if [ -x "$(command -v cmus-remote)" ]; then
     alias cr='cmus-remote'
   fi
@@ -116,18 +116,14 @@ alias awsnext='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME_NEX
 alias awsprod='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME_PROD --secret $AWS_SECRET_ACCESS_KEY_ASSUME_PROD --rolearn $ROLE_ARN_PROD"'
 alias awsalmprod='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME_PROD --secret $AWS_SECRET_ACCESS_KEY_ASSUME_PROD --rolearn $ROLE_ARN_ALMPROD"'
 
-# switching gke clusters
-# alias kdev="gcloud config configurations activate default && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i dev | awk '{print $1}') && kubectl config current-context"
-# alias kqa="gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i qa | awk '{print $1}') && kubectl config current-context"
-# alias knext="gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i next | awk '{print $1}') && kubectl config current-context"
-# alias kprod="gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | awk '{print $1}') && kubectl config current-context"
-alias kdev='gcloud config configurations activate default && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i dev | cut -f 1 -d " ") && kubectl config current-context'
-alias kqa='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i qa | cut -f 1 -d " ") && kubectl config current-context'
-alias knext='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i next | cut -f 1 -d " ") && kubectl config current-context'
-alias kprod="gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i -E '^mochi-prod-' | awk '{ print $1 }') && kubectl config current-context"
-alias kcur='gcloud config configurations activate mochi-prod && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list | grep -i curmx | cut -f 1 -d " ") && kubectl config current-context'
-alias kue4="gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east4 get-credentials $(gcloud container clusters list | grep -i -E '^us-east4-' | awk '{ print $1 }') && kubectl config current-context"
-alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials mcx-us-east1-configcluster && kubectl config current-context'
+# Switching GKE clusters.
+alias kdev='gcloud config configurations activate default && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i dev | cut -f 1 -d " ")'
+alias knext='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i next | cut -f 1 -d " ")'
+alias kprod='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | cut -f 1 -d " ")'
+alias kcur='gcloud config configurations activate mochi-prod && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list | grep -i curmx | cut -f 1 -d " ")'
+# alias kue4='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east4 get-credentials $(gcloud container clusters list | grep -i us-east4 | cut -f 1 -d " ")'
+alias kue4="gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east4 get-credentials $(gcloud container clusters list > /tmp/out && cat /tmp/out | grep -oi -E '^us-east4.*$' | awk '{ print $1 }')"
+alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials mcx-us-east1-configcluster'
 
 # log shortcuts
 alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|spanner.*[0-9]s$|ccf.*\.go|accts=.*runid=.*|monthrecords.*[0-9]s$|notify=true|broadcast=|active.*\(me|heartbeat.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cmd\]|details\ only|dstore|cur\.go|drift\.go'"
