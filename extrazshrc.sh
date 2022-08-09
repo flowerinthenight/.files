@@ -43,6 +43,9 @@ alias x='exit'
 # export MANPAGER="vim -c MANPAGER -"
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+  # https://wiki.archlinux.org/title/Hardware_video_acceleration
+  export LIBVA_DRIVER_NAME=nvidia
+  export VDPAU_DRIVER=nvidia
   export EDITOR=vim
   # export EDITOR="emacs -nw"
   # alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
