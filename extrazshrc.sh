@@ -130,7 +130,7 @@ alias kue4="gcloud config configurations activate mochi-prod && gcloud container
 alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials mcx-us-east1-configcluster'
 
 # log shortcuts
-alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|spanner.*[0-9]s$|ccf.*\.go|accts=.*runid=.*|monthrecords.*[0-9]s$|notify=true|broadcast=|active.*\(me|heartbeat.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cmd\]|details\ only|dstore|cur\.go|drift\.go'"
+alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|decr=|cleanupall|distri|decr=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|spanner.*[0-9]s$|ccf.*\.go|accts=.*runid=.*|monthrecords.*[0-9]s$|notify=true|broadcast=|active.*\(me|heartbeat.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|details\ only|dstore|cur\.go|drift\.go|bgsummary\]'"
 alias tcur="stern --context=gke_mobingi-main_asia-northeast1-b_curmx curmx -s 1s | grep -i -E '[a-z]*\.go|sqs|process\ duration.*|sent.*|not\ updated.*|failed|leader.active.*|heartbeat.*|diff=[0-9]*|hedge'"
 
 # getting tokens
