@@ -29,10 +29,16 @@ source ~/zsh-git-prompt/zshrc.sh
 # \U1F7E2 - green circle
 # \U1F538 - small orange diamond
 
-if [ -z "${CUSTOM_HOST}" ]; then
-  PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status)'$'\U1F538'
+# Check if running in GCP:
+systemctl is-active --quiet google-osconfig-agent
+if [ $? -ne 0 ]; then
+  if [ -z "${CUSTOM_HOST}" ]; then
+    PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status)'$'\U1F538'
+  else
+    PROMPT='${GREEN}%n@${CUSTOM_HOST}${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status)'$'\U1F538'
+  fi
 else
-  PROMPT='${GREEN}%n@${CUSTOM_HOST}${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status)'$'\U1F538'
+  PROMPT='${RED}%n@${CUSTOM_HOST}${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status)'$'\U1F538'
 fi
 
 alias l='ls -lF'
