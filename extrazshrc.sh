@@ -24,6 +24,7 @@ setopt EXTENDED_HISTORY
 
 GIT_PROMPT_EXECUTABLE="haskell"
 source ~/zsh-git-prompt/zshrc.sh
+# source "$(brew --prefix)/opt/zsh-git-prompt/zshrc.sh"
 
 # \U1F7E2 - green circle
 # \U1F538 - small orange diamond
@@ -167,8 +168,8 @@ alias supers='lsdy OPENID_CLIENT $(awsprod) --attr client_id,client_secret,name,
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
-alias sl='ssh lisbeth'
-alias sy='ssh yavanna'
+# alias sl='ssh lisbeth'
+# alias sy='ssh yavanna'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias open='xdg-open'
