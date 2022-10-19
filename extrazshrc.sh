@@ -38,7 +38,7 @@ if [ $? -ne 0 ]; then
     PROMPT='${GREEN}%n@${CUSTOM_HOST}${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status)'$'\U1F538'
   fi
 else
-  PROMPT='${RED}%n@${CUSTOM_HOST}${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status)'$'\U1F538'
+  PROMPT='${RED}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status)'$'\U1F538'
 fi
 
 alias l='ls -lF'
