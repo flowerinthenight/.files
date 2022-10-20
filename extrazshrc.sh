@@ -67,6 +67,9 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   fi
 fi
 
+alias gstart='gcloud compute instances start fdbg'
+alias gstop='gcloud compute instances stop fdbg'
+
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   export EDITOR=mvim
   alias up='brew update --verbose && brew upgrade --verbose'
