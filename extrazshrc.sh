@@ -30,7 +30,7 @@ source ~/zsh-git-prompt/zshrc.sh
 # \U1F538 - small orange diamond
 
 # Check if running in GCP:
-systemctl is-active --quiet google-osconfig-agent
+[ -x "$(command -v systemctl)" ] && systemctl is-active --quiet google-osconfig-agent
 if [ $? -ne 0 ]; then
   if [ -z "${CUSTOM_HOST}" ]; then
     PROMPT='${GREEN}%n@%m${YELLOW}:%l${NORM}:[%1c${NORM}]$(git_super_status)'$'\U1F538'
