@@ -69,6 +69,7 @@ fi
 
 alias g1='gcloud compute instances start fdbg'
 alias g0='gcloud compute instances stop fdbg'
+alias gl='gcloud compute instances list'
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   export EDITOR=mvim
