@@ -23,7 +23,7 @@ export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
 
 GIT_PROMPT_EXECUTABLE="haskell"
-source ~/zsh-git-prompt/zshrc.sh
+source ~/.zsh-git-prompt/zshrc.sh
 # source "$(brew --prefix)/opt/zsh-git-prompt/zshrc.sh"
 
 # \U1F7E2 - green circle
