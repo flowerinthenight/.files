@@ -146,7 +146,7 @@ alias kcfg='gcloud config configurations activate mochi-prod && gcloud container
 
 # log shortcuts
 # spanner.*[0-9]s$
-alias tracem="stern linkbatchd -s 1s | grep -i --line-buffered -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|cleanupall|distri|progress=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|ccf\]|accts=.*runid=.*|notify=true|broadcast=|leader.active.*\(me|heartbeat:.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cur\.go|drift\.go|export|fees\]|invoice.*duration.*|invoice\.go'"
+alias tracem="stern linkbatchd -s 1s | grep -i -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|cleanupall|distri|progress=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|ccf\]|accts=.*runid=.*|notify=true|broadcast=|leader.active.*\(me|heartbeat:.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cur\.go|drift\.go|export|fees\]|invoice.*duration.*|invoice\.go'"
 alias tcur="stern --context=gke_mobingi-main_asia-northeast1-b_curmx curmx -s 1s | grep -i -E '[a-z]*\.go|sqs|process\ duration.*|sent.*|not\ updated.*|failed|leader.active.*|heartbeat.*|diff=[0-9]*|hedge'"
 
 # getting tokens
