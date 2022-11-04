@@ -142,7 +142,8 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
 else
   alias kue4="gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east4 get-credentials $(gcloud container clusters list > /tmp/out && cat /tmp/out | grep -oi -E '^us-east4.*$' | awk '{ print $1 }')"
 fi
-alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials mcx-us-east1-cfg-ping'
+# alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials mcx-us-east1-cfg-ping'
+alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials $(gcloud container clusters list | grep -i cfg | cut -f 1 -d " ")'
 
 # log shortcuts
 # spanner.*[0-9]s$
