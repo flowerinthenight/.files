@@ -104,6 +104,7 @@ This function should only modify configuration layer settings."
      treemacs
      evil-search-highlight-persist
      lsp-ui
+     lsp-docker
      auto-highlight-symbol ;; don't like the auto-highlight-symbol-mode on by default
      all-the-icons ;; sometimes causes slow startup
      )
