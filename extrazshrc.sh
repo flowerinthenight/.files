@@ -55,6 +55,8 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export LIBVA_DRIVER_NAME=nvidia
   export VDPAU_DRIVER=nvidia
   export EDITOR=vim
+  alias v="${EDITOR}"
+  alias e="emacs"
   # export EDITOR="emacs -nw"
   # alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
   alias up='sudo apt update && apt list --upgradable; brew update -v && brew upgrade -v; flatpak update -y'
@@ -75,6 +77,8 @@ alias gls='gcloud compute instances list'
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   export EDITOR=mvim
+  alias v="${EDITOR}"
+  alias e="emacs -nw"
   alias up='brew update --verbose && brew upgrade --verbose'
   alias meld='/Applications/Meld.app/Contents/MacOS/Meld'
   export PATH=$PATH:~/Library/Python/3.7/bin
@@ -112,9 +116,6 @@ export GITGET_ROOT=$HOME/develop
 # zsh-bd
 # https://github.com/Tarrasch/zsh-bd
 . $HOME/.zsh/plugins/bd/bd.zsh
-
-alias v="${EDITOR}"
-alias e="emacs"
 
 # kubectl shortcuts
 alias kc='kubectl config get-contexts'
