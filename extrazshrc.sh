@@ -63,13 +63,12 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   alias upve='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall && ~/.files/gotools.sh && rm -rfv /tmp/vim-go* && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
   alias upv='UPV_DIR=$PWD; cd $HOME/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall; cd $UPV_DIR'
   # alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
-  alias tupe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
+  alias tupe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && e --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && e; cd $UPE_DIR'
   if [ -x "$(command -v cmus-remote)" ]; then
     alias cr='cmus-remote'
   fi
 fi
 
-alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
 
 alias g1='gcloud compute instances start fdbg'
 alias g0='gcloud compute instances stop fdbg'
@@ -83,6 +82,8 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   alias meld='/Applications/Meld.app/Contents/MacOS/Meld'
   export PATH=$PATH:~/Library/Python/3.7/bin
 fi
+
+alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && e --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && e; cd $UPE_DIR'
 
 export GOPRIVATE="github.com/mobingilabs/*"
 export GOPATH=$HOME/gopath
