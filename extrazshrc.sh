@@ -56,7 +56,7 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export VDPAU_DRIVER=nvidia
   export EDITOR=vim
   alias v="${EDITOR}"
-  alias e="emacs"
+  alias e="emacs -nw"
   # export EDITOR="emacs -nw"
   # alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
   alias up='sudo apt update && apt list --upgradable; brew update -v && brew upgrade -v; flatpak update -y'
@@ -83,7 +83,7 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   export PATH=$PATH:~/Library/Python/3.7/bin
 fi
 
-alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && e --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && e; cd $UPE_DIR'
+alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
 
 export GOPRIVATE="github.com/mobingilabs/*"
 export GOPATH=$HOME/gopath
