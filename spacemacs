@@ -27,7 +27,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-ask-for-lazy-installation t
 
    ;; List of additional paths where to look for configuration layers.
-   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
+   ;; Paths must have a trailing slash (i.e. "~/.mycontribs/")
    dotspacemacs-configuration-layer-path '()
 
    ;; List of configuration layers to load.
@@ -596,6 +596,8 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq theming-modifications '((solarized-light)))
   (setq initial-frame-alist '((top . 80) (left . 500) (width . 270) (height . 75)))
+  ;; https://github.com/emacs-evil/evil-collection/issues/215
+  (setq evil-want-keybinding nil)
 )
 
 (defun dotspacemacs/user-load ()
