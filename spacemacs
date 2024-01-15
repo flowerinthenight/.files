@@ -92,7 +92,6 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   ;; dotspacemacs-additional-packages '(yasnippet-snippets)
    dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
@@ -108,6 +107,8 @@ This function should only modify configuration layer settings."
      auto-highlight-symbol ;; don't like the auto-highlight-symbol-mode on by default
      all-the-icons ;; sometimes causes slow startup
      vim-powerline
+     dap
+     dap-mode
      )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -278,9 +279,9 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(solarized-light
-                         solarized-dark
-                         misterioso
-                         spacemacs-dark
+                         solarized-gruvbox-light
+                         solarized-light
+                         whiteboard
                          spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -299,7 +300,8 @@ It should only modify the values of Spacemacs settings."
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("JetBrains Mono"
+   ;; dotspacemacs-default-font '("JetBrains Mono"
+   dotspacemacs-default-font '("Go Mono"
                                :size 9.0
                                :weight normal
                                :width normal)
@@ -413,17 +415,17 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 85
+   dotspacemacs-active-transparency 97
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-inactive-transparency 85
+   dotspacemacs-inactive-transparency 97
 
    ;; A value from the range (0..100), in increasing opacity, which describes the
    ;; transparency level of a frame background when it's active or selected. Transparency
    ;; can be toggled through `toggle-background-transparency'. (default 90)
-   dotspacemacs-background-transparency 90
+   dotspacemacs-background-transparency 97
 
    ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
@@ -632,6 +634,7 @@ before packages are loaded."
   ;; My SPC o = "custom" maps:
   (spacemacs/declare-prefix "o" "flowerinthenight") ;; optional, but for discovery
   (spacemacs/set-leader-keys "oc" 'clipboard-kill-ring-save) ;; copy to clipboard
+  ;; (spacemacs/toggle-highlight-current-line-globally-off)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -646,17 +649,18 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "57a29645c35ae5ce1660d5987d3da5869b048477a7801ce7ab57bfb25ce12d3e" default))
  '(evil-want-Y-yank-to-eol nil)
  '(eyebrowse-wrap-around t)
- '(highlight-parentheses-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(highlight-parentheses-colors '("#93E0E3" "#F0DFAF" "#8CD0D3" "#bbb0cb" "#7F9F7F"))
  '(org-agenda-files (list org-directory))
  '(org-directory "~/orgmode" t)
- '(org-superstar-headline-bullets-list (quote (9673 9670 10040 10047)))
- '(org-todo-keyword-faces (quote (("PROGRESS" . "red") ("DONE" . "#006400"))))
- '(org-todo-keywords (quote ((sequence "TODO" "PROGRESS" "|" "DONE"))))
+ '(org-superstar-headline-bullets-list '(9673 9670 10040 10047))
+ '(org-todo-keyword-faces '(("PROGRESS" . "red") ("DONE" . "#006400")))
+ '(org-todo-keywords '((sequence "TODO" "PROGRESS" "|" "DONE")))
  '(package-selected-packages
-   (quote
-    (org-alert web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode helm-css-scss helm helm-core haml-mode emmet-mode counsel-css company-web web-completion-data add-node-modules-path org-pomodoro alert log4e yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-projectile org-category-capture org-present gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio go-guru go-eldoc go-mode gnuplot gh-md flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed auctex async aggressive-indent adaptive-wrap ace-window ace-link avy solarized-theme dash)))
+   '(org-alert web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode helm-css-scss helm helm-core haml-mode emmet-mode counsel-css company-web web-completion-data add-node-modules-path org-pomodoro alert log4e yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-projectile org-category-capture org-present gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio go-guru go-eldoc go-mode gnuplot gh-md flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed auctex async aggressive-indent adaptive-wrap ace-window ace-link avy solarized-theme dash))
  '(sp-highlight-wrap-overlay nil)
  '(sp-highlight-wrap-tag-overlay nil)
  '(word-wrap t)

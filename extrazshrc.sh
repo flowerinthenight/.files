@@ -56,10 +56,10 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export VDPAU_DRIVER=nvidia
   export EDITOR=vim
   alias v="${EDITOR}"
-  alias e="emacs -nw"
+  alias e="emacs"
   # export EDITOR="emacs -nw"
   # alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
-  alias up='sudo apt update && apt list --upgradable; brew update -v && brew upgrade -v; flatpak update -y'
+  alias up='sudo apt update && apt list --upgradable; brew update -v && brew upgrade -v; flatpak update -y; sudo snap refresh;'
   alias upve='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall && ~/.files/gotools.sh && rm -rfv /tmp/vim-go* && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
   alias upv='UPV_DIR=$PWD; cd $HOME/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall; cd $UPV_DIR'
   # alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
@@ -141,6 +141,7 @@ alias kdev='gcloud config configurations activate default && gcloud container cl
 alias knext='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i next | cut -f 1 -d " ")'
 alias kprod='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | cut -f 1 -d " ")'
 alias kcur='gcloud config configurations activate mochi-prod && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list | grep -i curmx | cut -f 1 -d " ")'
+alias kjuno='gcloud config configurations activate mochi-prod && gcloud container clusters --zone asia-northeast1-a get-credentials $(gcloud container clusters list | grep -i juno | cut -f 1 -d " ")'
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   alias kue4='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east4 get-credentials $(gcloud container clusters list | grep -i us-east4 | cut -f 1 -d " ")'
 else
