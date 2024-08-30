@@ -8,6 +8,8 @@ BLUE="%{"$'\033[01;34m'"%}"
 BOLD="%{"$'\033[01;39m'"%}"
 NORM="%{"$'\033[00m'"%}"
 
+export KEYTIMEOUT=1
+
 # Doesn't work that well for now.
 # mount | grep "${HOME}/gdrive" || { which google-drive-ocamlfuse &> /dev/null && google-drive-ocamlfuse "${HOME}/gdrive"; }
 
@@ -70,6 +72,7 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
 fi
 
 
+alias e="emacs -nw"
 alias g1='gcloud compute instances start fdbg'
 alias g0='gcloud compute instances stop fdbg'
 alias gls='gcloud compute instances list'
@@ -77,13 +80,12 @@ alias gls='gcloud compute instances list'
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   export EDITOR="emacs -nw"
   alias v="${EDITOR}"
-  alias e="emacs -nw"
   alias up='brew update --verbose && brew upgrade --verbose'
   alias meld='/Applications/Meld.app/Contents/MacOS/Meld'
   export PATH=$PATH:~/Library/Python/3.7/bin
 fi
 
-alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && e --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && e; cd $UPE_DIR'
+alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && e --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
 
 export GOPRIVATE="github.com/mobingilabs/*,github.com/alphauslabs/*"
 export GOPATH=$HOME/gopath
@@ -192,10 +194,10 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias open='xdg-open'
   # Set if vim colorscheme is solarized-light or flattened-light
-  export FZF_DEFAULT_OPTS='
-    --color fg:240,bg:230,hl:33,fg+:241,bg+:221,hl+:33
-    --color info:33,prompt:33,pointer:166,marker:166,spinner:33
-  '
+  # export FZF_DEFAULT_OPTS='
+  #   --color fg:240,bg:230,hl:33,fg+:241,bg+:221,hl+:33
+  #   --color info:33,prompt:33,pointer:166,marker:166,spinner:33
+  # '
 fi
 
 if [ -x "$(command -v wine)" ]; then
@@ -230,3 +232,9 @@ fi
 
 # https://thorsten-hans.com/autocompletion-for-kubectl-and-aliases-using-oh-my-zsh-6b5295dc6dfb
 plugins=(git git-flow brew history node npm kubectl)
+
+# termbin.com
+alias tb='nc termbin.com 9999'
+
+alias zb='zig build --summary all'
+alias zbt='zig build test --verbose'

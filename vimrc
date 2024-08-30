@@ -11,12 +11,10 @@ if has('win32')
     " 2. python should be 64-bit
     " set %HOME% env var equal to %USERPROFILE%
     set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-    " set rtp^=$HOME/vimfiles/bundle/ctrlp.vim/
     let vpath = $HOME . '/vimfiles/bundle'
     call vundle#begin(vpath) " call vundle#end
 else
     set rtp+=~/.vim/bundle/Vundle.vim/
-    " set rtp^=~/.vim/bundle/ctrlp.vim/
 
     " Ref: https://aonemd.github.io/blog/finding-things-in-vim
     if s:uname == "Darwin\n"
@@ -36,7 +34,6 @@ Plugin 'Shougo/neocomplete.vim'             " for golang (+ vim-go)
 Plugin 'fatih/vim-go'                       " gofmt, syntax
 " Plugin 'rust-lang/rust.vim'                 " rustfmt, syntax
 Plugin 'majutsushi/tagbar'                  " tagbar
-" Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy finder
 Plugin 'junegunn/fzf.vim'                   " fzf fuzzy finder (find, ag, rg)
 Plugin 'wellle/targets.vim'                 " additional target objects
 Plugin 'pangloss/vim-javascript'            " javascript
@@ -52,6 +49,7 @@ Plugin 'terryma/vim-smooth-scroll'          " smooth scrolling
 " Plugin 'stamblerre/gocode', {'rtp': 'vim/'} " go autocompletion daemon
 Plugin 'gcmt/wildfire.vim'                  " extra objects selection
 Plugin 'lambdalisue/vim-manpager'           " man pager, open man in vim
+Plugin 'ziglang/zig.vim'                    " man pager, open man in vim
 
 if has('win32')
     " Plugin 'qualiabyte/vim-colorstepper'
@@ -66,7 +64,6 @@ elseif has('__macunix__')
     Plugin 'bling/vim-bufferline'               " integrates nicely with vim-airline
 else
     " Plugin 'qualiabyte/vim-colorstepper'
-    " ** airline is a bit problematic with ctrlp **
     " Plugin 'vim-airline/vim-airline'
     " Plugin 'vim-airline/vim-airline-themes'
     Plugin 'vim-scripts/grep.vim'               " grep integration
@@ -170,7 +167,7 @@ if has('gui_macvim')
     set guioptions=
     set guifont=Go\ Mono:h11
 else
-    colorscheme flattened_light
+    colorscheme flattened_dark
 endif
 
 " --- YCM/RUST SETTINGS ---
@@ -201,27 +198,6 @@ if executable('rustup')
     let g:ycm_rust_src_path = $RUST_SRC_PATH
     let g:rustfmt_autosave = 1
 endif
-
-" --- CTRLP ---
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_show_hidden = 1
-" let g:ctrlp_use_caching = 1
-" let g:ctrlp_clear_cache_on_exit = 0
-" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-" 
-" if has('win32')
-"     let g:ctrlp_cache_dir = $HOME . '\.cache\ctrlp'
-"     let g:ctrlp_custom_ignore = {
-"         \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-"         \ 'file': '\v\.(exe|so|dll)$',
-"         \ 'link': 'some_bad_symbolic_links',
-"         \ }
-" else
-"     let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-"     let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|hg|svn))$'
-" endif
 
 " --- VIM SNIPPETS ---
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -400,8 +376,6 @@ nnoremap <leader>bs :Scratch<cr>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader>rn :exec &nu==&rnu? "set nornu" : "set rnu"<cr>
 nnoremap <leader>cd :lcd %:h<cr>
-nnoremap <leader>ma :CtrlPModified<cr>
-nnoremap <leader>mb :CtrlPBranch<cr>
 nnoremap <leader>h :MundoToggle<cr>
 " specific to vim-go
 nnoremap <leader>i :GoDoc<cr>
