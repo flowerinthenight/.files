@@ -78,7 +78,7 @@ window:
   # Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
 
-  opacity: 0.8
+  opacity: 0.7
 
 #scrolling:
   # Maximum number of lines in the scrollback buffer.
