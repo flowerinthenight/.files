@@ -91,7 +91,7 @@ export GOPRIVATE="github.com/mobingilabs/*,github.com/alphauslabs/*"
 export GOPATH=$HOME/gopath
 export GOPROXY=https://proxy.golang.org
 export GOCACHE=$HOME/tmp/gocache
-export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools:$HOME/.krew/bin:$HOME/bin
+export PATH=$PATH:$HOME/tools/zigup:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools:$HOME/.krew/bin:$HOME/bin
 
 # Edit $PATH after Homebrew's eval (see ~/.profile) so I can use Go binaries from ~/.local/bin/ instead of brew.
 NOHBPATH=$(echo $PATH | awk '{gsub(/:.*linuxbrew.*brew\/sbin|:.*homebrew\/bin|\/opt\/homebrew\/bin/,"");print}'); export PATH=$NOHBPATH
@@ -154,8 +154,8 @@ alias kcfg='gcloud config configurations activate mochi-prod && gcloud container
 
 # log shortcuts
 # spanner.*[0-9]s$
-alias tracem="stern sapphired -s 1s --max-log-requests 500 -c sapphired | grep -i -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|cleanupall|distri|progress=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|ccf\]|accts=.*runid=.*|notify=true|broadcast=|leader.active.*\(me|heartbeat:.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cur\.go|fees\]|invoice.*duration.*|invoice\.go|run\.go'"
-alias tcur="stern --context=gke_mobingi-main_asia-northeast1-b_curmx curmxd -c curmxd -s 1s | grep -i -E '[a-z]*\.go|process\ duration.*|sent.*|not\ updated.*|failed.*|leader.active.*|heartbeat.*|diff=[0-9]*|hedge|[1-9]{1,50}h[0-9]{1,100}m[0-9]*\.[0-9]*s$|[0-9]{1,100}m[0-9]*\.[0-9]*s$'"
+alias tracem="stern sapphired -s 1s --max-log-requests 500 -c sapphired | grep -i -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|cleanupall|distri|progress=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|ccf\]|accts=.*runid=.*|notify=true|broadcast=|leader.active.*\(me|heartbeat:.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cur\.go|fees\]|invoice.*duration.*|invoice\.go|run\.go|bq.load'"
+alias tcur="stern --context=gke_mobingi-main_asia-northeast1-b_curmx curmxd -c curmxd -s 1s | grep -i -E '[a-z]*\.go|process\ duration.*|sent.*|not\ updated.*|failed.*|leader.active.*|heartbeat.*|diff=[0-9]*|hedge|[1-9]{1,50}h[0-9]{1,100}m[0-9]*\.[0-9]*s$|[0-9]{1,100}m[0-9]*\.[0-9]*s$|attempt.*'"
 
 # getting tokens
 alias rtokenrootdev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME --password $MOBINGI_RIPPLE_ROOT_PASSWORD --client-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --client-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
@@ -236,5 +236,7 @@ plugins=(git git-flow brew history node npm kubectl)
 # termbin.com
 alias tb='nc termbin.com 9999'
 
+# shortcuts for Zig
+alias zf='zig fmt src/*.zig'
 alias zb='zig build --summary all'
 alias zbt='zig build test --verbose'
