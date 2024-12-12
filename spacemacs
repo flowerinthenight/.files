@@ -424,17 +424,29 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
+<<<<<<< Updated upstream
    dotspacemacs-active-transparency 80
+=======
+   dotspacemacs-active-transparency 97
+>>>>>>> Stashed changes
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
+<<<<<<< Updated upstream
    dotspacemacs-inactive-transparency 80
+=======
+   dotspacemacs-inactive-transparency 97
+>>>>>>> Stashed changes
 
    ;; A value from the range (0..100), in increasing opacity, which describes the
    ;; transparency level of a frame background when it's active or selected. Transparency
    ;; can be toggled through `toggle-background-transparency'. (default 90)
+<<<<<<< Updated upstream
    dotspacemacs-background-transparency 80
+=======
+   dotspacemacs-background-transparency 97
+>>>>>>> Stashed changes
 
    ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t

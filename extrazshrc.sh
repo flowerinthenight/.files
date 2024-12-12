@@ -82,7 +82,7 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   alias v="${EDITOR}"
   alias up='brew update --verbose && brew upgrade --verbose'
   alias meld='/Applications/Meld.app/Contents/MacOS/Meld'
-  export PATH=$PATH:~/Library/Python/3.7/bin
+  export PATH=$PATH:~/Library/Python/3.7/bin:$(python3 -m site --user-base)/bin
 fi
 
 alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && e --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
@@ -154,8 +154,13 @@ alias kcfg='gcloud config configurations activate mochi-prod && gcloud container
 
 # log shortcuts
 # spanner.*[0-9]s$
+<<<<<<< Updated upstream
 alias tracem="stern sapphired -s 1s --max-log-requests 500 -c sapphired | grep -i -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|cleanupall|distri|progress=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|ccf\]|accts=.*runid=.*|notify=true|broadcast=|leader.active.*\(me|heartbeat:.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cur\.go|fees\]|invoice.*duration.*|invoice\.go|run\.go|bq.load'"
 alias tcur="stern --context=gke_mobingi-main_asia-northeast1-b_curmx curmxd -c curmxd -s 1s | grep -i -E '[a-z]*\.go|process\ duration.*|sent.*|not\ updated.*|failed.*|leader.active.*|heartbeat.*|diff=[0-9]*|hedge|[1-9]{1,50}h[0-9]{1,100}m[0-9]*\.[0-9]*s$|[0-9]{1,100}m[0-9]*\.[0-9]*s$|attempt.*'"
+=======
+alias tracem="stern sapphired -s 1s --max-log-requests 500 -c sapphired | grep -i -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|cleanupall|distri|progress=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|ccf\]|accts=.*runid=.*|notify=true|broadcast=|leader.active.*\(me|heartbeat:.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cur\.go|drift\.go|fees\]|invoice.*duration.*|invoice\.go|run\.go'"
+alias tcur="stern --context=gke_mobingi-main_asia-northeast1-b_curmx curmxd -c curmxd -s 1s | grep -i -E '[a-z]*\.go|sqs|process\ duration.*|sent.*|not\ updated.*|failed|leader.active.*|heartbeat.*|diff=[0-9]*|hedge'"
+>>>>>>> Stashed changes
 
 # getting tokens
 alias rtokenrootdev='ccf token --login-url logindev.mobingi.com/ripple --username $MOBINGI_RIPPLE_ROOT_USERNAME --password $MOBINGI_RIPPLE_ROOT_PASSWORD --client-id $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_ID --client-secret $MOBINGI_RIPPLE_OPENID_WEB_CLIENT_SECRET'
