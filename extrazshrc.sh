@@ -226,7 +226,7 @@ fi
 
 # completion for hub (GitHub)
 if [ -f "$HOME/.zsh/completions/_hub" ]; then
-  fpath=(~/.zsh/completions $fpath) 
+  fpath=(~/.zsh/completions $fpath)
   autoload -U compinit && compinit
 fi
 
@@ -240,3 +240,4 @@ alias tb='nc termbin.com 9999'
 alias zf='zig fmt src/*.zig'
 alias zb='zig build --summary all'
 alias zbt='zig build test --verbose'
+alias cb='cargo build'

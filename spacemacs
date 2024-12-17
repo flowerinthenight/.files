@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(typescript
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -89,6 +89,9 @@ This function should only modify configuration layer settings."
             c-c++-enable-google-newline t)
      (zig :variables
           zls-backend 'lsp)
+     (rust :variables
+           lsp-rust-analyzer-cargo-auto-reload t
+           rustic-format-on-save t)
      )
 
    ;; List of additional packages that will be installed without being wrapped
@@ -276,8 +279,12 @@ It should only modify the values of Spacemacs settings."
 
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
-   ;; with 2 themes variants, one dark and one light)
+   ;; with 2 themes variants, one dark and one light). A theme from external
+   ;; package can be defined with `:package', or a theme can be defined with
+   ;; `:location' to download the theme package, refer the themes section in
+   ;; DOCUMENTATION.org for the full theme specifications.
    dotspacemacs-themes '(solarized-dark
+                         spacemacs-dark
                          solarized-gruvbox-light
                          solarized-light
                          whiteboard
@@ -397,6 +404,17 @@ It should only modify the values of Spacemacs settings."
    ;; are kept or minimized by `spacemacs/toggle-maximize-window' (SPC w m).
    ;; (default t)
    dotspacemacs-maximize-window-keep-side-windows t
+
+   ;; If nil, no load-hints enabled. If t, enable the `load-hints' which will
+   ;; put the most likely path on the top of `load-path' to reduce walking
+   ;; through the whole `load-path'. It's an experimental feature to speedup
+   ;; Spacemacs on Windows. Refer the FAQ.org "load-hints" session for details.
+   dotspacemacs-enable-load-hints nil
+
+   ;; If t, enable the `package-quickstart' feature to avoid full package
+   ;; loading, otherwise no `package-quickstart' attemption (default nil).
+   ;; Refer the FAQ.org "package-quickstart" section for details.
+   dotspacemacs-enable-package-quickstart nil
 
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
@@ -618,7 +636,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; (setq theming-modifications '((solarized-light)))
   (setq initial-frame-alist '((top . 80) (left . 500) (width . 270) (height . 75)))
   ;; https://github.com/emacs-evil/evil-collection/issues/215
-  (setq evil-want-keybinding nil)
+  ;; 20241202: Looks like this is fixed now.
+  ;; (setq evil-want-keybinding nil)
   )
 
 (defun dotspacemacs/user-load ()
@@ -657,6 +676,7 @@ before packages are loaded."
   (spacemacs/set-leader-keys "oc" 'clipboard-kill-ring-save) ;; copy to clipboard
   ;; (spacemacs/toggle-highlight-current-line-globally-off)
   )
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
