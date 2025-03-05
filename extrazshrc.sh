@@ -91,7 +91,7 @@ export GOPRIVATE="github.com/mobingilabs/*,github.com/alphauslabs/*"
 export GOPATH=$HOME/gopath
 export GOPROXY=https://proxy.golang.org
 export GOCACHE=$HOME/tmp/gocache
-export PATH=$PATH:$HOME/tools/zigup:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools:$HOME/.krew/bin:$HOME/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools:$HOME/.krew/bin:$HOME/bin
 
 # Edit $PATH after Homebrew's eval (see ~/.profile) so I can use Go binaries from ~/.local/bin/ instead of brew.
 NOHBPATH=$(echo $PATH | awk '{gsub(/:.*linuxbrew.*brew\/sbin|:.*homebrew\/bin|\/opt\/homebrew\/bin/,"");print}'); export PATH=$NOHBPATH
@@ -235,6 +235,11 @@ plugins=(git git-flow brew history node npm kubectl)
 
 # termbin.com
 alias tb='nc termbin.com 9999'
+
+# ZVM - https://github.com/tristanisham/zvm
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
 
 # shortcuts for Zig
 alias zf='zig fmt src/*.zig'

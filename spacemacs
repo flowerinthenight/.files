@@ -58,15 +58,24 @@ This function should only modify configuration layer settings."
           lsp-ui-doc-enable	nil)
      ;; markdown
      ;; multiple-cursors
-     (shell :variables
-             shell-default-height 30
-             shell-default-position 'bottom)
+     ;; (shell :variables
+     ;;         shell-default-height 30
+     ;;         shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
      ;; treemacs
      (neotree :variables
               neo-theme 'ascii)
      ;; version-control
+     ;; org
+     ;; latex
+     ;; theming
+     ;; html
+     ;; vimscript
+     ;; (auto-completion :variables
+     ;;                  auto-completion-use-company-box t
+     ;;                  auto-completion-enable-snippets-in-popup t)
+     ;; emoji
      (go :variables
          gofmt-command "goimports"
          go-format-before-save t
@@ -74,15 +83,6 @@ This function should only modify configuration layer settings."
          godoc-at-point-function 'godoc-gogetdoc
          go-backend 'lsp
          go-tab-width 4)
-     ;; org
-     ;; latex
-     theming
-     ;; html
-     vimscript
-     ;; (auto-completion :variables
-     ;;                  auto-completion-use-company-box t
-     ;;                  auto-completion-enable-snippets-in-popup t)
-     ;; emoji
      (c-c++ :variables
             c-c++-backend 'lsp-clangd
             c-c++-enable-google-style t
@@ -239,8 +239,8 @@ It should only modify the values of Spacemacs settings."
    ;; number is the project limit and the second the limit on the recent files
    ;; within a project.
    ;; CHEW: See if this improves performance.
-   ;; dotspacemacs-startup-lists '((recents . 5) (projects . 7))
-   dotspacemacs-startup-lists nil
+   ;; dotspacemacs-startup-lists nil
+   dotspacemacs-startup-lists '((projects . 7))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -284,6 +284,7 @@ It should only modify the values of Spacemacs settings."
    ;; `:location' to download the theme package, refer the themes section in
    ;; DOCUMENTATION.org for the full theme specifications.
    dotspacemacs-themes '(solarized-dark
+                         solarized-dark
                          spacemacs-dark
                          solarized-gruvbox-light
                          solarized-light
@@ -637,7 +638,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq initial-frame-alist '((top . 80) (left . 500) (width . 270) (height . 75)))
   ;; https://github.com/emacs-evil/evil-collection/issues/215
   ;; 20241202: Looks like this is fixed now.
-  ;; (setq evil-want-keybinding nil)
+  ;; 20250108: Nope, not fixed yet.
+  (setq evil-want-keybinding nil)
   )
 
 (defun dotspacemacs/user-load ()
@@ -674,9 +676,32 @@ before packages are loaded."
   ;; My SPC o = "custom" maps:
   (spacemacs/declare-prefix "o" "flowerinthenight") ;; optional, but for discovery
   (spacemacs/set-leader-keys "oc" 'clipboard-kill-ring-save) ;; copy to clipboard
-  ;; (spacemacs/toggle-highlight-current-line-globally-off)
+  (spacemacs/toggle-highlight-current-line-globally-off)
+  ;; For terminal, although still looks hideous.
+  (if (not (display-graphic-p))
+      (disable-theme 'solarized-dark))
   )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("bbb13492a15c3258f29c21d251da1e62f1abb8bbd492386a673dcfab474186af"
+     "285d1bf306091644fb49993341e0ad8bafe57130d9981b680c1dbd974475c5c7" default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
