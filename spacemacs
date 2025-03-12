@@ -59,8 +59,8 @@ This function should only modify configuration layer settings."
      ;; markdown
      ;; multiple-cursors
      ;; (shell :variables
-     ;;         shell-default-height 30
-     ;;         shell-default-position 'bottom)
+     ;;        shell-default-height 30
+     ;;        shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
      ;; treemacs
@@ -252,7 +252,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-startup-buffer-multi-digit-delay 0.4
 
    ;; If non-nil, show file icons for entries and headings on Spacemacs home buffer.
-   ;; This has no effect in terminal or if "all-the-icons" package or the font
+   ;; This has no effect in terminal or if "nerd-icons" package or the font
    ;; is not installed. (default nil)
    ;; CHEW: Breaks my usual resizing startup
    ;; dotspacemacs-startup-buffer-show-icons nil
