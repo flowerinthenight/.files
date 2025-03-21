@@ -60,7 +60,6 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   alias v="${EDITOR}"
   alias e="emacs"
   # export EDITOR="emacs -nw"
-  # alias up='sudo apt update && apt list --upgradable && sudo apt full-upgrade -y && brew update -v && brew upgrade -v && flatpak update -y'
   alias up='sudo apt update && apt list --upgradable; brew update -v && brew upgrade -v; flatpak update -y; sudo snap refresh;'
   alias upve='pushd ~/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall && ~/.files/gotools.sh && rm -rfv /tmp/vim-go* && git -C ~/.emacs.d/ pull && emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; popd;'
   alias upv='UPV_DIR=$PWD; cd $HOME/; $EDITOR +PluginUpdate +qall && $EDITOR +GoUpdateBinaries +qall; cd $UPV_DIR'
@@ -71,10 +70,7 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   fi
 fi
 
-
 alias e="emacs -nw"
-alias g1='gcloud compute instances start fdbg'
-alias g0='gcloud compute instances stop fdbg'
 alias gls='gcloud compute instances list'
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
@@ -245,4 +241,7 @@ export PATH="$PATH:$ZVM_INSTALL/"
 alias zf='zig fmt src/*.zig'
 alias zb='zig build --summary all'
 alias zbt='zig build test --verbose'
+
+# shortcuts for Rust
 alias cb='cargo build'
+alias ct='cargo test -v -- --nocapture'
