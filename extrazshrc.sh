@@ -91,6 +91,7 @@ export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rben
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export PATH=$PATH:$HOME/data2/flutter/bin
+  export ANDROID_HOME=$HOME/Android/Sdk
 fi
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
@@ -253,5 +254,3 @@ alias zbt='zig build test --verbose'
 # shortcuts for Rust
 alias cb='cargo build'
 alias ct='cargo test -v -- --nocapture'
-
-export ANDROID_HOME=$HOME/Android/Sdk
