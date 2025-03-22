@@ -87,9 +87,17 @@ export GOPRIVATE="github.com/mobingilabs/*,github.com/alphauslabs/*"
 export GOPATH=$HOME/gopath
 export GOPROXY=https://proxy.golang.org
 export GOCACHE=$HOME/tmp/gocache
-export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools:$HOME/.krew/bin:$HOME/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools:$HOME/data2/flutter/bin:$HOME/bin
 
-# Edit $PATH after Homebrew's eval (see ~/.profile) so I can use Go binaries from ~/.local/bin/ instead of brew.
+if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+  export PATH=$PATH:$HOME/data2/flutter/bin
+fi
+
+if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+  export PATH=$PATH:$HOME/develop/flutter/bin
+fi
+
+# Edit $PATH after Homebrew's eval (see ~/.profile) so I can use native(?) binaries first before brew.
 NOHBPATH=$(echo $PATH | awk '{gsub(/:.*linuxbrew.*brew\/sbin|:.*homebrew\/bin|\/opt\/homebrew\/bin/,"");print}'); export PATH=$NOHBPATH
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/opt/homebrew/bin
 
@@ -245,3 +253,5 @@ alias zbt='zig build test --verbose'
 # shortcuts for Rust
 alias cb='cargo build'
 alias ct='cargo test -v -- --nocapture'
+
+export ANDROID_HOME=$HOME/Android/Sdk
