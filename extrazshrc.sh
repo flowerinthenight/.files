@@ -253,4 +253,4 @@ alias zbt='zig build test --verbose'
 
 # shortcuts for Rust
 alias cb='cargo build'
-alias ct='cargo test -v -- --nocapture'
+alias ct='cargo test -- --nocapture'
