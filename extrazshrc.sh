@@ -24,9 +24,12 @@ export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
 
+# Uses the really old https://github.com/olivierverdier/zsh-git-prompt (still works).
+# There's a new one: https://github.com/zsh-git-prompt/zsh-git-prompt, but it seems to
+# not work, specifically the check mark when git is up-to-date. So, keeping the old one.
 GIT_PROMPT_EXECUTABLE="haskell"
 source ~/.zsh-git-prompt/zshrc.sh
-# source "$(brew --prefix)/opt/zsh-git-prompt/zshrc.sh"
+ZSH_GIT_PROMPT_SHOW_UPSTREAM=1
 
 # \U1F7E2 - green circle
 # \U1F538 - small orange diamond
@@ -47,10 +50,7 @@ fi
 alias l='ls -lF'
 alias ll='ls -laF'
 alias h='htop'
-# alias up='sudo apt-get -o Acquire::ForceIPv4=true update && sudo apt-get -o Acquire::ForceIPv4=true upgrade -y'
 alias x='exit'
-
-# export MANPAGER="vim -c MANPAGER -"
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   # https://wiki.archlinux.org/title/Hardware_video_acceleration
