@@ -87,7 +87,7 @@ export GOPRIVATE="github.com/mobingilabs/*,github.com/alphauslabs/*"
 export GOPATH=$HOME/gopath
 export GOPROXY=https://proxy.golang.org
 export GOCACHE=$HOME/tmp/gocache
-export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools:$HOME/data2/flutter/bin:$HOME/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/usr/share/bcc/tools:$HOME/data/flutter/bin:$HOME/bin
 
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   export PATH=$PATH:$HOME/data2/flutter/bin

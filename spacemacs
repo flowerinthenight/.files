@@ -43,11 +43,14 @@ This function should only modify configuration layer settings."
      ;; typescript
      ;; better-defaults
      ;; csv
+     auto-completion
      yaml
-     protobuf
+     ;; protobuf
      ;; git
      ;; helm
      ivy
+     (llm-client :variables
+                 llm-client-enable-gptel t)
      ;; NOTE: lsp-ui is disabled via excluded-packages
      (lsp :variables
           lsp-headerline-breadcrumb-enable nil ;; icons not showing up properly
@@ -102,7 +105,13 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '(
+     (copilot :location (recipe
+                         :fetcher github
+                         :repo "copilot-emacs/copilot.el"
+                         :files ("*.el")))
+   )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -635,7 +644,8 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; (setq theming-modifications '((solarized-light)))
-  (setq initial-frame-alist '((top . 80) (left . 500) (width . 270) (height . 75)))
+  (setq initial-frame-alist '((top . 80) (left . 600) (width . 270) (height . 75)))
+
   ;; https://github.com/emacs-evil/evil-collection/issues/215
   ;; 20241202: Looks like this is fixed now.
   ;; 20250108: Nope, not fixed yet.
@@ -673,6 +683,9 @@ before packages are loaded."
   ;; "Prevent the visual selection overriding my system clipboard."
   (fset 'evil-visual-update-x-selection 'ignore)
   (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "google-chrome")
+  ;; (setq openai-key (getenv "OPENAI_API_KEY"))
+  ;; (setq openai-user "f14t")
+  (setq gptel-api-key (getenv "OPENAI_API_KEY"))
   ;; My SPC o = "custom" maps:
   (spacemacs/declare-prefix "o" "flowerinthenight") ;; optional, but for discovery
   (spacemacs/set-leader-keys "oc" 'clipboard-kill-ring-save) ;; copy to clipboard
@@ -680,6 +693,21 @@ before packages are loaded."
   ;; For terminal, although still looks hideous.
   (if (not (display-graphic-p))
       (disable-theme 'solarized-dark))
+
+  (if (daemonp)
+    (add-hook 'server-after-make-frame-hook
+      (add-to-list 'default-frame-alist '(alpha-background . 80))))
+
+  ;; Accept completion from copilot and fallback to company.
+  (with-eval-after-load 'company
+    ;; disable inline previews
+    (delq 'company-preview-if-just-one-frontend company-frontends))
+  (with-eval-after-load 'copilot
+    (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+    (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+    (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+    (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+  (add-hook 'prog-mode-hook 'copilot-mode)
   )
 
 
