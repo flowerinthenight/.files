@@ -687,7 +687,6 @@ before packages are loaded."
   ;; (setq openai-user "f14t")
   ;; (setq gptel-api-key (getenv "OPENAI_API_KEY"))
   ;; (setq gptel-backend (gptel-make-gemini "Gemini" :key (getenv "GEMINI_API_KEY") :stream t))
-  (setq gptel-backend (gptel-make-gemini "Gemini" :key "AIzaSyCLhXC3b2_8JkVnW1Hn8-dRCKlBj83K6YY" :stream t))
   ;; My SPC o = "custom" maps:
   (spacemacs/declare-prefix "o" "flowerinthenight") ;; optional, but for discovery
   (spacemacs/set-leader-keys "oc" 'clipboard-kill-ring-save) ;; copy to clipboard
