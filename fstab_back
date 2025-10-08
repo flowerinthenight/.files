@@ -1,7 +1,0 @@
-# <file system> <mount point> <type> <options> <dump> <pass>
-
-UUID=af3c4090-ff1e-49a4-add1-3c720d20fbbb	/	ext4	noatime,errors=remount-ro	0	0
-UUID=0118ce38-1933-4837-8eb4-a03391dd2b19	/media/extra	ext4	noatime,errors=remount-ro	0	0
-UUID=e34ab379-ebb8-48f8-a9b6-83f316cdfbfb	/media/extra2	ext4	noatime,errors=remount-ro	0	0
-tmpfs	/tmp	tmpfs	rw,nosuid,nouser,nodev,noatime,mode=1777	0	0
-# //192.168.1.130/m0 /media/m0 cifs uid=f14t,gid=f14t,credentials=/home/f14t/.smbcredentials,iocharset=utf8
