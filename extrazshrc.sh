@@ -156,10 +156,12 @@ else
 fi
 # alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials mcx-us-east1-cfg-ping'
 alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials $(gcloud container clusters list | grep -i cfg | cut -f 1 -d " ")'
+alias kbpf='gcloud config configurations activate dashboard && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list --format="value(name)" --filter="name=ebpf-test")'
+alias kbpfch='gcloud config configurations activate dashboard && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list --format="value(name)" --filter="name=bpf-ch")'
 
 # log shortcuts
 # spanner.*[0-9]s$
-alias tracem="stern sapphired -s 1s --max-log-requests 1000 -c sapphired | grep -i -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|cleanupall|distri|progress=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|ccf\]|accts=.*runid=.*|notify=true|broadcast=|leader.active.*\(me|heartbeat:.*|[0-9]*m[0-9]*\.[0-9]*s$|dbg\]|cur\.go|fees\]|invoice.*duration.*|invoice\.go|run\.go|bq.load'"
+alias tracem="stern sapphired -s 1s --max-log-requests 1000 -c sapphired | grep -i -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|cleanupall|distri|progress=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|ccf\]|accts=.*runid=.*|notify=true|broadcast=|leader.active.*\(me|heartbeat:.*|[0-9]*m[0-9]*\.[0-9]*s$|\[dbg\]|cur\.go|fees\]|invoice.*duration.*|invoice\.go|run\.go|bq.load'"
 alias tcur="stern --context=gke_mobingi-main_asia-northeast1-b_curmx curmxd -c curmxd -s 1s | grep -i -E '[a-z]*\.go|process\ duration.*|sent.*|not\ updated.*|failed.*|leader.active.*|heartbeat.*|diff=[0-9]*|hedge|[1-9]{1,50}h[0-9]{1,100}m[0-9]*\.[0-9]*s$|[0-9]{1,100}m[0-9]*\.[0-9]*s$|attempt.*'"
 
 # getting tokens
