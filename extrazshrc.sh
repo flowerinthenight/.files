@@ -127,11 +127,13 @@ export GITGET_ROOT=$HOME/develop
 
 # kubectl shortcuts
 alias kc='kubectl config get-contexts'
-alias kp='kubectl get pod -o wide'
+alias kp='kubectl get pod'
+alias kpw='kubectl get pod -o wide'
 alias kd='kubectl get deployment -o wide'
 alias ks='kubectl get svc -o wide'
 alias ki='kubectl get ingress'
-alias kn='kubectl get node -o wide'
+alias kn='kubectl get node'
+alias knw='kubectl get node -o wide'
 alias kt='kubectl top'
 alias k='kubectl'
 alias kx='kubectx'
@@ -158,6 +160,7 @@ fi
 alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials $(gcloud container clusters list | grep -i cfg | cut -f 1 -d " ")'
 alias kbpf='gcloud config configurations activate dashboard && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list --format="value(name)" --filter="name=ebpf-test")'
 alias kbpfch='gcloud config configurations activate dashboard && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list --format="value(name)" --filter="name=bpf-ch")'
+alias kcrmy='aws --profile crayon_prod_chew eks update-kubeconfig --region ap-southeast-5 --name mobingi'
 
 # log shortcuts
 # spanner.*[0-9]s$
@@ -256,3 +259,6 @@ alias zbt='zig build test --verbose'
 # shortcuts for Rust
 alias cb='cargo build'
 alias ct='cargo test -- --nocapture'
+
+# istioctl
+export PATH=$PATH:$HOME/tools/istio-1.28.0/bin
