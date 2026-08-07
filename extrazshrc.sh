@@ -262,3 +262,10 @@ alias ct='cargo test -- --nocapture'
 
 # istioctl
 export PATH=$PATH:$HOME/tools/istio-1.28.0/bin
+
+# Temp: global trust taps
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+export HOMEBREW_NO_ASK=1
+
+# For openspec:
+export OPENSPEC_TELEMETRY=0
