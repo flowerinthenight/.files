@@ -81,7 +81,7 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   export PATH=$PATH:~/Library/Python/3.7/bin:$(python3 -m site --user-base)/bin
 fi
 
-alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && e --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 | tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
+alias upe='UPE_DIR=$PWD; cd $HOME/; ~/.files/gotools.sh && git -C ~/.emacs.d/ pull && e --batch -l ~/.emacs.d/early-init.el -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)" 2>&1 tee /tmp/emacs-update && grep -i -E "Found.*to.*update.*" /tmp/emacs-update && emacs; cd $UPE_DIR'
 
 export GOPRIVATE="github.com/mobingilabs/*,github.com/alphauslabs/*"
 export GOPATH=$HOME/gopath
@@ -148,7 +148,9 @@ alias awsalmprod='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME_
 # Switching GKE clusters.
 alias kdev='gcloud config configurations activate default && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i dev | cut -f 1 -d " ")'
 alias knext='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i next | cut -f 1 -d " ")'
+alias knext-my='aws eks update-kubeconfig --region ap-southeast-5 --name mobingi-next'
 alias kprod='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | cut -f 1 -d " ")'
+alias kprod-my='aws eks update-kubeconfig --region ap-southeast-5 --name mobingi'
 alias kcur='gcloud config configurations activate mochi-prod && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list | grep -i curmx | cut -f 1 -d " ")'
 alias kjuno='gcloud config configurations activate mochi-prod && gcloud container clusters --zone asia-northeast1-a get-credentials $(gcloud container clusters list | grep -i juno | cut -f 1 -d " ")'
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
@@ -197,6 +199,13 @@ alias orgs='iam orgs list'
 alias supers='lsdy OPENID_CLIENT $(awsprod) --attr client_id,client_secret,name,user_id --nosort'
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+# Homebrew: global trust taps
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+export HOMEBREW_NO_ASK=1
+
+# For openspec:
+export OPENSPEC_TELEMETRY=0
 
 # alias sl='ssh lisbeth'
 # alias sy='ssh yavanna'
@@ -252,9 +261,9 @@ export PATH="$PATH:$HOME/.zvm/bin"
 export PATH="$PATH:$ZVM_INSTALL/"
 
 # shortcuts for Zig
-alias zf='zig fmt src/*.zig'
-alias zb='zig build --summary all'
-alias zbt='zig build test --verbose'
+# alias zf='zig fmt src/*.zig'
+# alias zb='zig build --summary all'
+# alias zbt='zig build test --verbose'
 
 # shortcuts for Rust
 alias cb='cargo build'
@@ -263,9 +272,4 @@ alias ct='cargo test -- --nocapture'
 # istioctl
 export PATH=$PATH:$HOME/tools/istio-1.28.0/bin
 
-# Temp: global trust taps
-export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
-export HOMEBREW_NO_ASK=1
 
-# For openspec:
-export OPENSPEC_TELEMETRY=0
