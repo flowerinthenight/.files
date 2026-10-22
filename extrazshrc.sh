@@ -148,9 +148,9 @@ alias awsalmprod='echo -n "--region $AWS_REGION --key $AWS_ACCESS_KEY_ID_ASSUME_
 # Switching GKE clusters.
 alias kdev='gcloud config configurations activate default && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i dev | cut -f 1 -d " ")'
 alias knext='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i next | cut -f 1 -d " ")'
-alias knext-my='aws eks update-kubeconfig --region ap-southeast-5 --name mobingi-next'
+alias knext-my='aws --profile crayon_prod eks update-kubeconfig --region ap-southeast-5 --name mobingi-next'
 alias kprod='gcloud config configurations activate mochi-prod && gcloud container clusters get-credentials $(gcloud container clusters list | grep -i prod | cut -f 1 -d " ")'
-alias kprod-my='aws eks update-kubeconfig --region ap-southeast-5 --name mobingi'
+alias kprod-my='aws --profile crayon_prod eks update-kubeconfig --region ap-southeast-5 --name mobingi'
 alias kcur='gcloud config configurations activate mochi-prod && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list | grep -i curmx | cut -f 1 -d " ")'
 alias kjuno='gcloud config configurations activate mochi-prod && gcloud container clusters --zone asia-northeast1-a get-credentials $(gcloud container clusters list | grep -i juno | cut -f 1 -d " ")'
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
@@ -162,7 +162,7 @@ fi
 alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials $(gcloud container clusters list | grep -i cfg | cut -f 1 -d " ")'
 alias kbpf='gcloud config configurations activate dashboard && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list --format="value(name)" --filter="name=ebpf-test")'
 alias kbpfch='gcloud config configurations activate dashboard && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list --format="value(name)" --filter="name=bpf-ch")'
-alias kcrmy='aws --profile crayon_prod_chew eks update-kubeconfig --region ap-southeast-5 --name mobingi'
+alias kcrmy='aws --profile crayon_prod eks update-kubeconfig --region ap-southeast-5 --name mobingi'
 
 # log shortcuts
 # spanner.*[0-9]s$
