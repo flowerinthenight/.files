@@ -11,3 +11,7 @@ go install github.com/godoctor/godoctor@latest
 go install github.com/haya14busa/gopkgs/cmd/gopkgs@latest
 go install github.com/josharian/impl@latest
 go install github.com/rogpeppe/godef@latest
+go install github.com/go-delve/delve/cmd/dlv@latest
+go install honnef.co/go/tools/cmd/staticcheck@latest
+go install github.com/mgechev/revive@latest
+go install github.com/kisielk/errcheck@latest
