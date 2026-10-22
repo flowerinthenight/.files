@@ -27,7 +27,7 @@ setopt EXTENDED_HISTORY
 # Uses the really old https://github.com/olivierverdier/zsh-git-prompt (still works).
 # There's a new one: https://github.com/zsh-git-prompt/zsh-git-prompt, but it seems to
 # not work, specifically the check mark when git is up-to-date. So, keeping the old one.
-GIT_PROMPT_EXECUTABLE="haskell"
+# GIT_PROMPT_EXECUTABLE="haskell"
 source ~/.zsh-git-prompt/zshrc.sh
 ZSH_GIT_PROMPT_SHOW_UPSTREAM=1
 
@@ -156,7 +156,7 @@ alias kjuno='gcloud config configurations activate mochi-prod && gcloud containe
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   alias kue4='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east4 get-credentials $(gcloud container clusters list | grep -i us-east4 | cut -f 1 -d " ")'
 else
-  alias kue4="gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east4 get-credentials $(gcloud container clusters list > /tmp/out && cat /tmp/out | grep -oi -E '^us-east4.*$' | awk '{ print $1 }')"
+  # alias kue4="gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east4 get-credentials $(gcloud container clusters list > /tmp/out && cat /tmp/out | grep -oi -E '^us-east4.*$' | awk '{ print $1 }')"
 fi
 # alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials mcx-us-east1-cfg-ping'
 alias kcfg='gcloud config configurations activate mochi-prod && gcloud container clusters --region us-east1 get-credentials $(gcloud container clusters list | grep -i cfg | cut -f 1 -d " ")'
