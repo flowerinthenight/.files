@@ -164,6 +164,10 @@ alias kbpf='gcloud config configurations activate dashboard && gcloud container 
 alias kbpfch='gcloud config configurations activate dashboard && gcloud container clusters --zone asia-northeast1-b get-credentials $(gcloud container clusters list --format="value(name)" --filter="name=bpf-ch")'
 alias kcrmy='aws --profile crayon_prod eks update-kubeconfig --region ap-southeast-5 --name mobingi'
 
+# fsys dev box (EC2 in crayon_prod, Tokyo).
+alias fsys-on='aws --profile crayon_prod --region ap-northeast-1 ec2 start-instances --instance-ids i-0fd0e5df98b69e050 --query "StartingInstances[0].CurrentState.Name" --output text && aws --profile crayon_prod --region ap-northeast-1 ec2 wait instance-running --instance-ids i-0fd0e5df98b69e050 && echo "fsys running"'
+alias fsys-off='ssh -O exit fsys 2>/dev/null; aws --profile crayon_prod --region ap-northeast-1 ec2 stop-instances --instance-ids i-0fd0e5df98b69e050 --query "StoppingInstances[0].CurrentState.Name" --output text'
+
 # log shortcuts
 # spanner.*[0-9]s$
 alias tracem="stern sapphired -s 1s --max-log-requests 1000 -c sapphired | grep -i -E '\[cleanup\]|cleanup.*failed|\[summary|csv\]|cleanupall|distri|progress=.*input=.*date=[0-9]{4}-[0-9]{2}-[0-9]{2}|failed.*|ccf\]|accts=.*runid=.*|notify=true|broadcast=|leader.active.*\(me|heartbeat:.*|[0-9]*m[0-9]*\.[0-9]*s$|\[dbg\]|cur\.go|fees\]|invoice.*duration.*|invoice\.go|run\.go|bq.load'"
