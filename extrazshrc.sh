@@ -165,8 +165,8 @@ alias kbpfch='gcloud config configurations activate dashboard && gcloud containe
 alias kcrmy='aws --profile crayon_prod eks update-kubeconfig --region ap-southeast-5 --name mobingi'
 
 # fsys dev box (EC2 in crayon_prod, Tokyo).
-alias fsys-on='aws --profile crayon_prod --region ap-northeast-1 ec2 start-instances --instance-ids i-0fd0e5df98b69e050 --query "StartingInstances[0].CurrentState.Name" --output text && aws --profile crayon_prod --region ap-northeast-1 ec2 wait instance-running --instance-ids i-0fd0e5df98b69e050 && echo "fsys running"'
-alias fsys-off='ssh -O exit fsys 2>/dev/null; aws --profile crayon_prod --region ap-northeast-1 ec2 stop-instances --instance-ids i-0fd0e5df98b69e050 --query "StoppingInstances[0].CurrentState.Name" --output text'
+alias fsys-on='aws --no-cli-pager --profile crayon_prod --region ap-northeast-1 ec2 start-instances --instance-ids i-0fd0e5df98b69e050 --query "StartingInstances[0].CurrentState.Name" --output text && aws --no-cli-pager --profile crayon_prod --region ap-northeast-1 ec2 wait instance-running --instance-ids i-0fd0e5df98b69e050 && echo "fsys running"'
+alias fsys-off='ssh -O exit fsys 2>/dev/null; aws --no-cli-pager --profile crayon_prod --region ap-northeast-1 ec2 stop-instances --instance-ids i-0fd0e5df98b69e050 --query "StoppingInstances[0].CurrentState.Name" --output text'
 
 # log shortcuts
 # spanner.*[0-9]s$
